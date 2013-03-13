@@ -9,6 +9,7 @@ currentDir = os.getcwd()
 os.chdir(currentDir)
 
 class wpCli(cmd.Cmd):
+	TASK_CONFIGURE = ['path', 'level']
 	nohelp = "No help on %s"
 	ruler = "-"
 
@@ -16,6 +17,32 @@ class wpCli(cmd.Cmd):
 		cmd.Cmd.__init__(self)
 		self.prompt = 'WPHardening > '
 		self.color = wpCommandColor()
+
+	def do_configure(self, task):
+		if task and task in self.TASK_CONFIGURE:
+			wpOut = 'configure %s' % task
+		elif task:
+			wpOut = "configure " + task
+		else:
+			wpOut = "not configure"
+		print wpOut
+
+	def complete_configure(self, text, line, begidx, endidx):
+		if not text:
+			completions = self.TASK_CONFIGURE[:]
+		else:
+			completions = [f for f in self.TASK_CONFIGURE
+							if f.startswith(text)
+						  ]
+		return completions
+
+	def help_configure(self):
+		print '\n'.join(['Usage:',
+					  '	configure path <Working directory>',
+					  '	configure level',
+					  'Description:',
+					  '	configure path /home/dmaldonado/wordpress',
+					  ])
 
 	def do_version(self, line):
 		wphardening_version = wpCoreAutoload()
