@@ -1,80 +1,28 @@
 #!/usr/bin/env python
 
-import cmd
+from optparse import OptionParser
 import os
-from lib.autoload.wpCoreAutoload import *
-from lib.command.wpCommandColor import *
+import sys
 
-currentDir = os.getcwd()
-os.chdir(currentDir)
+def main():
+	usage = "usage: %prog [options] arg"
+	version = '\nWP Hardening v0.1 (beta)\n'
+	parser = OptionParser(usage, version=version)
+	parser.add_option("-v", "--verbose", action="store_true", dest="verbose", help="active verbose mode output results")
+	parser.add_option("-d", "--dir", dest="path", help="**REQUIRED** - Working Directory.", metavar="DIRECTORY")
+	parser.add_option("-o", "--output", action="store", type="string", dest="output", help="Specify the output directory")
 
-class wpCli(cmd.Cmd):
-	TASK_CONFIGURE = ['path', 'level']
-	nohelp = "No help on %s"
-	ruler = "-"
+	(options, args) = parser.parse_args()
 
-	def __init__(self):
-		cmd.Cmd.__init__(self)
-		self.prompt = 'WPHardening > '
-		self.color = wpCommandColor()
+	if options.path == None:
+		parser.print_help()
+		sys.exit()
+	
+	options.path = os.path.abspath(options.path)
+	if os.path.exists(options.path):
+		print options.path
+	else:
+		print "Could not find the specified directory"
 
-	def do_configure(self, task):
-		if task and task in self.TASK_CONFIGURE:
-			wpOut = 'configure %s' % task
-		elif task:
-			wpOut = "configure " + task
-		else:
-			wpOut = "not configure"
-		print wpOut
-
-	def complete_configure(self, text, line, begidx, endidx):
-		if not text:
-			completions = self.TASK_CONFIGURE[:]
-		else:
-			completions = [f for f in self.TASK_CONFIGURE
-							if f.startswith(text)
-						  ]
-		return completions
-
-	def help_configure(self):
-		print '\n'.join(['Usage:',
-					  '	configure path <Working directory>',
-					  '	configure level',
-					  'Description:',
-					  '	configure path /home/dmaldonado/wordpress',
-					  ])
-
-	def do_version(self, line):
-		wphardening_version = wpCoreAutoload()
-		print wphardening_version.getClassPath('wpHardeningName')
-		print "Version: " + wphardening_version.getClassPath('wpHardeningVersion')
-		print "Author: " + wphardening_version.getClassPath('wpHardeningAuthor')
-
-	def help_version(self):
-		print "Show WPHardening version information."
-
-	def do_exit(self, line):
-		return True
-
-	def do_quit(self, line):
-		return True
-
-	def postloop(self):
-		print "Bye."
-
-	def default(self, line):
-		"""Called on an input line when the command prefix is not recognized.
-		If this method is not overridden, it prints an error message and
-		returns.
-		"""
-		#self.stdout.write(chr(27) + "[1;41m" + "  Task [ %s ] is not defined.  \n" % line + chr(27) + "[0m")
-		self.stdout.write(self.color.getError() + "  Task < %s > is not defined.  " % line + self.color.end() + "\n")
-
-	def do_command(self, line):
-		output = os.popen(line).read()
-		print output
-
-
-if __name__ == '__main__':
-	wphardening = wpCli()
-	wphardening.cmdloop()
+if __name__ == "__main__":
+	main()
