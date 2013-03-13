@@ -9,7 +9,14 @@ class wpCoreAutoload:
 		#self.baseDir = os.path.dirname(os.path.realpath(__file__+'../../../'))
 		self.baseDir = os.getcwd()
 		self.baseDirProject = os.getcwd() + "/project"
-		self.classes = {'wpHardeningName': 'newthon Framework TUI', 'wpHardeningVersion': '1.0', 'wpHardeningAuthor': 'Daniel M. Maldonado','wpAutoload': 'lib.autoload.wpAutoload','wpCoreAutoload': 'lib.autoload.wpCoreAutoload','wpFinder': 'lib.util.wpFinder'}
+		self.classes = {
+			'wpHardeningName': 'WPHardening', 
+			'wpHardeningVersion': '0.1', 
+			'wpHardeningAuthor': 'Ing. Daniel Maldonado',
+			'wpAutoload': 'lib.autoload.wpAutoload',
+			'wpCoreAutoload': 'lib.autoload.wpCoreAutoload',
+			'wpFinder': 'lib.util.wpFinder',
+		}
 
 	def getInstance(self):
 		if (wpCoreAutoload.__instance is None):
