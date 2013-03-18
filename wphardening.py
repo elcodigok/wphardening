@@ -2,7 +2,6 @@
 
 from optparse import OptionParser
 import os
-import stat
 import sys
 
 class checkWordpress():
@@ -71,6 +70,7 @@ def main():
 	parser.add_option("-v", "--verbose", action="store_true", dest="verbose", help="active verbose mode output results")
 	parser.add_option("-d", "--dir", dest="path", help="**REQUIRED** - Working Directory.", metavar="DIRECTORY")
 	parser.add_option("-o", "--output", action="store", type="string", dest="output", help="Specify the output directory")
+	parser.add_option("-c", "--chmod-directory", action="store_true", dest="chmod", help="Chmod 755 in directory and 644 in files.")
 
 	(options, args) = parser.parse_args()
 
@@ -84,8 +84,9 @@ def main():
 		wordpress = checkWordpress(options.path)
 		if wordpress.isWordPress():
 			print "Esto es un WordPress."
-			asdf = chmodWordPress(options.path)
-			asdf.changePermisions()
+			if options.chmod <> None:
+				asdf = chmodWordPress(options.path)
+				asdf.changePermisions()
 		else:
 			print "Esto NO es un WordPress."
 	else:
