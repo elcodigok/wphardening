@@ -63,6 +63,23 @@ class chmodWordPress():
 				os.chmod(os.path.join(r, wpfile), 0644)
 		print "Todos los cambios ejecutados."
 
+class removeWordPress():
+	def __init__(self, directory):
+		self.directory = os.path.abspath(directory)
+		self.readme = "/readme.html"
+		self.license = ["/licencia.txt", "/license.txt"]
+	
+	def deleteReadme(self):
+		if os.path.exists(self.directory + self.readme):
+			os.remove(self.directory + self.readme)
+			print "[ D ] readme.html"
+	
+	def deleteLicense(self):
+		for pathLicese in self.license:
+			if os.path.exists(self.directory + pathLicese):
+				os.remove(self.directory + pathLicese)
+				print "[ D ] %s" % (pathLicese)
+
 def main():
 	usage = "usage: %prog [options] arg"
 	version = '\nWP Hardening v0.1 (beta)\n'
@@ -71,6 +88,7 @@ def main():
 	parser.add_option("-d", "--dir", dest="path", help="**REQUIRED** - Working Directory.", metavar="DIRECTORY")
 	parser.add_option("-o", "--output", action="store", type="string", dest="output", help="Specify the output directory")
 	parser.add_option("-c", "--chmod-directory", action="store_true", dest="chmod", help="Chmod 755 in directory and 644 in files.")
+	parser.add_option("-r", "--remove", action="store_true", dest="remove", help="Remove files and directory.")
 
 	(options, args) = parser.parse_args()
 
@@ -87,6 +105,10 @@ def main():
 			if options.chmod <> None:
 				asdf = chmodWordPress(options.path)
 				asdf.changePermisions()
+			if options.remove <> None:
+				qwer = removeWordPress(options.path)
+				qwer.deleteReadme()
+				qwer.deleteLicense()
 		else:
 			print "Esto NO es un WordPress."
 	else:
