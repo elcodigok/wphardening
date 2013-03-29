@@ -9,7 +9,7 @@ class checkWordpress():
 		self.inAdmin = ["/css", "/images", "/includes", "/js", "/maint", "/network", "/user"]
 		
 		self.includes = "/wp-includes"
-		self.inIncludes = ["/css", "/images", "/js", "/pomo", "/SimplePie", "/Text", "/theme-compat"]
+		self.inIncludes = ["/css", "/images", "/js", "/pomo", "/SimplePie", "/Text", "/theme-compat", "/default-filters.php"]
 		self.directory = directory
 	
 	def existsContent(self):

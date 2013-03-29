@@ -6,6 +6,7 @@ from lib.chmodWordPress import chmodWordPress
 from lib.removeWordPress import removeWordPress
 from lib.robotsWordPress import robotsWordPress
 from lib.wizardWordPress import wizardWordPress
+from lib.deleteVersionWordPress import deleteVersionWordPress
 import os
 import sys
 
@@ -23,6 +24,7 @@ def main():
 	group2.add_option("-c", "--chmod", action="store_true", dest="chmod", help="Chmod 755 in directory and 644 in files.")
 	group2.add_option("-r", "--remove", action="store_true", dest="remove", help="Remove files and directory.")
 	group2.add_option("-b", "--robots", action="store_true", dest="robots", help="Create file robots.txt")
+	group2.add_option("--delete-version", action="store_true", dest="delete_version", help="Deleted version WordPress.")
 	parser.add_option_group(group2)
 	
 	group3 = OptionGroup(parser, "Miscellaneous")
@@ -41,6 +43,9 @@ def main():
 		wordpress = checkWordpress(options.path)
 		if wordpress.isWordPress():
 			print "This project is a WordPress."
+			if options.delete_version <> None:
+				asdf = deleteVersionWordPress(options.path)
+				asdf.delete()
 			if options.chmod <> None:
 				asdf = chmodWordPress(options.path)
 				asdf.changePermisions()
