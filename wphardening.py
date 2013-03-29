@@ -4,6 +4,7 @@ from optparse import OptionParser, OptionGroup
 from lib.checkWordpress import checkWordpress
 from lib.chmodWordPress import chmodWordPress
 from lib.removeWordPress import removeWordPress
+from lib.wizardWordPress import wizardWordPress
 import os
 import sys
 
@@ -37,7 +38,7 @@ def main():
 		print options.path
 		wordpress = checkWordpress(options.path)
 		if wordpress.isWordPress():
-			print "Esto es un WordPress."
+			print "This project is a WordPress."
 			if options.chmod <> None:
 				asdf = chmodWordPress(options.path)
 				asdf.changePermisions()
@@ -46,7 +47,7 @@ def main():
 				qwer.deleteReadme()
 				qwer.deleteLicense()
 		else:
-			print "Esto NO es un WordPress."
+			print "This project is not a WordPress."
 	else:
 		print "Could not find the specified directory"
 

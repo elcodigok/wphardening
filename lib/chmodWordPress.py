@@ -9,4 +9,4 @@ class chmodWordPress():
 			os.chmod(r, 0755)
 			for wpfile in f:
 				os.chmod(os.path.join(r, wpfile), 0644)
-		print "Todos los cambios ejecutados."
+		print "All changes implemented."
