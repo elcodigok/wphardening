@@ -4,6 +4,7 @@ from optparse import OptionParser, OptionGroup
 from lib.checkWordpress import checkWordpress
 from lib.chmodWordPress import chmodWordPress
 from lib.removeWordPress import removeWordPress
+from lib.robotsWordPress import robotsWordPress
 from lib.wizardWordPress import wizardWordPress
 import os
 import sys
@@ -21,6 +22,7 @@ def main():
 	group2 = OptionGroup(parser, "Hardening", "Different tools to hardening WordPress.")
 	group2.add_option("-c", "--chmod", action="store_true", dest="chmod", help="Chmod 755 in directory and 644 in files.")
 	group2.add_option("-r", "--remove", action="store_true", dest="remove", help="Remove files and directory.")
+	group2.add_option("-b", "--robots", action="store_true", dest="robots", help="Create file robots.txt")
 	parser.add_option_group(group2)
 	
 	group3 = OptionGroup(parser, "Miscellaneous")
@@ -46,6 +48,9 @@ def main():
 				qwer = removeWordPress(options.path)
 				qwer.deleteReadme()
 				qwer.deleteLicense()
+			if options.robots <> None:
+				zxcv = robotsWordPress(options.path)
+				zxcv.createRobots()
 		else:
 			print "This project is not a WordPress."
 	else:
