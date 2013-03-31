@@ -84,4 +84,4 @@ Disallow: / """
 		f = open(fpath, "w")
 		f.writelines(self.getRobots())
 		f.close()
-		print "The robots.txt file was created."
+		print "[ C ] The robots.txt file."

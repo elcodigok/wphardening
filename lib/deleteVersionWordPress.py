@@ -4,7 +4,7 @@ class deleteVersionWordPress():
 	def __init__(self, directory):
 		self.directory = os.path.abspath(directory)
 		self.filters = self.directory + "/wp-includes/default-filters.php"
-		self.function = "\nfunction delete_version_wp() {\n\treturn '';\n}\nadd_filter('the_generator', 'delete_version_wp');"
+		self.setFunction()
 		self.setFilters()
 	
 	def setFilters(self):
@@ -15,10 +15,14 @@ class deleteVersionWordPress():
 	def getFilters(self):
 		return self.script
 	
+	def setFunction(self):
+		self.function = ['\n', '// This is a function that removes versions of WordPress.\n', 'function delete_version_wp() {', '\n', '\treturn "";', '\n}', '\nadd_filter(\'the_generator\', \'delete_version_wp\');']
+	
+	def getFunction(self):
+		return self.function
+	
 	def delete(self):
-		#self.text = self.getFilters() + self.function
 		f = open(self.filters, "w")
-		f.writelines(self.script)
-		f.writelines(self.function)
+		f.writelines(self.getFilters() + self.getFunction())
 		f.close()
-		print "Ya se agrego la libreria."
+		print "[ D ] WordPress versions."
