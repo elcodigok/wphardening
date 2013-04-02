@@ -8,6 +8,7 @@ from lib.robotsWordPress import robotsWordPress
 from lib.wizardWordPress import wizardWordPress
 from lib.deleteVersionWordPress import deleteVersionWordPress
 from lib.fingerprintingWordPress import fingerprintingWordPress
+from lib.pluginsWordPress import pluginsWordPress
 import os
 import sys
 
@@ -27,6 +28,7 @@ def main():
 	group2.add_option("-b", "--robots", action="store_true", dest="robots", help="Create file robots.txt")
 	group2.add_option("-f", "--fingerprinting", action="store_true", dest="finger", help="Deleted fingerprinting WordPress.")
 	group2.add_option("--delete-version", action="store_true", dest="delete_version", help="Deleted version WordPress.")
+	group2.add_option("--plugins", action="store_true", dest="plugins", help="Download Plugins Security.")
 	parser.add_option_group(group2)
 	
 	group3 = OptionGroup(parser, "Miscellaneous")
@@ -61,6 +63,9 @@ def main():
 			if options.finger <> None:
 				asdf = fingerprintingWordPress(options.path)
 				asdf.searchStaticFile()
+			if options.plugins <> None:
+				asdf = pluginsWordPress(options.path)
+				asdf.download()
 		else:
 			print "This project is not a WordPress."
 	else:
