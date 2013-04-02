@@ -7,6 +7,7 @@ from lib.removeWordPress import removeWordPress
 from lib.robotsWordPress import robotsWordPress
 from lib.wizardWordPress import wizardWordPress
 from lib.deleteVersionWordPress import deleteVersionWordPress
+from lib.fingerprintingWordPress import fingerprintingWordPress
 import os
 import sys
 
@@ -24,6 +25,7 @@ def main():
 	group2.add_option("-c", "--chmod", action="store_true", dest="chmod", help="Chmod 755 in directory and 644 in files.")
 	group2.add_option("-r", "--remove", action="store_true", dest="remove", help="Remove files and directory.")
 	group2.add_option("-b", "--robots", action="store_true", dest="robots", help="Create file robots.txt")
+	group2.add_option("-f", "--fingerprinting", action="store_true", dest="finger", help="Deleted fingerprinting WordPress.")
 	group2.add_option("--delete-version", action="store_true", dest="delete_version", help="Deleted version WordPress.")
 	parser.add_option_group(group2)
 	
@@ -56,6 +58,9 @@ def main():
 			if options.robots <> None:
 				zxcv = robotsWordPress(options.path)
 				zxcv.createRobots()
+			if options.finger <> None:
+				asdf = fingerprintingWordPress(options.path)
+				asdf.searchStaticFile()
 		else:
 			print "This project is not a WordPress."
 	else:
