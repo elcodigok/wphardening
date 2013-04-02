@@ -13,9 +13,9 @@ class pluginsWordPress():
 		f = open(file_name, 'wb')
 		f.write(u.read())
 		f.close()
-		meta = u.info()
-		file_size = int(meta.getheaders("Content-Length")[0])
-		print "Downloading: %s Bytes: %s" % (file_name, file_size)
 		
 		zip_file = zipfile.ZipFile(os.path.abspath(file_name), 'r')
 		zip_file.extractall(self.directory + '/wp-content/plugins')
+		
+		if os.path.exists(os.path.abspath(file_name)):
+			os.remove(os.path.abspath(file_name))
