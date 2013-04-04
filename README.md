@@ -29,6 +29,7 @@ Usage
                             Deleted fingerprinting WordPress.
         --delete-version    Deleted version WordPress.
         --plugins           Download Plugins Security.
+        --indexes           It allows you to display the contents of directories.
     
       Miscellaneous:
         --wizard            Simple wizard interface for beginner users
@@ -37,4 +38,4 @@ Usage
 Examples
 ========
 
-    $ python wphardening.py -d /home/user/wordpress -c -r -f --delete-version
+    $ python wphardening.py -d /home/user/wordpress -c -r -f --delete-version --indexes
