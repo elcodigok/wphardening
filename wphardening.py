@@ -10,6 +10,7 @@ from lib.deleteVersionWordPress import deleteVersionWordPress
 from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
+from lib.termcolor import colored, cprint
 import os
 import sys
 
@@ -45,10 +46,9 @@ def main():
 	
 	options.path = os.path.abspath(options.path)
 	if os.path.exists(options.path):
-		print options.path
 		wordpress = checkWordpress(options.path)
 		if wordpress.isWordPress():
-			print "This project is a WordPress."
+			print colored(options.path, 'yellow') + ' -', colored('This project directory is a WordPress.', 'green')
 			if options.delete_version <> None:
 				asdf = deleteVersionWordPress(options.path)
 				asdf.delete()
@@ -72,9 +72,9 @@ def main():
 				asdf = indexesWordPress(options.path)
 				asdf.createIndexes()
 		else:
-			print "This project is not a WordPress."
+			print colored(options.path, 'yellow') + ' -', colored('This Project directory is not a WordPress.', 'red')
 	else:
-		print "Could not find the specified directory"
+		print colored('Could not find the specified directory.', 'red')
 
 if __name__ == "__main__":
 	main()
