@@ -1,4 +1,5 @@
 import os
+from lib.termcolor import colored, cprint
 
 class indexesWordPress():
 	def __init__(self, directory):
@@ -14,12 +15,14 @@ class indexesWordPress():
 			f = open(self.directory + '/.htaccess', 'w')
 			f.writelines(self.script + self.htaccess)
 			f.close()
-			print "[ A ] Add options to " + self.directory + '/.htaccess'
+			#print "[ A ] Add options to " + self.directory + '/.htaccess'
+			print colored('\tAdd options to ', 'green') + self.directory + '/.htaccess'
 		else:
 			f = open(self.directory + '/.htaccess', 'w')
 			f.writelines(self.htaccess)
 			f.close()
-			print "[ C ] Create file " + self.directory + '/.htaccess'
+			#print "[ C ] Create file " + self.directory + '/.htaccess'
+			print colored('\tCreate Htaccess file ', 'green') + self.directory + '/.htaccess'
 	
 	def createIndexes(self):
 		for index in self.directory_create:
@@ -27,5 +30,7 @@ class indexesWordPress():
 				os.makedirs(self.directory + index)
 			f = open(self.directory + index + '/index.php', "w")
 			f.close()
-			print "[ C ] index.php in " + self.directory + index + '/index.php'
+			#print "[ C ] index.php in " + self.directory + index + '/index.php'
+		print colored('Create Indexes Files', 'yellow')
+		print colored('\tAll index.php files were created.', 'green')
 		self.writeHtaccess()

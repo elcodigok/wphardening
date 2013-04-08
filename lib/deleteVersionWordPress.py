@@ -1,4 +1,5 @@
 import os
+from lib.termcolor import colored, cprint
 
 class deleteVersionWordPress():
 	def __init__(self, directory):
@@ -25,4 +26,5 @@ class deleteVersionWordPress():
 		f = open(self.filters, "w")
 		f.writelines(self.getFilters() + self.getFunction())
 		f.close()
-		print "[ D ] WordPress versions."
+		print colored('Deleted WordPress versions', 'yellow')
+		print colored('\tmodified:\twp-includes/default-filters.php', 'red')

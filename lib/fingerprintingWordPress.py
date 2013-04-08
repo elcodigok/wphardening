@@ -3,6 +3,7 @@ import os
 import os.path
 import re
 import datetime
+from lib.termcolor import colored, cprint
 
 class fingerprintingWordPress():
 	def __init__(self, directory):
@@ -25,7 +26,8 @@ class fingerprintingWordPress():
 				f = open(fname, "w")
 				f.writelines(self.getDateTime() + script)
 				f.close()
-		print "All changes implemented."
+		print colored('Deleted fingerprinting WordPress', 'yellow')
+		print colored('\tAll changes implemented.', 'green')
 	
 	def getDateTime(self):
 		self.now = ['/* WP Hardening - ', str(datetime.datetime.now()) + '*/\n']

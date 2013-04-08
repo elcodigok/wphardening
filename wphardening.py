@@ -16,7 +16,7 @@ import sys
 
 def main():
 	usage = "usage: %prog [options] arg"
-	version = '\nWP Hardening v0.1 (beta)\n'
+	version = colored('WP Hardening', 'green') + ' version' + colored(' 0.2 - Beta', 'yellow')
 	parser = OptionParser(usage, version=version)
 	parser.add_option("-v", "--verbose", action="store_true", dest="verbose", help="active verbose mode output results")
 	
@@ -48,7 +48,7 @@ def main():
 	if os.path.exists(options.path):
 		wordpress = checkWordpress(options.path)
 		if wordpress.isWordPress():
-			print colored(options.path, 'yellow') + ' -', colored('This project directory is a WordPress.', 'green')
+			print colored(options.path, 'yellow') + ' -', colored('This project directory is a WordPress.\n', 'green')
 			if options.delete_version <> None:
 				asdf = deleteVersionWordPress(options.path)
 				asdf.delete()
@@ -72,9 +72,9 @@ def main():
 				asdf = indexesWordPress(options.path)
 				asdf.createIndexes()
 		else:
-			print colored(options.path, 'yellow') + ' -', colored('This Project directory is not a WordPress.', 'red')
+			print colored(options.path, 'yellow') + ' -', colored('This Project directory is not a WordPress.\n', 'red')
 	else:
-		print colored('Could not find the specified directory.', 'red')
+		print colored('Could not find the specified directory.\n', 'red')
 
 if __name__ == "__main__":
 	main()
