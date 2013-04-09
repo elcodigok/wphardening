@@ -1,4 +1,5 @@
 import os
+from lib.termcolor import colored, cprint
 
 class robotsWordPress:
 	def __init__(self, directory):
@@ -80,8 +81,9 @@ Disallow: / """
 		return self.robots
 	  
 	def createRobots(self):
+		print colored('\nCreated file robots.txt', 'yellow')
 		fpath = self.directory + "/robots.txt"
 		f = open(fpath, "w")
 		f.writelines(self.getRobots())
 		f.close()
-		print "[ C ] The robots.txt file."
+		print colored('\tcreate:\tCreate robots.txt file ' + fpath, 'green')

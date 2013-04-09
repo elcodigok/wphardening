@@ -10,7 +10,7 @@ class chmodWordPress():
 			os.chmod(r, 0755)
 			for wpfile in f:
 				os.chmod(os.path.join(r, wpfile), 0644)
-		print colored('chmod on Directories', 'yellow')
+		print colored('\nchmod on Directories', 'yellow')
 		print colored('\tAll directories\t drwxr-xr-x (755)', 'green')
-		print colored('chmod on Files', 'yellow')
+		print colored('\nchmod on Files', 'yellow')
 		print colored('\tAll files\t -rw-r--r-- (644)', 'green')

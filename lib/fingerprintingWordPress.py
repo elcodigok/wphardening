@@ -26,7 +26,7 @@ class fingerprintingWordPress():
 				f = open(fname, "w")
 				f.writelines(self.getDateTime() + script)
 				f.close()
-		print colored('Deleted fingerprinting WordPress', 'yellow')
+		print colored('\nDeleted fingerprinting WordPress', 'yellow')
 		print colored('\tAll changes implemented.', 'green')
 	
 	def getDateTime(self):

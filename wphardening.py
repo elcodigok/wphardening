@@ -57,8 +57,9 @@ def main():
 				asdf.changePermisions()
 			if options.remove <> None:
 				qwer = removeWordPress(options.path)
-				qwer.deleteReadme()
-				qwer.deleteLicense()
+				#qwer.deleteReadme()
+				#qwer.deleteLicense()
+				qwer.delete()
 			if options.robots <> None:
 				zxcv = robotsWordPress(options.path)
 				zxcv.createRobots()
@@ -74,7 +75,7 @@ def main():
 		else:
 			print colored(options.path, 'yellow') + ' -', colored('This Project directory is not a WordPress.\n', 'red')
 	else:
-		print colored('Could not find the specified directory.\n', 'red')
+		print colored('\nCould not find the specified directory.\n', 'red')
 
 if __name__ == "__main__":
 	main()

@@ -26,5 +26,5 @@ class deleteVersionWordPress():
 		f = open(self.filters, "w")
 		f.writelines(self.getFilters() + self.getFunction())
 		f.close()
-		print colored('Deleted WordPress versions', 'yellow')
+		print colored('\nDeleted WordPress versions', 'yellow')
 		print colored('\tmodified:\twp-includes/default-filters.php', 'red')
