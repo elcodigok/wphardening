@@ -68,7 +68,8 @@ def main():
 				asdf.searchStaticFile()
 			if options.plugins <> None:
 				asdf = pluginsWordPress(options.path)
-				asdf.download()
+				#asdf.download()
+				asdf.questions()
 			if options.indexes <> None:
 				asdf = indexesWordPress(options.path)
 				asdf.createIndexes()
