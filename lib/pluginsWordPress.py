@@ -1,10 +1,12 @@
+import re
 import os
 import urllib2
 import zipfile
 from lib.termcolor import colored, cprint
 
 class pluginsWordPress():
-	def __init__(self, directory):
+	def __init__(self, directory, proxy):
+		self.yes = set(['yes', 'y', 'ye'])
 		self.directory = os.path.abspath(directory)
 		self.list_plugins = [
 		  ['WP Security Scan', 'Scans your WordPress installation for security vulnerabilities.', 'http://wordpress.org/extend/plugins/wp-security-scan/'],
@@ -20,9 +22,20 @@ class pluginsWordPress():
 		  ['WordPress File Monitor Plus', 'Monitor files under your WP installation for changes. When a change occurs, be notified via email. This plugin is a fork of WordPress File Monitor.', 'http://wordpress.org/extend/plugins/wordpress-file-monitor-plus/'],
 		  ['UPDATE NOTIFICATIONS', 'Check if your installation of wordpress updates are (core wordpress, themes and plugins). If so send an email.', 'http://wordpress.org/extend/plugins/update-notifications/'],
 		  ]
+		if proxy is not None:
+			conexion_proxy = {}
+			conexion_proxy["http"] = proxy
+			proxy_handler = urllib2.ProxyHandler(conexion_proxy)
+			proxy_auth_handler = urllib2.ProxyBasicAuthHandler()
+			proxy_auth_handler.add_password('', '', '', '')
+			self.opener = urllib2.build_opener(proxy_handler,
+										  proxy_auth_handler)
+			urllib2.install_opener(self.opener)
+		else:
+			self.opener = urllib2.build_opener(urllib2.HTTPHandler)	
 	
 	def download(self, url):
-		self.url = url
+		self.url = url[0]
 		file_name = self.url.split('/')[-1]
 		u = urllib2.urlopen(self.url)
 		f = open(file_name, 'wb')
@@ -40,4 +53,10 @@ class pluginsWordPress():
 			print colored('\n' + plugin[0], 'yellow')
 			print colored('\t' + plugin[1], 'green')
 			print colored('\t' + plugin[2], 'green')
-			q = raw_input('You want to download [y/n] > ')
+			q = raw_input('\tYou want to download [y/n] > ').lower()
+			if q in self.yes:
+				request = urllib2.Request(plugin[2])
+				resp = self.opener.open(request)
+				html = resp.read()
+				patron = re.compile("http://downloads.wordpress.org/plugin/[a-zA-Z0-9$-_@.&#+]+\.[zip|rar|gzip|tar.gz|tgz]+")
+				self.download(patron.findall(html))

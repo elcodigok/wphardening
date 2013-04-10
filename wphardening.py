@@ -13,6 +13,7 @@ from lib.indexesWordPress import indexesWordPress
 from lib.termcolor import colored, cprint
 import os
 import sys
+import urllib2
 
 def main():
 	usage = "usage: %prog [options] arg"
@@ -31,6 +32,7 @@ def main():
 	group2.add_option("-f", "--fingerprinting", action="store_true", dest="finger", help="Deleted fingerprinting WordPress.")
 	group2.add_option("--delete-version", action="store_true", dest="delete_version", help="Deleted version WordPress.")
 	group2.add_option("--plugins", action="store_true", dest="plugins", help="Download Plugins Security.")
+	group2.add_option("--proxy", action="store", type="string", dest="proxy", help="Use a HTTP proxy to connect to the target url for --plugins options.")
 	group2.add_option("--indexes", action="store_true", dest="indexes", help="It allows you to display the contents of directories.")
 	parser.add_option_group(group2)
 	
@@ -57,8 +59,6 @@ def main():
 				asdf.changePermisions()
 			if options.remove <> None:
 				qwer = removeWordPress(options.path)
-				#qwer.deleteReadme()
-				#qwer.deleteLicense()
 				qwer.delete()
 			if options.robots <> None:
 				zxcv = robotsWordPress(options.path)
@@ -67,7 +67,18 @@ def main():
 				asdf = fingerprintingWordPress(options.path)
 				asdf.searchStaticFile()
 			if options.plugins <> None:
-				asdf = pluginsWordPress(options.path)
+				if options.proxy is not None:
+					protocolo, rest = urllib2.splittype(options.proxy)
+					if protocolo is None:
+						raise ValueError("unknown URL type: %s") % (options.proxy)
+					host, rest = urllib2.splithost(rest)
+					host, port = urllib2.splitport(host)
+					if port is None:
+						raise ValueError("unknown protocol for %s") % (options.proxy)
+					puerto = int(port)
+					asdf = pluginsWordPress(options.path, options.proxy)
+				else:
+					asdf = pluginsWordPress(options.path)
 				#asdf.download()
 				asdf.questions()
 			if options.indexes <> None:
