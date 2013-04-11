@@ -1,13 +1,14 @@
 import os
 from lib.termcolor import colored, cprint
 
+
 class robotsWordPress:
-	def __init__(self, directory):
-		self.directory = os.path.abspath(directory)
-		self.setRobots()
-	
-	def setRobots(self):
-		self.robots = """# Sitemap
+    def __init__(self, directory):
+        self.directory = os.path.abspath(directory)
+        self.setRobots()
+
+    def setRobots(self):
+        self.robots = """# Sitemap
 
 Sitemap: http://www.tusitioweb.com/sitemap.xml
 
@@ -77,13 +78,13 @@ Disallow: /
 User-agent: libwww
 Disallow: / """
 
-	def getRobots(self):
-		return self.robots
-	  
-	def createRobots(self):
-		print colored('\nCreated file robots.txt', 'yellow')
-		fpath = self.directory + "/robots.txt"
-		f = open(fpath, "w")
-		f.writelines(self.getRobots())
-		f.close()
-		print colored('\tcreate:\tCreate robots.txt file ' + fpath, 'green')
+    def getRobots(self):
+        return self.robots
+
+    def createRobots(self):
+        print colored('\nCreated file robots.txt', 'yellow')
+        fpath = self.directory + "/robots.txt"
+        f = open(fpath, "w")
+        f.writelines(self.getRobots())
+        f.close()
+        print colored('\tcreate:\tCreate robots.txt file ' + fpath, 'green')
