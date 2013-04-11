@@ -29,6 +29,8 @@ Usage
                             Deleted fingerprinting WordPress.
         --delete-version    Deleted version WordPress.
         --plugins           Download Plugins Security.
+        --proxy=PROXY       Use a HTTP proxy to connect to the target url for
+                            --plugins options.
         --indexes           It allows you to display the contents of directories.
     
       Miscellaneous:
