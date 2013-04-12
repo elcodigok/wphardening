@@ -5,7 +5,6 @@ from lib.checkWordpress import checkWordpress
 from lib.chmodWordPress import chmodWordPress
 from lib.removeWordPress import removeWordPress
 from lib.robotsWordPress import robotsWordPress
-from lib.wizardWordPress import wizardWordPress
 from lib.deleteVersionWordPress import deleteVersionWordPress
 from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
@@ -19,7 +18,7 @@ import urllib2
 def main():
     usage = "usage: %prog [options] arg"
     version = colored('WP Hardening', 'green') + ' version' + \
-        colored(' 0.3 - Beta', 'yellow')
+        colored(' 1.0', 'yellow')
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
@@ -71,13 +70,6 @@ def main():
         help="It allows you to display the contents of directories."
     )
     parser.add_option_group(group2)
-
-    group3 = OptionGroup(parser, "Miscellaneous")
-    group3.add_option(
-        "--wizard", action="store_true", dest="wizard",
-        help="Simple wizard interface for beginner users"
-    )
-    parser.add_option_group(group3)
 
     (options, args) = parser.parse_args()
 

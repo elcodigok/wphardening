@@ -33,8 +33,6 @@ Usage
                             --plugins options.
         --indexes           It allows you to display the contents of directories.
     
-      Miscellaneous:
-        --wizard            Simple wizard interface for beginner users
 
 
 Examples
