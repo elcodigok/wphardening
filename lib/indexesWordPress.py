@@ -34,6 +34,10 @@ class indexesWordPress():
         self.htaccess = [
             '\n', '# Avoid the browser access to a folder without index.\n',
             'Options All -Indexes',
+            '\n','<Files .htaccess>',
+            '\n', '\torder allow,deny',
+            '\n', '\tdeny from all',
+            '\n', '</Files>', '\n'
         ]
 
     def writeHtaccess(self):
