@@ -31,6 +31,7 @@ from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
 from lib.termcolor import colored, cprint
+from lib.registerLog import registerLog
 import os
 import sys
 import urllib2
@@ -39,7 +40,7 @@ import urllib2
 def main():
     usage = "usage: %prog [options] arg"
     version = colored('WP Hardening', 'green') + ' version' + \
-        colored(' 1.0', 'yellow')
+        colored(' 1.1 - Beta', 'yellow')
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
@@ -91,10 +92,27 @@ def main():
         help="It allows you to display the contents of directories."
     )
     parser.add_option_group(group2)
+    
+    group3 = OptionGroup(
+        parser, "Miscellaneous",
+    )
+    group3.add_option(
+        "-o", "--output", help="Write log report to FILE.", metavar="FILE",
+        dest="output"
+    )
+    parser.add_option_group(group3)
 
     (options, args) = parser.parse_args()
+    
+    if options.output is None:
+        filename = 'wphardening.log'
+    else:
+        filename = options.output
+    log = registerLog(filename)
+    log.setConfigure()
 
     if options.path is None:
+        log.add("Did not specify a working directory.")
         parser.print_help()
         sys.exit()
 
@@ -139,9 +157,11 @@ def main():
                 asdf = indexesWordPress(options.path)
                 asdf.createIndexes()
         else:
+            log.add(options.path + " This Project directory is not a WordPress.")
             print colored(options.path, 'yellow') + ' -', \
                 colored('This Project directory is not a WordPress.\n', 'red')
     else:
+        log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
 
 if __name__ == "__main__":
