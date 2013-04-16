@@ -26,6 +26,7 @@ import os
 import os.path
 import re
 import datetime
+import logging
 from lib.termcolor import colored, cprint
 
 
@@ -54,6 +55,7 @@ class fingerprintingWordPress():
                 f.writelines(self.getDateTime() + script)
                 f.close()
         print colored('\nDeleted fingerprinting WordPress', 'yellow')
+        logging.info("Fingerprinting: All changes implemented.")
         print colored('\tAll changes implemented.', 'green')
 
     def getDateTime(self):

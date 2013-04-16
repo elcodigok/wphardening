@@ -22,6 +22,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import logging
 from lib.termcolor import colored, cprint
 
 
@@ -34,12 +35,14 @@ class removeWordPress():
     def deleteReadme(self):
         if os.path.exists(self.directory + self.readme):
             os.remove(self.directory + self.readme)
+            logging.info("delete: file readmes.")
             print colored('\tdelete:\tfile readme.', 'red')
 
     def deleteLicense(self):
         for pathLicese in self.license:
             if os.path.exists(self.directory + pathLicese):
                 os.remove(self.directory + pathLicese)
+                logging.info("delete: file " + pathLicese)
                 print colored('\tdelete:\tfile ' + pathLicese, 'red')
 
     def delete(self):

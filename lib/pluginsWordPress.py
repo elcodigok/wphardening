@@ -25,6 +25,7 @@ import re
 import os
 import urllib2
 import zipfile
+import logging
 from lib.termcolor import colored, cprint
 
 
@@ -136,3 +137,4 @@ class pluginsWordPress():
                     "http://downloads.wordpress.org/plugin/[a-zA-Z0-9$-_@.&#+]+\.[zip|rar|gzip|tar.gz|tgz]+"
                 )
                 self.download(patron.findall(html))
+                logging.info("Download plugins " + plugin[0] + " in " + self.directory + '/wp-contet/plugins')

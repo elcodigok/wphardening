@@ -22,6 +22,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import logging
 from lib.termcolor import colored, cprint
 
 
@@ -36,5 +37,7 @@ class chmodWordPress():
                 os.chmod(os.path.join(r, wpfile), 0644)
         print colored('\nchmod on Directories', 'yellow')
         print colored('\tAll directories\t drwxr-xr-x (755)', 'green')
+        logging.info("All directories drwxr-xr-x (755)")
         print colored('\nchmod on Files', 'yellow')
         print colored('\tAll files\t -rw-r--r-- (644)', 'green')
+        logging.info("All files -rw-r--r-- (644)")

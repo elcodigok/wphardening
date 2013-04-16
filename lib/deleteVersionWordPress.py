@@ -22,6 +22,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import logging
 from lib.termcolor import colored, cprint
 
 
@@ -56,6 +57,7 @@ class deleteVersionWordPress():
         f.writelines(self.getFilters() + self.getFunction())
         f.close()
         print colored('\nDeleted WordPress versions', 'yellow')
+        logging.info("modified: wp-includes/default-filters.php")
         print colored(
             '\tmodified:\twp-includes/default-filters.php',
             'red'

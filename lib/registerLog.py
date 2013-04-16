@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-pluginsWordPress.py
+registerLog.py
 
 Copyright 2013 Daniel Maldonado
 

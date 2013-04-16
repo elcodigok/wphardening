@@ -22,6 +22,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import logging
 from lib.termcolor import colored, cprint
 
 
@@ -48,12 +49,14 @@ class indexesWordPress():
             f = open(self.directory + '/.htaccess', 'w')
             f.writelines(self.script + self.htaccess)
             f.close()
+            logging.info("Add options to " + self.directory + '/.htaccess')
             print colored('\tAdd options to ', 'green') + \
                 self.directory + '/.htaccess'
         else:
             f = open(self.directory + '/.htaccess', 'w')
             f.writelines(self.htaccess)
             f.close()
+            logging.info("Create .htaccess file.")
             print colored('\tCreate Htaccess file ', 'green') + \
                 self.directory + '/.htaccess'
 
@@ -63,6 +66,7 @@ class indexesWordPress():
                 os.makedirs(self.directory + index)
             f = open(self.directory + index + '/index.php', "w")
             f.close()
+            logging.info(self.directory + index + "/index.php create.")
             # mode verbose
             # print "[ C ] index.php in " + \
             # self.directory + index + '/index.php'
