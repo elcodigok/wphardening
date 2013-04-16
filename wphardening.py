@@ -30,6 +30,7 @@ from lib.deleteVersionWordPress import deleteVersionWordPress
 from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
+from lib.wpconfigWordPress import wpconfigWordPress
 from lib.termcolor import colored, cprint
 from lib.registerLog import registerLog
 import os
@@ -74,6 +75,10 @@ def main():
     group2.add_option(
         "-f", "--fingerprinting", action="store_true",
         dest="finger", help="Deleted fingerprinting WordPress."
+    )
+    group2.add_option(
+        "--wp-config", action="store_true", dest="wpconfig",
+        help="Generated wp-config.php"
     )
     group2.add_option(
         "--delete-version", action="store_true",
@@ -138,6 +143,13 @@ def main():
             if options.finger is not None:
                 asdf = fingerprintingWordPress(options.path)
                 asdf.searchStaticFile()
+            if options.wpconfig is not None:
+                asdf = wpconfigWordPress(options.path)
+                #asdf.wizard()
+                asdf.createConfig()
+            if options.indexes is not None:
+                asdf = indexesWordPress(options.path)
+                asdf.createIndexes()
             if options.plugins is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)
@@ -154,9 +166,6 @@ def main():
                 else:
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
-            if options.indexes is not None:
-                asdf = indexesWordPress(options.path)
-                asdf.createIndexes()
         else:
             log.add(options.path + " This Project directory is not a WordPress.")
             print colored(options.path, 'yellow') + ' -', \
