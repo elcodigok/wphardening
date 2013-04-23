@@ -70,7 +70,6 @@ require_once(ABSPATH . 'wp-settings.php');
         f.write('define(\'WPLANG\', \'' + self.language + '\');\n\n')
         f.write('define(\'WP_DEBUG\', false);\n\n')
         f.write('define(\'WP_POST_REVISIONS\', false);\n\n')
-        f.write('define(\'COOKIE_DOMAIN\', \'www.yourwebsite.com\');\n\n')
         f.write('define(\'FS_METHOD\', \'direct\');\n\n')
         f.write('define(\'AUTOSAVE_INTERNAL\', 240);\n\n')
         f.write('define(\'DISALLOW_FILE_EDIT\', true);\n\n')
