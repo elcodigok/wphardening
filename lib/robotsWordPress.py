@@ -29,14 +29,23 @@ from lib.termcolor import colored, cprint
 class robotsWordPress:
     def __init__(self, directory):
         self.directory = os.path.abspath(directory)
+        self.setUrl()
         self.setRobots()
 
+    def setUrl(self):
+        value = raw_input('URL your site > ')
+        if value == '':
+            self.setUrl()
+        else:
+            self.url = value
+
+    def getSitemap(self):
+        return self.url + "/sitemap.xml"
+
     def setRobots(self):
-        self.robots = """# Sitemap
-
-Sitemap: http://www.tusitioweb.com/sitemap.xml
-
-# Ficheros y directorios a des/indexar de nuestro WordPress
+        self.robots = "# Sitemap\n"
+        self.robots += "Sitemap: " + self.getSitemap() + '\n\n'
+        self.robots += """# Ficheros y directorios a des/indexar de nuestro WordPress
 
 User-Agent: *
 Allow: /wp-content/uploads/
