@@ -90,7 +90,8 @@ def main():
     )
     group2.add_option(
         "--proxy", action="store", type="string", dest="proxy",
-        help="Use a HTTP proxy to connect to the target url for --plugins."
+        help="Use a HTTP proxy to connect to the target url for --plugins and \
+--wp-config."
     )
     group2.add_option(
         "--indexes", action="store_true", dest="indexes",
@@ -144,8 +145,20 @@ def main():
                 asdf = fingerprintingWordPress(options.path)
                 asdf.searchStaticFile()
             if options.wpconfig is not None:
-                asdf = wpconfigWordPress(options.path)
-                #asdf.wizard()
+                if options.proxy is not None:
+                    protocolo, rest = urllib2.splittype(options.proxy)
+                    if protocolo is None:
+                        raise ValueError("unknown URL type: %s") % \
+                            (options.proxy)
+                    host, rest = urllib2.splithost(rest)
+                    host, port = urllib2.splitport(host)
+                    if port is None:
+                        raise ValueError("unknown protocol for %s") % \
+                            (options.proxy)
+                    puerto = int(port)
+                    asdf = wpconfigWordPress(options.path, options.proxy)
+                else:
+                    asdf = wpconfigWordPress(options.path, options.proxy)
                 asdf.createConfig()
             if options.indexes is not None:
                 asdf = indexesWordPress(options.path)

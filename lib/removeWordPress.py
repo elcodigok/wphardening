@@ -36,7 +36,7 @@ class removeWordPress():
         if os.path.exists(self.directory + self.readme):
             os.remove(self.directory + self.readme)
             logging.info("delete: file readmes.")
-            print colored('\tdelete:\tfile readme.', 'red')
+            print colored('\tdelete:\tfile /readme.html', 'red')
 
     def deleteLicense(self):
         for pathLicese in self.license:

@@ -23,40 +23,55 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import urllib2
+from lib.termcolor import colored, cprint
 
 
 class wpconfigWordPress():
-    def __init__(self, directory):
+    def __init__(self, directory, proxy):
         self.directory = directory
+        print colored('\nCreated file wp-config-wphardening.php', 'yellow')
         self.opener = urllib2.build_opener(urllib2.HTTPHandler)
         self.db_host = 'localhost'
+        if proxy is not None:
+            conexion_proxy = {}
+            conexion_proxy["http"] = proxy
+            proxy_handler = urllib2.ProxyHandler(conexion_proxy)
+            proxy_auth_handler = urllib2.ProxyBasicAuthHandler()
+            proxy_auth_handler.add_password('', '', '', '')
+            self.opener = urllib2.build_opener(
+                proxy_handler,
+                proxy_auth_handler
+            )
+            urllib2.install_opener(self.opener)
+        else:
+            self.opener = urllib2.build_opener(urllib2.HTTPHandler)
     
     def wizard(self):
         self.setDbName()
         self.setDbUser()
         self.setDbPassword()
-        self.db_host = raw_input('Host [localhost] > ')
+        self.db_host = raw_input('\tHost [localhost] > ')
         self.salt = self.getSalt()
-        self.table_prefix = raw_input('Table prefix [wph_] > ')
-        self.language = raw_input('Language [es_ES] > ')
+        self.table_prefix = raw_input('\tTable prefix [wph_] > ')
+        self.language = raw_input('\tLanguage [es_ES] > ')
         self.getCompletConfig()
     
     def setDbName(self):
-        value = raw_input('Name of the database > ')
+        value = raw_input('\tName of the database > ')
         if value == '':
             self.setDbName()
         else:
             self.db_name = value
 
     def setDbUser(self):
-        value = raw_input('Name of the User > ')
+        value = raw_input('\tName of the User > ')
         if value == '':
             self.setDbUser()
         else:
             self.db_user = value
 
     def setDbPassword(self):
-        value = raw_input('Password of the user > ')
+        value = raw_input('\tPassword of the user > ')
         if value == '':
             self.setDbPassword()
         else:

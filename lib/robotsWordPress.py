@@ -29,11 +29,12 @@ from lib.termcolor import colored, cprint
 class robotsWordPress:
     def __init__(self, directory):
         self.directory = os.path.abspath(directory)
+        print colored('\nCreated file robots.txt', 'yellow')
         self.setUrl()
         self.setRobots()
 
     def setUrl(self):
-        value = raw_input('URL your site > ')
+        value = raw_input('\tURL your site [http://] > ')
         if value == '':
             self.setUrl()
         else:
@@ -115,7 +116,6 @@ Disallow: / """
         return self.robots
 
     def createRobots(self):
-        print colored('\nCreated file robots.txt', 'yellow')
         fpath = self.directory + "/robots.txt"
         f = open(fpath, "w")
         f.writelines(self.getRobots())
