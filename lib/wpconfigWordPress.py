@@ -31,7 +31,6 @@ class wpconfigWordPress():
         self.directory = directory
         print colored('\nCreated file wp-config-wphardening.php', 'yellow')
         self.opener = urllib2.build_opener(urllib2.HTTPHandler)
-        self.db_host = 'localhost'
         if proxy is not None:
             conexion_proxy = {}
             conexion_proxy["http"] = proxy
@@ -50,10 +49,10 @@ class wpconfigWordPress():
         self.setDbName()
         self.setDbUser()
         self.setDbPassword()
-        self.db_host = raw_input('\tHost [localhost] > ')
+        self.setDbHost()
         self.salt = self.getSalt()
-        self.table_prefix = raw_input('\tTable prefix [wph_] > ')
-        self.language = raw_input('\tLanguage [es_ES] > ')
+        self.setTablePrefix()
+        self.setLanguage()
         self.getCompletConfig()
     
     def setDbName(self):
@@ -76,6 +75,27 @@ class wpconfigWordPress():
             self.setDbPassword()
         else:
             self.db_password = value
+    
+    def setDbHost(self):
+        value = raw_input('\tHost [localhost] > ')
+        if value == '':
+            self.db_host = 'localhost'
+        else:
+            self.db_host = value
+    
+    def setTablePrefix(self):
+        value = raw_input('\tTable prefix [wph_] > ')
+        if value == '':
+            self.table_prefix = 'wph_'
+        else:
+            self.table_prefix = value
+    
+    def setLanguage(self):
+        value = raw_input('\tLanguage [es_ES] > ')
+        if value == '':
+            self.language = ''
+        else:
+            self.language = value
     
     def getCompletConfig(self):
         self.complet = """/** WordPress absolute path to the Wordpress directory. */

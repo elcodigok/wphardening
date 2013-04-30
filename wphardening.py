@@ -128,7 +128,7 @@ def main():
         if wordpress.isWordPress():
             log.add(options.path + " This project directory is a WordPress.")
             print colored(options.path, 'yellow') + ' -', \
-                colored('This project directory is a WordPress.\n', 'green')
+                colored('\nThis project directory is a WordPress.', 'green')
             if options.delete_version is not None:
                 asdf = deleteVersionWordPress(options.path)
                 asdf.delete()

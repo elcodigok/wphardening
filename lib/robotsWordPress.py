@@ -34,7 +34,7 @@ class robotsWordPress:
         self.setRobots()
 
     def setUrl(self):
-        value = raw_input('\tURL your site [http://] > ')
+        value = raw_input('\tURL your site > ')
         if value == '':
             self.setUrl()
         else:
@@ -46,7 +46,7 @@ class robotsWordPress:
     def setRobots(self):
         self.robots = "# Sitemap\n"
         self.robots += "Sitemap: " + self.getSitemap() + '\n\n'
-        self.robots += """# Ficheros y directorios a des/indexar de nuestro WordPress
+        self.robots += """# Files and Directories to not indexing of our WordPress
 
 User-Agent: *
 Allow: /wp-content/uploads/
@@ -71,7 +71,7 @@ Disallow: /page/
 Disallow: /tag/
 Disallow: /category/
 
-# Reglas para los bots mas conocidos
+# Rules for most known bots
 
 User-agent: Googlebot
 
