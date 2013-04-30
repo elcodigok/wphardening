@@ -44,7 +44,7 @@ class wpconfigWordPress():
             urllib2.install_opener(self.opener)
         else:
             self.opener = urllib2.build_opener(urllib2.HTTPHandler)
-    
+
     def wizard(self):
         self.setDbName()
         self.setDbUser()
@@ -54,7 +54,7 @@ class wpconfigWordPress():
         self.setTablePrefix()
         self.setLanguage()
         self.getCompletConfig()
-    
+
     def setDbName(self):
         value = raw_input('\tName of the database > ')
         if value == '':
@@ -75,30 +75,31 @@ class wpconfigWordPress():
             self.setDbPassword()
         else:
             self.db_password = value
-    
+
     def setDbHost(self):
         value = raw_input('\tHost [localhost] > ')
         if value == '':
             self.db_host = 'localhost'
         else:
             self.db_host = value
-    
+
     def setTablePrefix(self):
         value = raw_input('\tTable prefix [wph_] > ')
         if value == '':
             self.table_prefix = 'wph_'
         else:
             self.table_prefix = value
-    
+
     def setLanguage(self):
         value = raw_input('\tLanguage [es_ES] > ')
         if value == '':
             self.language = ''
         else:
             self.language = value
-    
+
     def getCompletConfig(self):
-        self.complet = """/** WordPress absolute path to the Wordpress directory. */
+        self.complet = """/** WordPress absolute path to the\
+Wordpress directory. */
 if ( !defined('ABSPATH') )
         define('ABSPATH', dirname(__FILE__) . '/');
 
@@ -107,7 +108,9 @@ require_once(ABSPATH . 'wp-settings.php');
 """
 
     def getSalt(self):
-        request = urllib2.Request("http://api.wordpress.org/secret-key/1.1/salt")
+        request = urllib2.Request(
+            "http://api.wordpress.org/secret-key/1.1/salt"
+        )
         resp = self.opener.open(request)
         html = resp.read()
         return html
@@ -136,11 +139,15 @@ require_once(ABSPATH . 'wp-settings.php');
             'define(\'DB_HOST\', \'' + self.db_host + '\');\n\n'
         )
         f.write(
-            self.getComment('Database Charset to use in creating database tables.') +
+            self.getComment(
+                'Database Charset to use in creating database tables.'
+            ) +
             'define(\'DB_CHARSET\', \'utf8\');\n\n'
         )
         f.write(
-            self.getComment('The Database Collate type. Don\'t change this if in doubt.') +
+            self.getComment(
+                'The Database Collate type. Don\'t change this if in doubt.'
+            ) +
             'define(\'DB_COLLATE\', \'\');\n\n'
         )
         f.write(
@@ -152,7 +159,9 @@ require_once(ABSPATH . 'wp-settings.php');
             '$table_prefix = \'' + self.table_prefix + '\';\n\n'
         )
         f.write(
-            self.getComment('WordPress Localized Language, defaults to English.') +
+            self.getComment(
+                'WordPress Localized Language, defaults to English.'
+            ) +
             'define(\'WPLANG\', \'' + self.language + '\');\n\n'
         )
         f.write(

@@ -46,7 +46,8 @@ class robotsWordPress:
     def setRobots(self):
         self.robots = "# Sitemap\n"
         self.robots += "Sitemap: " + self.getSitemap() + '\n\n'
-        self.robots += """# Files and Directories to not indexing of our WordPress
+        self.robots += """# Files and Directories to not\
+indexing of our WordPress
 
 User-Agent: *
 Allow: /wp-content/uploads/

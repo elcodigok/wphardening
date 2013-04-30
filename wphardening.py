@@ -98,7 +98,7 @@ def main():
         help="It allows you to display the contents of directories."
     )
     parser.add_option_group(group2)
-    
+
     group3 = OptionGroup(
         parser, "Miscellaneous",
     )
@@ -109,7 +109,7 @@ def main():
     parser.add_option_group(group3)
 
     (options, args) = parser.parse_args()
-    
+
     if options.output is None:
         filename = 'wphardening.log'
     else:
@@ -180,7 +180,9 @@ def main():
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
         else:
-            log.add(options.path + " This Project directory is not a WordPress.")
+            log.add(
+                options.path + " This Project directory is not a WordPress."
+            )
             print colored(options.path, 'yellow') + ' -', \
                 colored('This Project directory is not a WordPress.\n', 'red')
     else:

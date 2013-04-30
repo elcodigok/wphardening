@@ -28,7 +28,7 @@ import os
 class registerLog():
     def __init__(self, filename):
         self.filename = os.path.abspath(filename)
-    
+
     def setConfigure(self):
         logging.basicConfig(
             level=logging.INFO,
@@ -36,6 +36,6 @@ class registerLog():
             datefmt='%a, %d %b %Y %H:%M:%S',
             filename=self.filename
         )
-    
+
     def add(self, message):
         logging.info(message)
