@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-wizardWordPress.py
+registerLog.py
 
 Copyright 2013 Daniel Maldonado
 
@@ -21,17 +21,21 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
+import logging
 import os
 
 
-class wizardWordPress:
-    def __init__(self):
-        self.directory = None
+class registerLog():
+    def __init__(self, filename):
+        self.filename = os.path.abspath(filename)
 
-    def setDirectory(self):
-        directorio = raw_input("Ingresa el Path: ")
-        if os.path.exists(os.path.abspath(directorio)):
-            self.directory = directorio
+    def setConfigure(self):
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s %(levelname)-8s %(message)s',
+            datefmt='%a, %d %b %Y %H:%M:%S',
+            filename=self.filename
+        )
 
-    def getDirectory(self):
-        return self.directory
+    def add(self, message):
+        logging.info(message)

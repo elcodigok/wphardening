@@ -27,15 +27,18 @@ Usage
         -b, --robots        Create file robots.txt
         -f, --fingerprinting
                             Deleted fingerprinting WordPress.
+        --wp-config         Generated wp-config.php
         --delete-version    Deleted version WordPress.
         --plugins           Download Plugins Security.
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for
                             --plugins options.
         --indexes           It allows you to display the contents of directories.
     
-
+      Miscellaneous:
+        -o FILE, --output=FILE
+                            Write log report to FILE.log
 
 Examples
 ========
 
-    $ python wphardening.py -d /home/user/wordpress -c -r -f --delete-version --indexes
+    $ python wphardening.py -d /home/user/wordpress -c -r -f --wp-config --delete-version --indexes --plugins -o /home/user/wphardening.log

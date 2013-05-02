@@ -1,18 +1,53 @@
+#!/usr/bin/env python
+"""
+robotsWordPress.py
+
+Copyright 2013 Daniel Maldonado
+
+This file is part of WPHardening project.
+
+WPHardening is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+WPHardening is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
+
+"""
+
 import os
+import logging
 from lib.termcolor import colored, cprint
 
 
 class robotsWordPress:
     def __init__(self, directory):
         self.directory = os.path.abspath(directory)
+        print colored('\nCreated file robots.txt', 'yellow')
+        self.setUrl()
         self.setRobots()
 
+    def setUrl(self):
+        value = raw_input('\tURL your site > ')
+        if value == '':
+            self.setUrl()
+        else:
+            self.url = value
+
+    def getSitemap(self):
+        return self.url + "/sitemap.xml"
+
     def setRobots(self):
-        self.robots = """# Sitemap
-
-Sitemap: http://www.tusitioweb.com/sitemap.xml
-
-# Ficheros y directorios a des/indexar de nuestro WordPress
+        self.robots = "# Sitemap\n"
+        self.robots += "Sitemap: " + self.getSitemap() + '\n\n'
+        self.robots += """# Files and Directories to not\
+indexing of our WordPress
 
 User-Agent: *
 Allow: /wp-content/uploads/
@@ -37,7 +72,7 @@ Disallow: /page/
 Disallow: /tag/
 Disallow: /category/
 
-# Reglas para los bots mas conocidos
+# Rules for most known bots
 
 User-agent: Googlebot
 
@@ -82,9 +117,9 @@ Disallow: / """
         return self.robots
 
     def createRobots(self):
-        print colored('\nCreated file robots.txt', 'yellow')
         fpath = self.directory + "/robots.txt"
         f = open(fpath, "w")
         f.writelines(self.getRobots())
         f.close()
+        logging.info("Create file robots.txt in " + self.directory)
         print colored('\tcreate:\tCreate robots.txt file ' + fpath, 'green')
