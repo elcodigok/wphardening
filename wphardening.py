@@ -41,7 +41,7 @@ import urllib2
 def main():
     usage = "usage: %prog [options] arg"
     version = colored('WP Hardening', 'green') + ' version' + \
-        colored(' 1.1 - Beta', 'yellow')
+        colored(' 1.1', 'yellow')
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
@@ -103,7 +103,7 @@ def main():
         parser, "Miscellaneous",
     )
     group3.add_option(
-        "-o", "--output", help="Write log report to FILE.", metavar="FILE",
+        "-o", "--output", help="Write log report to FILE.log", metavar="FILE",
         dest="output"
     )
     parser.add_option_group(group3)
