@@ -30,7 +30,7 @@ class indexesWordPress():
     def __init__(self, directory):
         self.directory = os.path.abspath(directory)
         self.directory_create = [
-            '/wp-content', '/wp-content/plugins', '/wp-uploads'
+            '/wp-content', '/wp-content/plugins', '/wp-content/uploads'
         ]
         self.htaccess = [
             '\n', '# Avoid the browser access to a folder without index.\n',
