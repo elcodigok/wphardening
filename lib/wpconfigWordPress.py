@@ -53,6 +53,7 @@ class wpconfigWordPress():
         self.salt = self.getSalt()
         self.setTablePrefix()
         self.setLanguage()
+        self.setWpCron()
         self.getCompletConfig()
 
     def setDbName(self):
@@ -97,6 +98,15 @@ class wpconfigWordPress():
         else:
             self.language = value
 
+    def setWpCron(self):
+        value = raw_input('\tDisable wp-cron.php? [y/n] > ')
+        if value == 'y':
+            self.wpcron = 'true'
+        elif value == 'n':
+            self.wpcron = 'false'
+        else:
+            self.wpcron = 'false'
+
     def getCompletConfig(self):
         self.complet = """/** WordPress absolute path to the\
 Wordpress directory. */
@@ -140,48 +150,67 @@ require_once(ABSPATH . 'wp-settings.php');
         )
         f.write(
             self.getComment(
-                'Database Charset to use in creating database tables.'
+                'Database Charset to use in creating database tables'
             ) +
             'define(\'DB_CHARSET\', \'utf8\');\n\n'
         )
         f.write(
             self.getComment(
-                'The Database Collate type. Don\'t change this if in doubt.'
+                'The Database Collate type. Don\'t change this if in doubt'
             ) +
             'define(\'DB_COLLATE\', \'\');\n\n'
         )
         f.write(
-            self.getComment('Authentication Unique Keys and Salts.') +
+            self.getComment('Authentication Unique Keys and Salts') +
             self.salt + '\n'
         )
         f.write(
-            self.getComment('WordPress Database Table prefix.') +
+            self.getComment('WordPress Database Table prefix') +
             '$table_prefix = \'' + self.table_prefix + '\';\n\n'
         )
         f.write(
             self.getComment(
-                'WordPress Localized Language, defaults to English.'
+                'WordPress Localized Language, defaults to English'
             ) +
             'define(\'WPLANG\', \'' + self.language + '\');\n\n'
         )
+        if self.wpcron == 'true':
+            f.write(
+                self.getComment(
+                    'Disable the function of wp-cron.php\n' +
+                    ' * We recommend creating this scheduled task on your server\n' +
+                    ' * Minute: 0\n' + 
+                    ' * Hour: Every 2 hours\n' +
+                    ' * Day: *\n' +
+                    ' * Moth: *\n' +
+                    ' * Weekday: *\n' +
+                    ' *\twget -O /dev/null http://yoursite.com/wp-cron.php?doing_wp_cron'
+                ) + 
+                'define(\'DISABLE_WP_CRON\', ' + self.wpcron + ');\n\n'
+            )
+        else:
+            f.write(
+                self.getComment('Enable the function of wp-cron.php') +
+                'define(\'DISABLE_WP_CRON\', ' + self.wpcron + ');\n\n'
+            )
         f.write(
-            self.getComment('For developers: WordPress debugging mode.') +
+            self.getComment('For developers: WordPress debugging mode') +
             'define(\'WP_DEBUG\', false);\n\n'
         )
         f.write(
-            self.getComment('Disable the Revisions.') +
+            self.getComment('Disable the Revisions') +
             'define(\'WP_POST_REVISIONS\', false);\n\n'
         )
         f.write(
-            self.getComment('Change the Filesystem Method.') +
+            self.getComment('Change the Filesystem Method') +
             'define(\'FS_METHOD\', \'direct\');\n\n'
         )
         f.write(
-            self.getComment('Change the Autosave Interval.') +
+            self.getComment('Change the Autosave Interval') +
             'define(\'AUTOSAVE_INTERNAL\', 240);\n\n'
         )
         f.write(
-            self.getComment('Disable Editing of Plugin & Theme Files.') +
+            self.getComment('Disable Editing of Plugin & Theme Files') +
             'define(\'DISALLOW_FILE_EDIT\', true);\n\n'
         )
         f.write('define(\'DISALLOW_FILE_MODS\', true);\n\n')

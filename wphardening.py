@@ -78,7 +78,7 @@ def main():
     )
     group2.add_option(
         "--wp-config", action="store_true", dest="wpconfig",
-        help="Generated wp-config.php"
+        help="Wizard generated wp-config.php"
     )
     group2.add_option(
         "--delete-version", action="store_true",
