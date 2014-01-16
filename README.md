@@ -27,7 +27,7 @@ Usage
         -b, --robots        Create file robots.txt
         -f, --fingerprinting
                             Deleted fingerprinting WordPress.
-        --wp-config         Generated wp-config.php
+        --wp-config         Wizard generated wp-config.php
         --delete-version    Deleted version WordPress.
         --plugins           Download Plugins Security.
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for

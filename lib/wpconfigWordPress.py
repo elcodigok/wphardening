@@ -99,7 +99,7 @@ class wpconfigWordPress():
             self.language = value
 
     def setWpCron(self):
-        value = raw_input('\tDisable wp-cron.php? [y/n] > ')
+        value = raw_input('\tDisable wp-cron.php? [y/n] > ').lower()
         if value == 'y':
             self.wpcron = 'true'
         elif value == 'n':
