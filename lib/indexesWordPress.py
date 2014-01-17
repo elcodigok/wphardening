@@ -23,7 +23,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import logging
-from lib.termcolor import colored, cprint
+from lib.termcolor import colored
 
 
 class indexesWordPress():

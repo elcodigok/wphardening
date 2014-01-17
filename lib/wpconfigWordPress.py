@@ -23,7 +23,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import urllib2
-from lib.termcolor import colored, cprint
+from lib.termcolor import colored
 
 
 class wpconfigWordPress():

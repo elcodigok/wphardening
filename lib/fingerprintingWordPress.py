@@ -27,7 +27,7 @@ import os.path
 import re
 import datetime
 import logging
-from lib.termcolor import colored, cprint
+from lib.termcolor import colored
 
 
 class fingerprintingWordPress():
@@ -42,11 +42,9 @@ class fingerprintingWordPress():
     def searchStaticFile(self):
         for root, dirs, files in os.walk(self.directory):
             dirs[:] = [os.path.join(root, d) for d in dirs]
-
             # exclude/include files
             files = [os.path.join(root, f) for f in files]
             files = [f for f in files if re.match(self.includes, f)]
-
             for fname in files:
                 f = open(fname, "r")
                 script = f.readlines()
