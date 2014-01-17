@@ -31,7 +31,7 @@ from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
-from lib.termcolor import colored, cprint
+from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
 import sys

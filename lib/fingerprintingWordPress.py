@@ -34,7 +34,7 @@ class fingerprintingWordPress():
     def __init__(self, directory):
         self.directory = os.path.abspath(directory)
         # for files only
-        self.includes = ['*.js', '*.css']
+        self.includes = ['*.js', '*.css', '*.txt', '*.scss']
         self.includes = r'|'.join(
             [fnmatch.translate(x) for x in self.includes]
         )
@@ -58,6 +58,6 @@ class fingerprintingWordPress():
 
     def getDateTime(self):
         self.now = [
-            '/* WP Hardening - ', str(datetime.datetime.now()) + '*/\n'
+            '/* WP Hardening - ', str(datetime.datetime.now()) + ' */\n'
         ]
         return self.now
