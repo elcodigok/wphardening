@@ -214,5 +214,6 @@ require_once(ABSPATH . 'wp-settings.php');
             'define(\'DISALLOW_FILE_EDIT\', true);\n\n'
         )
         f.write('define(\'DISALLOW_FILE_MODS\', true);\n\n')
+        f.write('define(\'DISALLOW_UNFILTERED_HTML\', true);\n\n')
         f.write(self.complet + '\n')
         f.close()
