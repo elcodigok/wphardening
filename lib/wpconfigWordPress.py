@@ -128,6 +128,9 @@ require_once(ABSPATH . 'wp-settings.php');
     def getComment(self, message):
         return ('/**\n' + ' * %s.\n'+' */\n') % message
 
+    def changeMode(self, file_name):
+        os.chmod(self.directory + file_name, 0640)
+
     def createConfig(self):
         f = open(self.directory + '/wp-config-wphardening.php', 'w')
         self.wizard()
@@ -217,3 +220,4 @@ require_once(ABSPATH . 'wp-settings.php');
         f.write('define(\'DISALLOW_UNFILTERED_HTML\', true);\n\n')
         f.write(self.complet + '\n')
         f.close()
+        self.changeMode('/wp-config-wphardening.php')
