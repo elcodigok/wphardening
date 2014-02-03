@@ -54,6 +54,7 @@ class wpconfigWordPress():
         self.setTablePrefix()
         self.setLanguage()
         self.setWpCron()
+        self.setSslCertificate()
         self.getCompletConfig()
 
     def setDbName(self):
@@ -106,6 +107,15 @@ class wpconfigWordPress():
             self.wpcron = 'false'
         else:
             self.wpcron = 'false'
+
+    def setSslCertificate(self):
+        value = raw_input('\tYour host provider gives you SSL certificate? [y/n] > ').lower()
+        if value == 'y':
+            self.sslcertificate = 'true'
+        elif value == 'n':
+            self.sslcertificate = 'false'
+        else:
+            self.sslcertificate = 'false'
 
     def getCompletConfig(self):
         self.complet = """/** WordPress absolute path to the\
@@ -196,6 +206,11 @@ require_once(ABSPATH . 'wp-settings.php');
                 self.getComment('Enable the function of wp-cron.php') +
                 'define(\'DISABLE_WP_CRON\', ' + self.wpcron + ');\n\n'
             )
+        f.write(
+            self.getComment('SSL certificate for Adminstration WordPress') +
+            'define(\'FORCE_SSL_LOGIN\', ' + self.sslcertificate + ');\n' +
+            'define(\'FORCE_SSL_ADMIN\', ' + self.sslcertificate + ');\n\n'
+        )
         f.write(
             self.getComment('For developers: WordPress debugging mode') +
             'define(\'WP_DEBUG\', false);\n\n'
