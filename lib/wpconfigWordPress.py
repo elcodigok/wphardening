@@ -109,7 +109,9 @@ class wpconfigWordPress():
             self.wpcron = 'false'
 
     def setSslCertificate(self):
-        value = raw_input('\tYour host provider gives you SSL certificate? [y/n] > ').lower()
+        value = raw_input(
+            '\tYour host provider gives you SSL certificate? [y/n] > '
+        ).lower()
         if value == 'y':
             self.sslcertificate = 'true'
         elif value == 'n':
@@ -191,14 +193,16 @@ require_once(ABSPATH . 'wp-settings.php');
             f.write(
                 self.getComment(
                     'Disable the function of wp-cron.php\n' +
-                    ' * We recommend creating this scheduled task on your server\n' +
-                    ' * Minute: 0\n' + 
+                    ' * We recommend creating this scheduled task' +
+                    ' on your server\n' +
+                    ' * Minute: 0\n' +
                     ' * Hour: Every 2 hours\n' +
                     ' * Day: *\n' +
                     ' * Moth: *\n' +
                     ' * Weekday: *\n' +
-                    ' *\twget -O /dev/null http://yoursite.com/wp-cron.php?doing_wp_cron'
-                ) + 
+                    ' *\twget -O /dev/null http://yoursite.com/' +
+                    'wp-cron.php?doing_wp_cron'
+                ) +
                 'define(\'DISABLE_WP_CRON\', ' + self.wpcron + ');\n\n'
             )
         else:
