@@ -23,7 +23,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import logging
-from lib.termcolor import colored, cprint
+from lib.termcolor import colored
 
 
 class robotsWordPress:
@@ -122,4 +122,4 @@ Disallow: / """
         f.writelines(self.getRobots())
         f.close()
         logging.info("Create file robots.txt in " + self.directory)
-        print colored('\tcreate:\tCreate robots.txt file ' + fpath, 'green')
+        print colored('\tCreate:\tCreate robots.txt file ' + fpath, 'green')

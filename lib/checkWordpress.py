@@ -28,13 +28,11 @@ class checkWordpress():
     def __init__(self, directory):
         self.content = "/wp-content"
         self.inContent = ["/plugins", "/themes"]
-
         self.admin = "/wp-admin"
         self.inAdmin = [
             "/css", "/images", "/includes", "/js",
             "/maint", "/network", "/user"
         ]
-
         self.includes = "/wp-includes"
         self.inIncludes = [
             "/css", "/images", "/js", "/pomo",

@@ -31,7 +31,7 @@ from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
-from lib.termcolor import colored, cprint
+from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
 import sys
@@ -41,7 +41,7 @@ import urllib2
 def main():
     usage = "usage: %prog [options] arg"
     version = colored('WP Hardening', 'green') + ' version' + \
-        colored(' 1.1', 'yellow')
+        colored(' 1.2', 'yellow')
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
@@ -78,7 +78,7 @@ def main():
     )
     group2.add_option(
         "--wp-config", action="store_true", dest="wpconfig",
-        help="Generated wp-config.php"
+        help="Wizard generated wp-config.php"
     )
     group2.add_option(
         "--delete-version", action="store_true",

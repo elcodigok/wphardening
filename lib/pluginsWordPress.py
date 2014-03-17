@@ -26,7 +26,7 @@ import os
 import urllib2
 import zipfile
 import logging
-from lib.termcolor import colored, cprint
+from lib.termcolor import colored
 
 
 class pluginsWordPress():
@@ -116,10 +116,8 @@ class pluginsWordPress():
         f = open(file_name, 'wb')
         f.write(u.read())
         f.close()
-
         zip_file = zipfile.ZipFile(os.path.abspath(file_name), 'r')
         zip_file.extractall(self.directory + '/wp-content/plugins')
-
         if os.path.exists(os.path.abspath(file_name)):
             os.remove(os.path.abspath(file_name))
 
