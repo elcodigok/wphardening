@@ -124,26 +124,32 @@ def main():
 
     options.path = os.path.abspath(options.path)
     if os.path.exists(options.path):
-        wordpress = checkWordpress(options.path)
-        if wordpress.isWordPress():
+        #wordpress = checkWordpress(options.path)
+        #if wordpress.isWordPress():
+        if checkWordpress(options.path).isWordPress():
             log.add(options.path + " This project directory is a WordPress.")
             print colored(options.path, 'yellow') + ' -', \
                 colored('\nThis project directory is a WordPress.', 'green')
             if options.delete_version is not None:
-                asdf = deleteVersionWordPress(options.path)
-                asdf.delete()
+                #asdf = deleteVersionWordPress(options.path)
+                #asdf.delete()
+                deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
-                asdf = chmodWordPress(options.path)
-                asdf.changePermisions()
+                #asdf = chmodWordPress(options.path)
+                #asdf.changePermisions()
+                chmodWordPress(options.path).changePermisions()
             if options.remove is not None:
-                qwer = removeWordPress(options.path)
-                qwer.delete()
+                #qwer = removeWordPress(options.path)
+                #qwer.delete()
+                removeWordPress(options.path).delete()
             if options.robots is not None:
-                zxcv = robotsWordPress(options.path)
-                zxcv.createRobots()
+                #zxcv = robotsWordPress(options.path)
+                #zxcv.createRobots()
+                robotsWordPress(options.path).createRobots()
             if options.finger is not None:
-                asdf = fingerprintingWordPress(options.path)
-                asdf.searchStaticFile()
+                #asdf = fingerprintingWordPress(options.path)
+                #asdf.searchStaticFile()
+                fingerprintingWordPress(options.path).searchStaticFile()
             if options.wpconfig is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)
@@ -161,8 +167,9 @@ def main():
                     asdf = wpconfigWordPress(options.path, options.proxy)
                 asdf.createConfig()
             if options.indexes is not None:
-                asdf = indexesWordPress(options.path)
-                asdf.createIndexes()
+                #asdf = indexesWordPress(options.path)
+                #asdf.createIndexes()
+                indexesWordPress(options.path).createIndexes()
             if options.plugins is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)
