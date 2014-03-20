@@ -125,9 +125,6 @@ def main():
     options.path = os.path.abspath(options.path)
     if os.path.exists(options.path):
         if checkWordpress(options.path).isWordPress():
-            log.add(options.path + " This project directory is a WordPress.")
-            print colored(options.path, 'yellow') + ' -', \
-                colored('\nThis project directory is a WordPress.', 'green')
             if options.delete_version is not None:
                 deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
@@ -172,12 +169,6 @@ def main():
                 else:
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
-        else:
-            log.add(
-                options.path + " This Project directory is not a WordPress."
-            )
-            print colored(options.path, 'yellow') + ' -', \
-                colored('This Project directory is not a WordPress.\n', 'red')
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
