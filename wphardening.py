@@ -77,6 +77,10 @@ def main():
         dest="finger", help="Deleted fingerprinting WordPress."
     )
     group2.add_option(
+        "-t", "--timthumb", action="store_true", dest="timthumb",
+        help="Find the library timthumb."
+    )
+    group2.add_option(
         "--wp-config", action="store_true", dest="wpconfig",
         help="Wizard generated wp-config.php"
     )
