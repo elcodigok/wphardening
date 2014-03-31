@@ -27,6 +27,7 @@ Usage
         -b, --robots        Create file robots.txt
         -f, --fingerprinting
                             Deleted fingerprinting WordPress.
+        -t, --timthumb      Find the library timthumb.
         --wp-config         Wizard generated wp-config.php
         --delete-version    Deleted version WordPress.
         --plugins           Download Plugins Security.
@@ -41,4 +42,4 @@ Usage
 Examples
 ========
 
-    $ python wphardening.py -d /home/user/wordpress -c -r -f --wp-config --delete-version --indexes --plugins -o /home/user/wphardening.log
+    $ python wphardening.py -d /home/user/wordpress -c -r -f -t --wp-config --delete-version --indexes --plugins -o /home/user/wphardening.log
