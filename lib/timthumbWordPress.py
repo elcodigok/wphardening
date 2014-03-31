@@ -26,3 +26,39 @@ import logging
 from lib.termcolor import colored
 
 
+class timthumbWordPress():
+    def __init__(self, directory):
+        self.fileWordPress = self.loadFile()
+        self.directory = directory
+
+    def loadFile(self):
+        f = open('data/timthumbs.txt', "r")
+        content = f.readlines()
+        f.close()
+        return content
+
+    def decoratorOutput(self, foundFile):
+        if foundFile == 0:
+            print colored(
+                "Not Found file library Timthumb in " +
+                self.directory + "/", 'green'
+            )
+
+    def checkTimbthumb(self):
+        foundFile = 0
+        for f in self.fileWordPress:
+            #print self.directory + "/" + f.split("\n")[0]
+            if os.path.exists(
+                os.path.abspath(self.directory + "/" + f.split("\n")[0])
+            ):
+                foundFile += 1
+                logging.info(
+                    self.directory + " Found file library Timthumb.php"
+                )
+                print colored(
+                    self.directory +
+                    "/" +
+                    f.split("\n")[0], 'yellow') + ' -', \
+                    colored('\n\tFound file library Timthumb.php', 'red')
+        #print foundFile
+        self.decoratorOutput(foundFile)
