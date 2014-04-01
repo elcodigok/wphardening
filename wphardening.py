@@ -31,6 +31,7 @@ from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
+from lib.timthumbWordPress import timthumbWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -75,6 +76,10 @@ def main():
     group2.add_option(
         "-f", "--fingerprinting", action="store_true",
         dest="finger", help="Deleted fingerprinting WordPress."
+    )
+    group2.add_option(
+        "-t", "--timthumb", action="store_true", dest="timthumb",
+        help="Find the library timthumb."
     )
     group2.add_option(
         "--wp-config", action="store_true", dest="wpconfig",
@@ -153,6 +158,8 @@ def main():
                 asdf.createConfig()
             if options.indexes is not None:
                 indexesWordPress(options.path).createIndexes()
+            if options.timthumb is not None:
+                timthumbWordPress(options.path).checkTimbthumb()
             if options.plugins is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)

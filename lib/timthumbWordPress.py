@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-checkWordpress.py
+timthumbWordPress.py
 
 Copyright 2013 Daniel Maldonado
 
@@ -26,42 +26,41 @@ import logging
 from lib.termcolor import colored
 
 
-class checkWordpress():
+class timthumbWordPress():
     def __init__(self, directory):
         self.fileWordPress = self.loadFile()
         self.directory = directory
 
     def loadFile(self):
-        f = open('data/wordpress.fuzz.txt', "r")
+        f = open('data/timthumbs.txt', "r")
         content = f.readlines()
         f.close()
         return content
 
-    def existsFiles(self):
+    def decoratorOutput(self, foundFile):
+        if foundFile == 0:
+            print colored(
+                "\nNot Found file library Timthumb in " +
+                self.directory + "/", 'green'
+            )
+
+    def checkTimbthumb(self):
         foundFile = 0
         for f in self.fileWordPress:
             if os.path.exists(
                 os.path.abspath(self.directory + "/" + f.split("\n")[0])
             ):
                 foundFile += 1
-        return foundFile
-
-    def isWordPress(self):
-        if ((self.existsFiles() * 100) / len(self.fileWordPress) > 60):
-            logging.info(
-                self.directory + " This project directory is a WordPress."
-            )
-            print colored(self.directory, 'yellow') + ' -', \
-                colored(
-                    '\n\tThis project directory is a WordPress.', 'green'
+                logging.info(
+                    self.directory + " Found file library in " +
+                    "/" + f.split("\n")[0]
                 )
-            return True
-        else:
-            logging.info(
-                self.directory + " This Project directory is not a WordPress."
-            )
-            print colored(self.directory, 'yellow') + ' -', \
-                colored(
-                    '\n\tThis Project directory is not a WordPress.\n', 'red'
-                )
-            return False
+                print colored(
+                    self.directory +
+                    "/" +
+                    f.split("\n")[0], 'yellow') + ' -', \
+                    colored(
+                        '\n\tFound file library in ' +
+                        "/" + f.split("\n")[0], 'red'
+                    )
+        self.decoratorOutput(foundFile)
