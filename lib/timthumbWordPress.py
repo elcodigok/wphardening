@@ -40,25 +40,27 @@ class timthumbWordPress():
     def decoratorOutput(self, foundFile):
         if foundFile == 0:
             print colored(
-                "Not Found file library Timthumb in " +
+                "\nNot Found file library Timthumb in " +
                 self.directory + "/", 'green'
             )
 
     def checkTimbthumb(self):
         foundFile = 0
         for f in self.fileWordPress:
-            #print self.directory + "/" + f.split("\n")[0]
             if os.path.exists(
                 os.path.abspath(self.directory + "/" + f.split("\n")[0])
             ):
                 foundFile += 1
                 logging.info(
-                    self.directory + " Found file library Timthumb.php"
+                    self.directory + " Found file library in " +
+                    "/" + f.split("\n")[0]
                 )
                 print colored(
                     self.directory +
                     "/" +
                     f.split("\n")[0], 'yellow') + ' -', \
-                    colored('\n\tFound file library Timthumb.php', 'red')
-        #print foundFile
+                    colored(
+                        '\n\tFound file library in ' +
+                        "/" + f.split("\n")[0], 'red'
+                    )
         self.decoratorOutput(foundFile)

@@ -52,12 +52,16 @@ class checkWordpress():
                 self.directory + " This project directory is a WordPress."
             )
             print colored(self.directory, 'yellow') + ' -', \
-                colored('\nThis project directory is a WordPress.', 'green')
+                colored(
+                    '\n\tThis project directory is a WordPress.', 'green'
+                )
             return True
         else:
             logging.info(
                 self.directory + " This Project directory is not a WordPress."
             )
             print colored(self.directory, 'yellow') + ' -', \
-                colored('This Project directory is not a WordPress.\n', 'red')
+                colored(
+                    '\n\tThis Project directory is not a WordPress.\n', 'red'
+                )
             return False
