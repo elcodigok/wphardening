@@ -46,7 +46,7 @@ def main():
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
-        help="active verbose mode output results",
+        default=False, help="Active verbose mode output results",
     )
     group1 = OptionGroup(
         parser, "Target",
@@ -129,7 +129,7 @@ def main():
 
     options.path = os.path.abspath(options.path)
     if os.path.exists(options.path):
-        if checkWordpress(options.path).isWordPress():
+        if checkWordpress(options.path, options.verbose).isWordPress():
             if options.delete_version is not None:
                 deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:

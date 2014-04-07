@@ -27,9 +27,10 @@ from lib.termcolor import colored
 
 
 class checkWordpress():
-    def __init__(self, directory):
+    def __init__(self, directory, verbose):
         self.fileWordPress = self.loadFile()
         self.directory = directory
+        self.mode_verbose = verbose
 
     def loadFile(self):
         f = open('data/wordpress.fuzz.txt', "r")
@@ -43,11 +44,33 @@ class checkWordpress():
             if os.path.exists(
                 os.path.abspath(self.directory + "/" + f.split("\n")[0])
             ):
+                if self.mode_verbose:
+                    print colored(
+                        "\t[OK]\t" + self.directory + "/" + f.split("\n")[0],
+                        'green',
+                    )
+                    logging.info(
+                        self.directory + "/" + f.split("\n")[0]
+                    )
                 foundFile += 1
+            elif self.mode_verbose:
+                print colored(
+                    "\t[FAIL]\t" + self.directory + "/" + f.split("\n")[0],
+                    'red',
+                )
+                logging.error(
+                    self.directory + "/" + f.split("\n")[0]
+                )
         return foundFile
 
+    def resumen(self, number):
+        print colored(
+            "\t%s of the %s files are WordPress Project."
+        ) % (str(number), str(len(self.fileWordPress)))
+
     def isWordPress(self):
-        if ((self.existsFiles() * 100) / len(self.fileWordPress) > 60):
+        value = self.existsFiles()
+        if ((value * 100) / len(self.fileWordPress) > 60):
             logging.info(
                 self.directory + " This project directory is a WordPress."
             )
@@ -55,13 +78,17 @@ class checkWordpress():
                 colored(
                     '\n\tThis project directory is a WordPress.', 'green'
                 )
+            if self.mode_verbose:
+                self.resumen(value)
             return True
         else:
-            logging.info(
+            logging.error(
                 self.directory + " This Project directory is not a WordPress."
             )
             print colored(self.directory, 'yellow') + ' -', \
                 colored(
-                    '\n\tThis Project directory is not a WordPress.\n', 'red'
+                    '\n\tThis Project directory is not a WordPress.', 'red'
                 )
+            if self.mode_verbose:
+                self.resumen(value)
             return False
