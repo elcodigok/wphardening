@@ -133,7 +133,7 @@ def main():
             if options.delete_version is not None:
                 deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
-                chmodWordPress(options.path).changePermisions()
+                chmodWordPress(options.path, options.verbose).changePermisions()
             if options.remove is not None:
                 removeWordPress(options.path).delete()
             if options.robots is not None:
