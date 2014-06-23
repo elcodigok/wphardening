@@ -35,26 +35,37 @@ class pluginsWordPress():
         self.directory = os.path.abspath(directory)
         self.list_plugins = [
             [
-                'WP Security Scan',
-                'Scans your WordPress installation for security' +
-                ' vulnerabilities.',
-                'http://wordpress.org/extend/plugins/wp-security-scan/'
+                'AntiVirus',
+                'Useful plugin that will scan your theme templates for' +
+                ' malicious injections. Automatically. Every day.' +
+                ' For more blog security.',
+                'http://wordpress.org/extend/plugins/antivirus/'
             ],
             [
-                'WP-DBManager',
-                'Allows you to optimize database, repair database,' +
-                ' backup database, restore database, delete backup database,' +
-                ' drop/empty tables and run selected queries. Supports' +
-                ' automatic scheduling of backing up, optimizing and' +
-                ' repairing of database.',
-                'http://wordpress.org/extend/plugins/wp-dbmanager/'
+                'Bad Behavior',
+                'Bad Behavior prevents spammers from ever delivering' +
+                ' their junk, and in many cases, from ever reading your' +
+                ' site in the first place.',
+                'http://wordpress.org/extend/plugins/bad-behavior/'
             ],
             [
-                'User Locker',
-                'This plugin locks user account after given number' +
-                ' of incorrect login attempts. This makes brute force' +
-                ' and dictionary attacks nearly impossible.',
-                'http://wordpress.org/extend/plugins/user-locker/'
+                'Block Bad Queries',
+                'Block Bad Queries (BBQ) helps protect WordPress against' +
+                ' malicious URL requests.',
+                'http://wordpress.org/extend/plugins/block-bad-queries/'
+            ],
+            [
+                'Exploit Scanner',
+                'Search the files and database of your WordPress install' +
+                ' for signs that may indicate that it has fallen victim' +
+                ' to malicious hackers.',
+                'http://wordpress.org/extend/plugins/exploit-scanner/'
+            ],
+            [
+                'Latch',
+                'This Plugin allows developers to integrate Latch on' +
+                ' his/her WordPress service.',
+                'http://wordpress.org/plugins/latch/'
             ],
             [
                 'Limit Login Attempts',
@@ -70,38 +81,17 @@ class pluginsWordPress():
                 'http://wordpress.org/extend/plugins/one-time-password/'
             ],
             [
-                'AntiVirus',
-                'Useful plugin that will scan your theme templates for' +
-                ' malicious injections. Automatically. Every day.' +
-                ' For more blog security.',
-                'http://wordpress.org/extend/plugins/antivirus/'
+                'UPDATE NOTIFICATIONS',
+                'Check if your installation of wordpress updates are' +
+                ' (core wordpress, themes and plugins). If so send an email.',
+                'http://wordpress.org/extend/plugins/update-notifications/'
             ],
             [
-                'Bad Behavior',
-                'Bad Behavior prevents spammers from ever delivering' +
-                ' their junk, and in many cases, from ever reading your' +
-                ' site in the first place.',
-                'http://wordpress.org/extend/plugins/bad-behavior/'
-            ],
-            [
-                'Exploit Scanner',
-                'Search the files and database of your WordPress install' +
-                ' for signs that may indicate that it has fallen victim' +
-                ' to malicious hackers.',
-                'http://wordpress.org/extend/plugins/exploit-scanner/'
-            ],
-            [
-                'Block Bad Queries',
-                'Block Bad Queries (BBQ) helps protect WordPress against' +
-                ' malicious URL requests.',
-                'http://wordpress.org/extend/plugins/block-bad-queries/'
-            ],
-            [
-                'WP Login Security 2',
-                'Whitelist User IP addresses. If a user logs in from an' +
-                ' unknown IP the plugin sends an email to the user and' +
-                ' optionally the admin with a one-time key.',
-                'http://wordpress.org/extend/plugins/wp-login-security-2/'
+                'User Locker',
+                'This plugin locks user account after given number' +
+                ' of incorrect login attempts. This makes brute force' +
+                ' and dictionary attacks nearly impossible.',
+                'http://wordpress.org/extend/plugins/user-locker/'
             ],
             [
                 'WordPress File Monitor Plus',
@@ -112,10 +102,26 @@ class pluginsWordPress():
                 'wordpress-file-monitor-plus/'
             ],
             [
-                'UPDATE NOTIFICATIONS',
-                'Check if your installation of wordpress updates are' +
-                ' (core wordpress, themes and plugins). If so send an email.',
-                'http://wordpress.org/extend/plugins/update-notifications/'
+                'WP Login Security 2',
+                'Whitelist User IP addresses. If a user logs in from an' +
+                ' unknown IP the plugin sends an email to the user and' +
+                ' optionally the admin with a one-time key.',
+                'http://wordpress.org/extend/plugins/wp-login-security-2/'
+            ],
+            [
+                'WP Security Scan',
+                'Scans your WordPress installation for security' +
+                ' vulnerabilities.',
+                'http://wordpress.org/extend/plugins/wp-security-scan/'
+            ],
+            [
+                'WP-DBManager',
+                'Allows you to optimize database, repair database,' +
+                ' backup database, restore database, delete backup database,' +
+                ' drop/empty tables and run selected queries. Supports' +
+                ' automatic scheduling of backing up, optimizing and' +
+                ' repairing of database.',
+                'http://wordpress.org/extend/plugins/wp-dbmanager/'
             ],
         ]
         if proxy is not None:
