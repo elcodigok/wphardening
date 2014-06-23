@@ -62,6 +62,12 @@ class pluginsWordPress():
                 'http://wordpress.org/extend/plugins/exploit-scanner/'
             ],
             [
+                'Latch',
+                'This Plugin allows developers to integrate Latch on' +
+                ' his/her WordPress service.',
+                'http://wordpress.org/plugins/latch/'
+            ],
+            [
                 'Limit Login Attempts',
                 'Limit rate of login attempts, including by way of cookies,' +
                 ' for each IP. Fully customizable.',
