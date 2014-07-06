@@ -139,7 +139,7 @@ def main():
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
             if options.finger is not None:
-                fingerprintingWordPress(options.path).searchStaticFile()
+                fingerprintingWordPress(options.path, options.verbose).searchStaticFile()
             if options.wpconfig is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)
