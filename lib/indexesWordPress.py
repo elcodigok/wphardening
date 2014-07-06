@@ -27,7 +27,7 @@ from lib.termcolor import colored
 
 
 class indexesWordPress():
-    def __init__(self, directory):
+    def __init__(self, directory, verbose=False):
         self.directory = os.path.abspath(directory)
         self.directory_create = [
             '/wp-content', '/wp-content/plugins', '/wp-content/uploads'
@@ -40,6 +40,7 @@ class indexesWordPress():
             '\n', '\tdeny from all',
             '\n', '</Files>', '\n'
         ]
+        self.mode_verbose = verbose
 
     def writeHtaccess(self):
         if os.path.exists(self.directory + '/.htaccess'):
@@ -49,16 +50,18 @@ class indexesWordPress():
             f = open(self.directory + '/.htaccess', 'w')
             f.writelines(self.script + self.htaccess)
             f.close()
-            logging.info("Add options to " + self.directory + '/.htaccess')
-            print colored('\tAdd options to ', 'green') + \
-                self.directory + '/.htaccess'
+            if self.mode_verbose:
+                logging.info("Add options to " + self.directory + '/.htaccess')
+                print colored('\tAdd options to ', 'green') + \
+                    self.directory + '/.htaccess'
         else:
             f = open(self.directory + '/.htaccess', 'w')
             f.writelines(self.htaccess)
             f.close()
-            logging.info("Create .htaccess file.")
-            print colored('\tCreate Htaccess file ', 'green') + \
-                self.directory + '/.htaccess'
+            if self.mode_verbose:
+                logging.info("Create .htaccess file.")
+                print colored('\tCreate Htaccess file ', 'green') + \
+                    self.directory + '/.htaccess'
 
     def createIndexes(self):
         for index in self.directory_create:
@@ -66,10 +69,10 @@ class indexesWordPress():
                 os.makedirs(self.directory + index)
             f = open(self.directory + index + '/index.php', "w")
             f.close()
+            if self.mode_verbose:
+                print colored('\nCreate Indexes Files in ' + self.directory + index + '/index.php', 'yellow')
             logging.info(self.directory + index + "/index.php create.")
-            # mode verbose
-            # print "[ C ] index.php in " + \
-            # self.directory + index + '/index.php'
+
         print colored('\nCreate Indexes Files', 'yellow')
         print colored('\tAll index.php files were created.', 'green')
         self.writeHtaccess()

@@ -157,7 +157,7 @@ def main():
                     asdf = wpconfigWordPress(options.path, options.proxy)
                 asdf.createConfig()
             if options.indexes is not None:
-                indexesWordPress(options.path).createIndexes()
+                indexesWordPress(options.path, options.verbose).createIndexes()
             if options.timthumb is not None:
                 timthumbWordPress(options.path).checkTimbthumb()
             if options.plugins is not None:
