@@ -131,18 +131,28 @@ require_once(ABSPATH . 'wp-settings.php');
 """
 
     def generateSalt(self):
-       lenSalt = 64
-       values = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ()*+-$/_`{}%"
-       resp = ""
-       resp += "define('AUTH_KEY', '" + "".join([choice(values) for i in range(lenSalt)]) +"');\n"
-       resp += "define('SECURE_AUTH_KEY', '" + "".join([choice(values) for i in range(lenSalt)]) + "');\n"
-       resp += "define('LOGGED_IN_KEY', '" + "".join([choice(values) for i in range(lenSalt)]) + "');\n"
-       resp += "define('NONCE_KEY', '" + "".join([choice(values) for i in range(lenSalt)]) + "');\n"
-       resp += "define('AUTH_SALT', '" + "".join([choice(values) for i in range(lenSalt)]) + "');\n"
-       resp += "define('SECURE_AUTH_SALT', '" + "".join([choice(values) for i in range(lenSalt)]) + "');\n"
-       resp += "define('LOGGED_IN_SALT', '" + "".join([choice(values) for i in range(lenSalt)]) + "');\n"
-       resp += "define('NONCE_SALT', '" + "".join([choice(values) for i in range(lenSalt)]) + "');\n"
-       return resp
+        lenSalt = 64
+        values = "0123456789abcdefghijklmnopqrstuvwxyz" + \
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + \
+            "()*+-$/_`{}%"
+        resp = ""
+        resp += "define('AUTH_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('SECURE_AUTH_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('LOGGED_IN_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('NONCE_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('AUTH_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('SECURE_AUTH_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('LOGGED_IN_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('NONCE_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        return resp
 
     def getSalt(self):
         request = urllib2.Request(
@@ -153,7 +163,7 @@ require_once(ABSPATH . 'wp-settings.php');
             html = resp.read()
             resp.close()
         except urllib2.URLError, e:
-            html = self.generateSalt()		
+            html = self.generateSalt()
         return html
 
     def getComment(self, message):
