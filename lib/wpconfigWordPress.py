@@ -135,6 +135,7 @@ require_once(ABSPATH . 'wp-settings.php');
         )
         resp = self.opener.open(request)
         html = resp.read()
+        resp.close()
         return html
 
     def getComment(self, message):
