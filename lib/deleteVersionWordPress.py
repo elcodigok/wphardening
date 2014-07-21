@@ -57,8 +57,16 @@ class deleteVersionWordPress():
         f.writelines(self.getFilters() + self.getFunction())
         f.close()
         print colored('\nDeleted WordPress versions', 'yellow')
-        logging.info("Modified: wp-includes/default-filters.php")
         print colored(
             '\tModified:\twp-includes/default-filters.php',
             'red'
         )
+        print colored(
+            '\t// This is a function that removes versions of WordPress.\n' +
+            '\tfunction delete_version_wp() {\n' +
+            '\t\treturn "";\n' +
+            '\t}\n' +
+            '\tadd_filter(\'the_generator\', \'delete_version_wp\');',
+            'green'
+        )
+        logging.info("Modified: wp-includes/default-filters.php")

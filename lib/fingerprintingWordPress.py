@@ -31,13 +31,14 @@ from lib.termcolor import colored
 
 
 class fingerprintingWordPress():
-    def __init__(self, directory):
+    def __init__(self, directory, verbose=False):
         self.directory = os.path.abspath(directory)
         # for files only
         self.includes = ['*.js', '*.css', '*.txt', '*.scss']
         self.includes = r'|'.join(
             [fnmatch.translate(x) for x in self.includes]
         )
+        self.mode_verbose = verbose
 
     def searchStaticFile(self):
         for root, dirs, files in os.walk(self.directory):
@@ -52,6 +53,9 @@ class fingerprintingWordPress():
                 f = open(fname, "w")
                 f.writelines(self.getDateTime() + script)
                 f.close()
+                if self.mode_verbose:
+                    print colored('\tChange content in ' + fname, 'green')
+                    logging.info("Change content in " + fname)
         print colored('\nDeleted fingerprinting WordPress', 'yellow')
         logging.info("Fingerprinting: All changes implemented.")
         print colored('\tAll changes implemented.', 'green')

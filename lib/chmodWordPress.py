@@ -27,14 +27,21 @@ from lib.termcolor import colored
 
 
 class chmodWordPress():
-    def __init__(self, directory):
+    def __init__(self, directory, verbose=False):
         self.directory = os.path.abspath(directory)
+        self.mode_verbose = verbose
 
     def changePermisions(self):
         for r, d, f in os.walk(self.directory):
             os.chmod(r, 0755)
+            if self.mode_verbose:
+                print colored('\tchmod drwxr-xr-x ' + r, 'green')
+                logging.info("chmod drwxr-xr-x " + r)
             for wpfile in f:
                 os.chmod(os.path.join(r, wpfile), 0644)
+                if self.mode_verbose:
+                    print colored('\t\tchmod -rw-r--r-- ' + wpfile, 'green')
+                    logging.info("chmod -rw-r--r-- " + r + wpfile)
         print colored('\nchmod on Directories', 'yellow')
         print colored('\tAll directories\t drwxr-xr-x (755)', 'green')
         logging.info("All directories drwxr-xr-x (755)")

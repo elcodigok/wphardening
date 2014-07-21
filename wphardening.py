@@ -46,7 +46,7 @@ def main():
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
-        help="active verbose mode output results",
+        default=False, help="Active verbose mode output results",
     )
     group1 = OptionGroup(
         parser, "Target",
@@ -129,17 +129,17 @@ def main():
 
     options.path = os.path.abspath(options.path)
     if os.path.exists(options.path):
-        if checkWordpress(options.path).isWordPress():
+        if checkWordpress(options.path, options.verbose).isWordPress():
             if options.delete_version is not None:
                 deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
-                chmodWordPress(options.path).changePermisions()
+                chmodWordPress(options.path, options.verbose).changePermisions()
             if options.remove is not None:
                 removeWordPress(options.path).delete()
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
             if options.finger is not None:
-                fingerprintingWordPress(options.path).searchStaticFile()
+                fingerprintingWordPress(options.path, options.verbose).searchStaticFile()
             if options.wpconfig is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)
@@ -157,7 +157,7 @@ def main():
                     asdf = wpconfigWordPress(options.path, options.proxy)
                 asdf.createConfig()
             if options.indexes is not None:
-                indexesWordPress(options.path).createIndexes()
+                indexesWordPress(options.path, options.verbose).createIndexes()
             if options.timthumb is not None:
                 timthumbWordPress(options.path).checkTimbthumb()
             if options.plugins is not None:
