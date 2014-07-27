@@ -39,7 +39,7 @@ class pluginsWordPress():
                 'Useful plugin that will scan your theme templates for' +
                 ' malicious injections. Automatically. Every day.' +
                 ' For more blog security.',
-                'http://wordpress.org/extend/plugins/antivirus/'
+                'http://wordpress.org/extend/plugins/antiviaaarus/'
             ],
             [
                 'Bad Behavior',
@@ -158,13 +158,16 @@ class pluginsWordPress():
             q = raw_input('\tYou want to download [y/n] > ').lower()
             if q in self.yes:
                 request = urllib2.Request(plugin[2])
-                resp = self.opener.open(request)
-                html = resp.read()
-                patron = re.compile(
-                    "http://downloads.wordpress.org/plugin/" +
-                    "[a-zA-Z0-9$-_@.&#+]+\.[zip|rar|gzip|tar.gz|tgz]+"
-                )
-                self.download(patron.findall(html))
-                logging.info(
-                    "Download plugins " + plugin[0] +
-                    " in " + self.directory + "/wp-contet/plugins")
+                try:
+                    resp = self.opener.open(request)
+                    html = resp.read()
+                    patron = re.compile(
+                        "http://downloads.wordpress.org/plugin/" +
+                        "[a-zA-Z0-9$-_@.&#+]+\.[zip|rar|gzip|tar.gz|tgz]+"
+                    )
+                    self.download(patron.findall(html))
+                    logging.info(
+                        "Download plugins " + plugin[0] +
+                        " in " + self.directory + "/wp-contet/plugins")
+                except urllib2.URLError, e:
+                    print colored('\tPlease check your Internet connection, you may have a problem.', 'red')
