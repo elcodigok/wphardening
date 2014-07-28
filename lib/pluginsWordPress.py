@@ -39,7 +39,7 @@ class pluginsWordPress():
                 'Useful plugin that will scan your theme templates for' +
                 ' malicious injections. Automatically. Every day.' +
                 ' For more blog security.',
-                'http://wordpress.org/extend/plugins/antiviaaarus/'
+                'http://wordpress.org/extend/plugins/antivirus/'
             ],
             [
                 'Bad Behavior',
@@ -141,14 +141,17 @@ class pluginsWordPress():
     def download(self, url):
         self.url = url[0]
         file_name = self.url.split('/')[-1]
-        u = urllib2.urlopen(self.url)
-        f = open(file_name, 'wb')
-        f.write(u.read())
-        f.close()
-        zip_file = zipfile.ZipFile(os.path.abspath(file_name), 'r')
-        zip_file.extractall(self.directory + '/wp-content/plugins')
-        if os.path.exists(os.path.abspath(file_name)):
-            os.remove(os.path.abspath(file_name))
+        try:
+            u = urllib2.urlopen(self.url)
+            f = open(file_name, 'wb')
+            f.write(u.read())
+            f.close()
+            zip_file = zipfile.ZipFile(os.path.abspath(file_name), 'r')
+            zip_file.extractall(self.directory + '/wp-content/plugins')
+            if os.path.exists(os.path.abspath(file_name)):
+                os.remove(os.path.abspath(file_name))
+        except urllib2.URLError, e:
+            print colored('\tYou can not download this plugins.', 'red')
 
     def questions(self):
         for plugin in self.list_plugins:
