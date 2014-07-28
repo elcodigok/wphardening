@@ -141,14 +141,17 @@ class pluginsWordPress():
     def download(self, url):
         self.url = url[0]
         file_name = self.url.split('/')[-1]
-        u = urllib2.urlopen(self.url)
-        f = open(file_name, 'wb')
-        f.write(u.read())
-        f.close()
-        zip_file = zipfile.ZipFile(os.path.abspath(file_name), 'r')
-        zip_file.extractall(self.directory + '/wp-content/plugins')
-        if os.path.exists(os.path.abspath(file_name)):
-            os.remove(os.path.abspath(file_name))
+        try:
+            u = urllib2.urlopen(self.url)
+            f = open(file_name, 'wb')
+            f.write(u.read())
+            f.close()
+            zip_file = zipfile.ZipFile(os.path.abspath(file_name), 'r')
+            zip_file.extractall(self.directory + '/wp-content/plugins')
+            if os.path.exists(os.path.abspath(file_name)):
+                os.remove(os.path.abspath(file_name))
+        except urllib2.URLError, e:
+            print colored('\tYou can not download this plugins.', 'red')
 
     def questions(self):
         for plugin in self.list_plugins:
@@ -158,13 +161,20 @@ class pluginsWordPress():
             q = raw_input('\tYou want to download [y/n] > ').lower()
             if q in self.yes:
                 request = urllib2.Request(plugin[2])
-                resp = self.opener.open(request)
-                html = resp.read()
-                patron = re.compile(
-                    "http://downloads.wordpress.org/plugin/" +
-                    "[a-zA-Z0-9$-_@.&#+]+\.[zip|rar|gzip|tar.gz|tgz]+"
-                )
-                self.download(patron.findall(html))
-                logging.info(
-                    "Download plugins " + plugin[0] +
-                    " in " + self.directory + "/wp-contet/plugins")
+                try:
+                    resp = self.opener.open(request)
+                    html = resp.read()
+                    patron = re.compile(
+                        "http://downloads.wordpress.org/plugin/" +
+                        "[a-zA-Z0-9$-_@.&#+]+\.[zip|rar|gzip|tar.gz|tgz]+"
+                    )
+                    self.download(patron.findall(html))
+                    logging.info(
+                        "Download plugins " + plugin[0] +
+                        " in " + self.directory + "/wp-contet/plugins")
+                except urllib2.URLError, e:
+                    print colored(
+                        '\tPlease check your Internet connection,' +
+                        ' you may have a problem.',
+                        'red'
+                    )
