@@ -173,4 +173,8 @@ class pluginsWordPress():
                         "Download plugins " + plugin[0] +
                         " in " + self.directory + "/wp-contet/plugins")
                 except urllib2.URLError, e:
-                    print colored('\tPlease check your Internet connection, you may have a problem.', 'red')
+                    print colored(
+                        '\tPlease check your Internet connection,' +
+                        ' you may have a problem.',
+                        'red'
+                    )
