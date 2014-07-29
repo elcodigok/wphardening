@@ -50,7 +50,7 @@ def main():
     )
     parser.add_option(
         "--update", action="store_true", dest="update",
-        default=False, help="Update WPHardening"
+        default=False, help="Check for WPHardening latest stable version"
     )
     group1 = OptionGroup(
         parser, "Target",
