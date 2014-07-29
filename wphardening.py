@@ -48,6 +48,10 @@ def main():
         "-v", "--verbose", action="store_true", dest="verbose",
         default=False, help="Active verbose mode output results",
     )
+    parser.add_option(
+        "--update", action="store_true", dest="update",
+        default=False, help="Update WPHardening"
+    )
     group1 = OptionGroup(
         parser, "Target",
         "This option must be specified to modify the package WordPress."
