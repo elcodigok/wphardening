@@ -84,7 +84,7 @@ def main():
     )
     group2.add_option(
         "-t", "--timthumb", action="store_true", dest="timthumb",
-        help="Find the library timthumb."
+        help="Find the library TimThumb."
     )
     group2.add_option(
         "--wp-config", action="store_true", dest="wpconfig",

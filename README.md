@@ -11,7 +11,8 @@ Usage
     Options:
       --version             show program's version number and exit
       -h, --help            show this help message and exit
-      -v, --verbose         active verbose mode output results
+      -v, --verbose         Active verbose mode output results
+      --update              Check for WPHardening latest stable version
 
       Target:
         This option must be specified to modify the package WordPress.
@@ -27,12 +28,12 @@ Usage
         -b, --robots        Create file robots.txt
         -f, --fingerprinting
                             Deleted fingerprinting WordPress.
-        -t, --timthumb      Find the library timthumb.
+        -t, --timthumb      Find the library TimThumb.
         --wp-config         Wizard generated wp-config.php
         --delete-version    Deleted version WordPress.
         --plugins           Download Plugins Security.
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for
-                            --plugins options.
+                            --plugins and --wp-config.
         --indexes           It allows you to display the contents of directories.
     
       Miscellaneous:
@@ -43,3 +44,5 @@ Examples
 ========
 
     $ python wphardening.py -d /home/user/wordpress -c -r -f -t --wp-config --delete-version --indexes --plugins -o /home/user/wphardening.log
+
+    $ python wphardening.py --update
