@@ -46,7 +46,17 @@ class deleteVersionWordPress():
             '\n',
             '// This is a function that removes versions of WordPress.\n',
             'function delete_version_wp() {', '\n', '\treturn "";', '\n}',
-            '\nadd_filter(\'the_generator\', \'delete_version_wp\');',
+            '\nadd_filter(\'the_generator\', \'delete_version_wp\');\n',
+            'remove_action(\'wp_head\', \'wp_generator\');\n',
+            'remove_action(\'wp_head\', \'wlwmanifest_link\');\n',
+            'remove_action(\'wp_head\', \'rsd_link\');\n',
+            '\n// Remove the WP version of any JS and CSS\n',
+            'function vc_remove_wp_ver_css_js( $src ) {\n',
+            '\tif ( strpos( $src, \'ver=\' ) )\n',
+            '\t$src = remove_query_arg( \'ver\', $src );\n',
+            '\treturn $src;\n','}\n',
+            'add_filter(\'style_loader_src\', \'vc_remove_wp_ver_css_js\', 9999 );\n',
+            'add_filter(\'script_loader_src\', \'vc_remove_wp_ver_css_js\', 9999 );\n',
         ]
 
     def getFunction(self):
