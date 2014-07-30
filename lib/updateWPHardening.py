@@ -22,9 +22,16 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import git
 from lib.termcolor import colored
 
-class updateWPHardening():
 
+class updateWPHardening():
     def __init__(self, directory):
-        self.work_directory = os.path.abspath(directory)
+        self.work_directory = directory
+
+    def update(self):
+        try:
+            git.cmd.Git(self.work_directory).pull()
+        except git.GitCommandError, e:
+            print e

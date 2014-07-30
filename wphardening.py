@@ -32,6 +32,7 @@ from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
 from lib.timthumbWordPress import timthumbWordPress
+from lib.updateWPHardening import updateWPHardening
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -125,6 +126,11 @@ def main():
         filename = options.output
     log = registerLog(filename)
     log.setConfigure()
+
+    if options.update:
+        log.add("Check for WPHardening latest stable version")
+        updateWPHardening(os.path.abspath(".")).update()
+        sys.exit()
 
     if options.path is None:
         log.add("Did not specify a working directory.")
