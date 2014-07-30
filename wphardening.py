@@ -32,6 +32,7 @@ from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
 from lib.timthumbWordPress import timthumbWordPress
+from lib.updateWPHardening import updateWPHardening
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -47,6 +48,10 @@ def main():
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
         default=False, help="Active verbose mode output results",
+    )
+    parser.add_option(
+        "--update", action="store_true", dest="update",
+        default=False, help="Check for WPHardening latest stable version"
     )
     group1 = OptionGroup(
         parser, "Target",
@@ -121,6 +126,11 @@ def main():
         filename = options.output
     log = registerLog(filename)
     log.setConfigure()
+
+    if options.update:
+        log.add("Check for WPHardening latest stable version")
+        updateWPHardening(os.path.abspath(".")).update()
+        sys.exit()
 
     if options.path is None:
         log.add("Did not specify a working directory.")
