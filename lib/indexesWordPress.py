@@ -70,7 +70,10 @@ class indexesWordPress():
             f = open(self.directory + index + '/index.php', "w")
             f.close()
             if self.mode_verbose:
-                print colored('\nCreate Indexes Files in ' + self.directory + index + '/index.php', 'yellow')
+                print colored(
+                    '\nCreate Indexes Files in ' + self.directory + index + '/index.php',
+                    'yellow'
+                )
             logging.info(self.directory + index + "/index.php create.")
 
         print colored('\nCreate Indexes Files', 'yellow')
