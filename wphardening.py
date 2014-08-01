@@ -31,6 +31,8 @@ from lib.fingerprintingWordPress import fingerprintingWordPress
 from lib.pluginsWordPress import pluginsWordPress
 from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
+from lib.timthumbWordPress import timthumbWordPress
+from lib.updateWPHardening import updateWPHardening
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -40,12 +42,16 @@ import urllib2
 
 def main():
     usage = "usage: %prog [options] arg"
-    version = colored('WP Hardening', 'green') + ' version' + \
-        colored(' 1.2', 'yellow')
+    version = colored('WPHardening', 'green') + ' version' + \
+        colored(' 1.3', 'yellow')
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
-        help="active verbose mode output results",
+        default=False, help="Active verbose mode output results",
+    )
+    parser.add_option(
+        "--update", action="store_true", dest="update",
+        default=False, help="Check for WPHardening latest stable version"
     )
     group1 = OptionGroup(
         parser, "Target",
@@ -75,6 +81,10 @@ def main():
     group2.add_option(
         "-f", "--fingerprinting", action="store_true",
         dest="finger", help="Deleted fingerprinting WordPress."
+    )
+    group2.add_option(
+        "-t", "--timthumb", action="store_true", dest="timthumb",
+        help="Find the library TimThumb."
     )
     group2.add_option(
         "--wp-config", action="store_true", dest="wpconfig",
@@ -117,6 +127,11 @@ def main():
     log = registerLog(filename)
     log.setConfigure()
 
+    if options.update:
+        log.add("Check for WPHardening latest stable version")
+        updateWPHardening(os.path.abspath(".")).update()
+        sys.exit()
+
     if options.path is None:
         log.add("Did not specify a working directory.")
         parser.print_help()
@@ -124,26 +139,17 @@ def main():
 
     options.path = os.path.abspath(options.path)
     if os.path.exists(options.path):
-        wordpress = checkWordpress(options.path)
-        if wordpress.isWordPress():
-            log.add(options.path + " This project directory is a WordPress.")
-            print colored(options.path, 'yellow') + ' -', \
-                colored('\nThis project directory is a WordPress.', 'green')
+        if checkWordpress(options.path, options.verbose).isWordPress():
             if options.delete_version is not None:
-                asdf = deleteVersionWordPress(options.path)
-                asdf.delete()
+                deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
-                asdf = chmodWordPress(options.path)
-                asdf.changePermisions()
+                chmodWordPress(options.path, options.verbose).changePermisions()
             if options.remove is not None:
-                qwer = removeWordPress(options.path)
-                qwer.delete()
+                removeWordPress(options.path).delete()
             if options.robots is not None:
-                zxcv = robotsWordPress(options.path)
-                zxcv.createRobots()
+                robotsWordPress(options.path).createRobots()
             if options.finger is not None:
-                asdf = fingerprintingWordPress(options.path)
-                asdf.searchStaticFile()
+                fingerprintingWordPress(options.path, options.verbose).searchStaticFile()
             if options.wpconfig is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)
@@ -161,8 +167,9 @@ def main():
                     asdf = wpconfigWordPress(options.path, options.proxy)
                 asdf.createConfig()
             if options.indexes is not None:
-                asdf = indexesWordPress(options.path)
-                asdf.createIndexes()
+                indexesWordPress(options.path, options.verbose).createIndexes()
+            if options.timthumb is not None:
+                timthumbWordPress(options.path).checkTimbthumb()
             if options.plugins is not None:
                 if options.proxy is not None:
                     protocolo, rest = urllib2.splittype(options.proxy)
@@ -179,12 +186,6 @@ def main():
                 else:
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
-        else:
-            log.add(
-                options.path + " This Project directory is not a WordPress."
-            )
-            print colored(options.path, 'yellow') + ' -', \
-                colored('This Project directory is not a WordPress.\n', 'red')
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')

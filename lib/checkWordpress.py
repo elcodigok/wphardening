@@ -22,65 +22,73 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import logging
+from lib.termcolor import colored
 
 
 class checkWordpress():
-    def __init__(self, directory):
-        self.content = "/wp-content"
-        self.inContent = ["/plugins", "/themes"]
-        self.admin = "/wp-admin"
-        self.inAdmin = [
-            "/css", "/images", "/includes", "/js",
-            "/maint", "/network", "/user"
-        ]
-        self.includes = "/wp-includes"
-        self.inIncludes = [
-            "/css", "/images", "/js", "/pomo",
-            "/SimplePie", "/Text", "/theme-compat", "/default-filters.php"
-        ]
+    def __init__(self, directory, verbose):
+        self.fileWordPress = self.loadFile()
         self.directory = directory
+        self.mode_verbose = verbose
 
-    def existsContent(self):
-        if os.path.exists(os.path.abspath(self.directory + self.content)):
-            for control in self.inContent:
-                if os.path.exists(
-                    os.path.abspath(self.directory + self.content + control)
-                ):
-                    return True
-                else:
-                    return False
-        else:
-            return False
+    def loadFile(self):
+        f = open('data/wordpress.fuzz.txt', "r")
+        content = f.readlines()
+        f.close()
+        return content
 
-    def existsAdmin(self):
-        if os.path.exists(os.path.abspath(self.directory + self.admin)):
-            for control in self.inAdmin:
-                if os.path.exists(
-                    os.path.abspath(self.directory + self.admin + control)
-                ):
-                    return True
-                else:
-                    return False
-        else:
-            return False
+    def existsFiles(self):
+        foundFile = 0
+        for f in self.fileWordPress:
+            if os.path.exists(
+                os.path.abspath(self.directory + "/" + f.split("\n")[0])
+            ):
+                if self.mode_verbose:
+                    print colored(
+                        "\t[OK]\t" + self.directory + "/" + f.split("\n")[0],
+                        'green',
+                    )
+                    logging.info(
+                        self.directory + "/" + f.split("\n")[0]
+                    )
+                foundFile += 1
+            elif self.mode_verbose:
+                print colored(
+                    "\t[FAIL]\t" + self.directory + "/" + f.split("\n")[0],
+                    'red',
+                )
+                logging.error(
+                    self.directory + "/" + f.split("\n")[0]
+                )
+        return foundFile
 
-    def existsIncludes(self):
-        if os.path.exists(os.path.abspath(self.directory + self.includes)):
-            for control in self.inIncludes:
-                if os.path.exists(
-                    os.path.abspath(self.directory + self.includes + control)
-                ):
-                    return True
-                else:
-                    return False
-        else:
-            return False
+    def resumen(self, number):
+        print colored(
+            "\t%s of the %s files are WordPress Project."
+        ) % (str(number), str(len(self.fileWordPress)))
 
     def isWordPress(self):
-        if (
-            self.existsContent() and self.existsAdmin() and
-            self.existsIncludes()
-        ):
+        value = self.existsFiles()
+        if ((value * 100) / len(self.fileWordPress) > 60):
+            logging.info(
+                self.directory + " This project directory is a WordPress."
+            )
+            print colored(self.directory, 'yellow') + ' -', \
+                colored(
+                    '\n\tThis project directory is a WordPress.', 'green'
+                )
+            if self.mode_verbose:
+                self.resumen(value)
             return True
         else:
+            logging.error(
+                self.directory + " This Project directory is not a WordPress."
+            )
+            print colored(self.directory, 'yellow') + ' -', \
+                colored(
+                    '\n\tThis Project directory is not a WordPress.', 'red'
+                )
+            if self.mode_verbose:
+                self.resumen(value)
             return False

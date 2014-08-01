@@ -24,6 +24,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 import os
 import urllib2
 from lib.termcolor import colored
+from random import choice
 
 
 class wpconfigWordPress():
@@ -109,7 +110,9 @@ class wpconfigWordPress():
             self.wpcron = 'false'
 
     def setSslCertificate(self):
-        value = raw_input('\tYour host provider gives you SSL certificate? [y/n] > ').lower()
+        value = raw_input(
+            '\tYour host provider gives you SSL certificate? [y/n] > '
+        ).lower()
         if value == 'y':
             self.sslcertificate = 'true'
         elif value == 'n':
@@ -127,12 +130,40 @@ if ( !defined('ABSPATH') )
 require_once(ABSPATH . 'wp-settings.php');
 """
 
+    def generateSalt(self):
+        lenSalt = 64
+        values = "0123456789abcdefghijklmnopqrstuvwxyz" + \
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + \
+            "()*+-$/_`{}%"
+        resp = ""
+        resp += "define('AUTH_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('SECURE_AUTH_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('LOGGED_IN_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('NONCE_KEY', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('AUTH_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('SECURE_AUTH_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('LOGGED_IN_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        resp += "define('NONCE_SALT', '" + \
+            "".join([choice(values) for i in range(lenSalt)]) + "');\n"
+        return resp
+
     def getSalt(self):
         request = urllib2.Request(
             "http://api.wordpress.org/secret-key/1.1/salt"
         )
-        resp = self.opener.open(request)
-        html = resp.read()
+        try:
+            resp = self.opener.open(request)
+            html = resp.read()
+            resp.close()
+        except urllib2.URLError, e:
+            html = self.generateSalt()
         return html
 
     def getComment(self, message):
@@ -191,14 +222,16 @@ require_once(ABSPATH . 'wp-settings.php');
             f.write(
                 self.getComment(
                     'Disable the function of wp-cron.php\n' +
-                    ' * We recommend creating this scheduled task on your server\n' +
-                    ' * Minute: 0\n' + 
+                    ' * We recommend creating this scheduled task' +
+                    ' on your server\n' +
+                    ' * Minute: 0\n' +
                     ' * Hour: Every 2 hours\n' +
                     ' * Day: *\n' +
                     ' * Moth: *\n' +
                     ' * Weekday: *\n' +
-                    ' *\twget -O /dev/null http://yoursite.com/wp-cron.php?doing_wp_cron'
-                ) + 
+                    ' *\twget -O /dev/null http://yoursite.com/' +
+                    'wp-cron.php?doing_wp_cron'
+                ) +
                 'define(\'DISABLE_WP_CRON\', ' + self.wpcron + ');\n\n'
             )
         else:

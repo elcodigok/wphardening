@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-wizardWordPress.py
+updateWPHardening.py
 
-Copyright 2013 Daniel Maldonado
+Copyright 2014 Daniel Maldonado
 
 This file is part of WPHardening project.
 
@@ -22,16 +22,21 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import sys
+try:
+    import git
+except ImportError:
+    print "You need to install on your system python-git"
+    sys.exit()
+from lib.termcolor import colored
 
 
-class wizardWordPress:
-    def __init__(self):
-        self.directory = None
+class updateWPHardening():
+    def __init__(self, directory):
+        self.work_directory = directory
 
-    def setDirectory(self):
-        directorio = raw_input("Ingresa el Path: ")
-        if os.path.exists(os.path.abspath(directorio)):
-            self.directory = directorio
-
-    def getDirectory(self):
-        return self.directory
+    def update(self):
+        try:
+            git.cmd.Git(self.work_directory).pull()
+        except git.GitCommandError, e:
+            print e
