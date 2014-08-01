@@ -22,7 +22,10 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
-import git
+try:
+    import git
+except ImportError:
+    print "You need to install on your system python-git"
 from lib.termcolor import colored
 
 
