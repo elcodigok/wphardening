@@ -40,9 +40,72 @@ Usage
         -o FILE, --output=FILE
                             Write log report to FILE.log
 
+
 Examples
 ========
 
-    $ python wphardening.py -d /home/user/wordpress -c -r -f -t --wp-config --delete-version --indexes --plugins -o /home/user/wphardening.log
+Check a WordPress Project
+
+    $ python wphardening.py -d /home/path/wordpress -v
+
+Change permissions
+
+    $ python wphardening.py -d /home/path/wordpress --chmod -v
+
+Remove files that are not used
+
+    $ python wphardening.py -d /home/path/wordpress --remove -v
+
+Create your robots.txt file
+
+    $ python wphardening.py -d /home/path/wordpress --robots -v
+
+Remove all fingerprinting
+
+    $ python wphardening.py -d /home/path/wordpress --fingerprinting -v
+
+Check a TimThumb library
+
+    $ python wphardening.py -d /home/path/wordpress --timthumb -v
+
+Create Index file
+
+    $ python wphardening.py -d /home/path/wordpress --indexes -v
+
+Download Plugins security
+
+    $ python wphardening.py -d /home/path/wordpress --plugins
+
+Wizard generated wp-config.php
+
+    $ python wphardening.py -d /home/path/wordpress --wp-config
+
+Deleted version WordPress
+
+    $ python wphardening.py -d /home/path/wordpress --delete-version -v
+
+WPHardening update
 
     $ python wphardening.py --update
+
+Use all options
+
+    $ python wphardening.py -d /home/user/wordpress -c -r -f -t --wp-config --delete-version --indexes --plugins -o /home/user/wphardening.log
+
+
+Project Home
+============
+
+www.caceriadespammers.com.ar
+
+
+Git Repository
+==============
+
+https://github.com/elcodigok/wphardening
+
+
+Issues
+======
+
+https://github.com/elcodigok/wphardening/issues
