@@ -27,18 +27,34 @@ from lib.termcolor import colored
 
 
 class checkWordpress():
+    """
+    This class is to check that the specified directory is a project of
+    WordPress.
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory, verbose):
+        """
+        :param directory: Absolute path of the directory to check.
+        :param verbose: Mode verbose.
+        """
         self.fileWordPress = self.loadFile()
         self.directory = directory
         self.mode_verbose = verbose
 
     def loadFile(self):
+        """
+        :return: The list of all files in a project in WordPress.
+        """
         f = open('data/wordpress.fuzz.txt', "r")
         content = f.readlines()
         f.close()
         return content
 
     def existsFiles(self):
+        """
+        :return: Number of files found
+        """
         foundFile = 0
         for f in self.fileWordPress:
             if os.path.exists(
@@ -64,11 +80,18 @@ class checkWordpress():
         return foundFile
 
     def resumen(self, number):
+        """
+        :param number: Number of files found
+        :return: None
+        """
         print colored(
             "\t%s of the %s files are WordPress Project."
         ) % (str(number), str(len(self.fileWordPress)))
 
     def isWordPress(self):
+        """
+        :return: True if successful, False otherwise.
+        """
         value = self.existsFiles()
         if ((value * 100) / len(self.fileWordPress) > 60):
             logging.info(
