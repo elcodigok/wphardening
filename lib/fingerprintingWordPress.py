@@ -31,9 +31,18 @@ from lib.termcolor import colored
 
 
 class fingerprintingWordPress():
+    """
+    This class modifies the .js .css .txt and .scss static files 
+    to prevent attacks signature verification.
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory, verbose=False):
+        """
+        :param directory: Absolute path of the directory to check.
+        :param verbose: Mode verbose.
+        """
         self.directory = os.path.abspath(directory)
-        # for files only
         self.includes = ['*.js', '*.css', '*.txt', '*.scss']
         self.includes = r'|'.join(
             [fnmatch.translate(x) for x in self.includes]
@@ -41,6 +50,9 @@ class fingerprintingWordPress():
         self.mode_verbose = verbose
 
     def searchStaticFile(self):
+        """
+        :return: None
+        """
         for root, dirs, files in os.walk(self.directory):
             dirs[:] = [os.path.join(root, d) for d in dirs]
             # exclude/include files
@@ -61,6 +73,9 @@ class fingerprintingWordPress():
         print colored('\tAll changes implemented.', 'green')
 
     def getDateTime(self):
+        """
+        :return: Signature text
+        """
         self.now = [
             '/* WP Hardening - ', str(datetime.datetime.now()) + ' */\n'
         ]
