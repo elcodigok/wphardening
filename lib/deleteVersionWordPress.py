@@ -27,21 +27,39 @@ from lib.termcolor import colored
 
 
 class deleteVersionWordPress():
+    """
+    This class eliminates the traces report the version of
+    Wordpress.
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory):
+        """
+        :param directory: Absolute path of the directory to check.
+        """
         self.directory = os.path.abspath(directory)
         self.filters = self.directory + "/wp-includes/default-filters.php"
         self.setFunction()
         self.setFilters()
 
     def setFilters(self):
+        """
+        :return: None
+        """
         self.f = open(self.filters, "r")
         self.script = self.f.readlines()
         self.f.close()
 
     def getFilters(self):
+        """
+        :return: File contents /wp-includes/default-filters.php
+        """
         return self.script
 
     def setFunction(self):
+        """
+        :return: None
+        """
         self.function = [
             '\n',
             '// This is a function that removes versions of WordPress.\n',
@@ -62,9 +80,15 @@ class deleteVersionWordPress():
         ]
 
     def getFunction(self):
+        """
+        :return: Content of new functions to replace.
+        """
         return self.function
 
     def delete(self):
+        """
+        :return: None
+        """
         f = open(self.filters, "w")
         f.writelines(self.getFilters() + self.getFunction())
         f.close()
