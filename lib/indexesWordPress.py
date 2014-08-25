@@ -27,7 +27,17 @@ from lib.termcolor import colored
 
 
 class indexesWordPress():
+    """
+    This class creates and modifies the .htaccess file and 
+    index.php files
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory, verbose=False):
+        """
+        :param directory: Absolute path of the directory to check.
+        :param verbose: Mode verbose.
+        """
         self.directory = os.path.abspath(directory)
         self.directory_create = [
             '/wp-content', '/wp-content/plugins', '/wp-content/uploads'
@@ -43,6 +53,9 @@ class indexesWordPress():
         self.mode_verbose = verbose
 
     def writeHtaccess(self):
+        """
+        :return: None
+        """
         if os.path.exists(self.directory + '/.htaccess'):
             f = open(self.directory + '/.htaccess', 'r')
             self.script = f.readlines()
@@ -64,6 +77,9 @@ class indexesWordPress():
                     self.directory + '/.htaccess'
 
     def createIndexes(self):
+        """
+        :return: None
+        """
         for index in self.directory_create:
             if not os.path.exists(self.directory + index):
                 os.makedirs(self.directory + index)
@@ -75,7 +91,6 @@ class indexesWordPress():
                     'yellow'
                 )
             logging.info(self.directory + index + "/index.php create.")
-
         print colored('\nCreate Indexes Files', 'yellow')
         print colored('\tAll index.php files were created.', 'green')
         self.writeHtaccess()
