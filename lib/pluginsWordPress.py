@@ -31,7 +31,7 @@ from lib.termcolor import colored
 
 class pluginsWordPress():
     """
-    This list class and download the most renowned WordPress 
+    This list class and download the most renowned WordPress
     security plugins.
 
     :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
@@ -164,7 +164,7 @@ class pluginsWordPress():
             zip_file.extractall(self.directory + '/wp-content/plugins')
             if os.path.exists(os.path.abspath(file_name)):
                 os.remove(os.path.abspath(file_name))
-        except urllib2.URLError, e:
+        except urllib2.URLError:
             print colored('\tYou can not download this plugins.', 'red')
 
     def questions(self):

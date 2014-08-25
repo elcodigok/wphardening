@@ -27,18 +27,32 @@ from lib.termcolor import colored
 
 
 class removeWordPress():
+    """
+    This class removes all unnecessary files including WordPress.
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory):
+        """
+        :param directory: Absolute path of the directory to check.
+        """
         self.directory = os.path.abspath(directory)
         self.readme = "/readme.html"
         self.license = ["/licencia.txt", "/license.txt"]
 
     def deleteReadme(self):
+        """
+        :return: None
+        """
         if os.path.exists(self.directory + self.readme):
             os.remove(self.directory + self.readme)
             logging.info("Delete: file readmes.")
             print colored('\tdelete:\tfile /readme.html', 'red')
 
     def deleteLicense(self):
+        """
+        :return: None
+        """
         for pathLicese in self.license:
             if os.path.exists(self.directory + pathLicese):
                 os.remove(self.directory + pathLicese)
@@ -46,6 +60,9 @@ class removeWordPress():
                 print colored('\tdelete:\tfile ' + pathLicese, 'red')
 
     def delete(self):
+        """
+        :return: None
+        """
         print colored('\nRemove files by defaults', 'yellow')
         self.deleteReadme()
         self.deleteLicense()
