@@ -30,7 +30,17 @@ from lib.termcolor import colored
 
 
 class pluginsWordPress():
+    """
+    This list class and download the most renowned WordPress 
+    security plugins.
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory, proxy):
+        """
+        :param directory: Absolute path of the directory to check.
+        :param proxy: String connection proxy.
+        """
         self.yes = set(['yes', 'y', 'ye'])
         self.directory = os.path.abspath(directory)
         self.list_plugins = [
@@ -139,6 +149,10 @@ class pluginsWordPress():
             self.opener = urllib2.build_opener(urllib2.HTTPHandler)
 
     def download(self, url):
+        """
+        :param url: URL Plugin.
+        :return: None
+        """
         self.url = url[0]
         file_name = self.url.split('/')[-1]
         try:
@@ -154,6 +168,9 @@ class pluginsWordPress():
             print colored('\tYou can not download this plugins.', 'red')
 
     def questions(self):
+        """
+        :return: None
+        """
         for plugin in self.list_plugins:
             print colored('\n' + plugin[0], 'yellow')
             print colored('\t' + plugin[1], 'green')
