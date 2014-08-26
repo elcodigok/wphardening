@@ -27,17 +27,32 @@ from lib.termcolor import colored
 
 
 class timthumbWordPress():
+    """
+    This class seeks TimThumb library
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory):
+        """
+        :param directory: Absolute path of the directory to check.
+        """
         self.fileWordPress = self.loadFile()
         self.directory = directory
 
     def loadFile(self):
+        """
+        :return: Content with path to search the library
+        """
         f = open('data/timthumbs.txt', "r")
         content = f.readlines()
         f.close()
         return content
 
     def decoratorOutput(self, foundFile):
+        """
+        :param foundFile: Number of found files
+        :return: None
+        """
         if foundFile == 0:
             print colored(
                 "\nNot Found file library Timthumb in " +
@@ -45,6 +60,9 @@ class timthumbWordPress():
             )
 
     def checkTimbthumb(self):
+        """
+        :return: None
+        """
         foundFile = 0
         for f in self.fileWordPress:
             if os.path.exists(

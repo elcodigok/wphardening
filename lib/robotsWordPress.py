@@ -29,6 +29,8 @@ from lib.termcolor import colored
 class robotsWordPress:
     """
     This class create file robots.txt
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
     """
     def __init__(self, directory):
         """
