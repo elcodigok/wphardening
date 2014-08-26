@@ -28,7 +28,16 @@ from random import choice
 
 
 class wpconfigWordPress():
+    """
+    This class creates the file wp-config-wphardening.php
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory, proxy):
+        """
+        :param directory: Absolute path of the directory to check.
+        :param proxy: String connection proxy.
+        """
         self.directory = directory
         print colored('\nCreated file wp-config-wphardening.php', 'yellow')
         self.opener = urllib2.build_opener(urllib2.HTTPHandler)
@@ -47,6 +56,9 @@ class wpconfigWordPress():
             self.opener = urllib2.build_opener(urllib2.HTTPHandler)
 
     def wizard(self):
+        """
+        :return: None
+        """
         self.setDbName()
         self.setDbUser()
         self.setDbPassword()
@@ -59,6 +71,9 @@ class wpconfigWordPress():
         self.getCompletConfig()
 
     def setDbName(self):
+        """
+        :return: None
+        """
         value = raw_input('\tName of the database > ')
         if value == '':
             self.setDbName()
@@ -66,6 +81,9 @@ class wpconfigWordPress():
             self.db_name = value
 
     def setDbUser(self):
+        """
+        :return: None
+        """
         value = raw_input('\tName of the User > ')
         if value == '':
             self.setDbUser()
@@ -73,6 +91,9 @@ class wpconfigWordPress():
             self.db_user = value
 
     def setDbPassword(self):
+        """
+        :return: None
+        """
         value = raw_input('\tPassword of the user > ')
         if value == '':
             self.setDbPassword()
@@ -80,6 +101,9 @@ class wpconfigWordPress():
             self.db_password = value
 
     def setDbHost(self):
+        """
+        :return: None
+        """
         value = raw_input('\tHost [localhost] > ')
         if value == '':
             self.db_host = 'localhost'
@@ -87,6 +111,9 @@ class wpconfigWordPress():
             self.db_host = value
 
     def setTablePrefix(self):
+        """
+        :return: None
+        """
         value = raw_input('\tTable prefix [wph_] > ')
         if value == '':
             self.table_prefix = 'wph_'
@@ -94,6 +121,9 @@ class wpconfigWordPress():
             self.table_prefix = value
 
     def setLanguage(self):
+        """
+        :return: None
+        """
         value = raw_input('\tLanguage [es_ES] > ')
         if value == '':
             self.language = ''
@@ -101,6 +131,9 @@ class wpconfigWordPress():
             self.language = value
 
     def setWpCron(self):
+        """
+        :return: None
+        """
         value = raw_input('\tDisable wp-cron.php? [y/n] > ').lower()
         if value == 'y':
             self.wpcron = 'true'
@@ -110,6 +143,9 @@ class wpconfigWordPress():
             self.wpcron = 'false'
 
     def setSslCertificate(self):
+        """
+        :return: None
+        """
         value = raw_input(
             '\tYour host provider gives you SSL certificate? [y/n] > '
         ).lower()
@@ -121,6 +157,9 @@ class wpconfigWordPress():
             self.sslcertificate = 'false'
 
     def getCompletConfig(self):
+        """
+        :return: None
+        """
         self.complet = """/** WordPress absolute path to the\
 Wordpress directory. */
 if ( !defined('ABSPATH') )
@@ -131,6 +170,9 @@ require_once(ABSPATH . 'wp-settings.php');
 """
 
     def generateSalt(self):
+        """
+        :return: Salt content generated
+        """
         lenSalt = 64
         values = "0123456789abcdefghijklmnopqrstuvwxyz" + \
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + \
@@ -155,6 +197,9 @@ require_once(ABSPATH . 'wp-settings.php');
         return resp
 
     def getSalt(self):
+        """
+        :return: Salt content in web WordPress
+        """
         request = urllib2.Request(
             "http://api.wordpress.org/secret-key/1.1/salt"
         )
@@ -167,12 +212,23 @@ require_once(ABSPATH . 'wp-settings.php');
         return html
 
     def getComment(self, message):
-        return ('/**\n' + ' * %s.\n'+' */\n') % message
+        """
+        :param message: Text of a message
+        :return: Message format comment
+        """
+        return ('/**\n' + ' * %s.\n' + ' */\n') % message
 
     def changeMode(self, file_name):
+        """
+        :param file_name: file name to wp-config-wphardening.php
+        :return: None
+        """
         os.chmod(self.directory + file_name, 0640)
 
     def createConfig(self):
+        """
+        :return: None
+        """
         f = open(self.directory + '/wp-config-wphardening.php', 'w')
         self.wizard()
         f.write('<?php \n\n')
