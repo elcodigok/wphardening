@@ -27,13 +27,22 @@ from lib.termcolor import colored
 
 
 class robotsWordPress:
+    """
+    This class create file robots.txt
+    """
     def __init__(self, directory):
+        """
+        :param directory: Absolute path of the directory to check.
+        """
         self.directory = os.path.abspath(directory)
         print colored('\nCreated file robots.txt', 'yellow')
         self.setUrl()
         self.setRobots()
 
     def setUrl(self):
+        """
+        :return: None
+        """
         value = raw_input('\tURL your site > ')
         if value == '':
             self.setUrl()
@@ -41,9 +50,15 @@ class robotsWordPress:
             self.url = value
 
     def getSitemap(self):
+        """
+        :return: URL complete eith /sitemap.xml
+        """
         return self.url + "/sitemap.xml"
 
     def setRobots(self):
+        """
+        :return: None
+        """
         self.robots = "# Sitemap\n"
         self.robots += "Sitemap: " + self.getSitemap() + '\n\n'
         self.robots += """# Files and Directories to not\
@@ -114,9 +129,15 @@ User-agent: libwww
 Disallow: / """
 
     def getRobots(self):
+        """
+        :return: Contents of robots.txt file
+        """
         return self.robots
 
     def createRobots(self):
+        """
+        :return: None
+        """
         fpath = self.directory + "/robots.txt"
         f = open(fpath, "w")
         f.writelines(self.getRobots())
