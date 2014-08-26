@@ -21,21 +21,30 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-import os
 import sys
 try:
     import git
 except ImportError:
     print "You need to install on your system python-git"
     sys.exit()
-from lib.termcolor import colored
 
 
 class updateWPHardening():
+    """
+    This class updates the core WPHardening
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory):
+        """
+        :param directory: Absolute path of the directory to check.
+        """
         self.work_directory = directory
 
     def update(self):
+        """
+        :return: None
+        """
         try:
             git.cmd.Git(self.work_directory).pull()
         except git.GitCommandError, e:
