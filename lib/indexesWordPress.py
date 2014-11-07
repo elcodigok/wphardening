@@ -48,7 +48,10 @@ class indexesWordPress():
             '\n', '<Files .htaccess>',
             '\n', '\torder allow,deny',
             '\n', '\tdeny from all',
-            '\n', '</Files>', '\n'
+            '\n', '</Files>',
+            '\n', '# The rise of bots, spammers, crack attacks and libwww-perl.\n',
+            'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
+            '\n', 'RewriteRule .* - [F,L]', '\n'
         ]
         self.mode_verbose = verbose
 
