@@ -28,7 +28,7 @@ from lib.termcolor import colored
 
 class indexesWordPress():
     """
-    This class creates and modifies the .htaccess file and 
+    This class creates and modifies the .htaccess file and
     index.php files
 
     :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
@@ -48,8 +48,9 @@ class indexesWordPress():
             '\n', '<Files .htaccess>',
             '\n', '\torder allow,deny',
             '\n', '\tdeny from all',
-            '\n', '</Files>',
-            '\n', '# The rise of bots, spammers, crack attacks and libwww-perl.\n',
+            '\n', '</Files>', '\n',
+            '\n',
+            '# The rise of bots, spammers, crack attacks and libwww-perl.\n',
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
             '\n', 'RewriteRule .* - [F,L]', '\n'
         ]
@@ -90,7 +91,9 @@ class indexesWordPress():
             f.close()
             if self.mode_verbose:
                 print colored(
-                    '\nCreate Indexes Files in ' + self.directory + index + '/index.php',
+                    '\nCreate Indexes Files in %s%s%s' % (
+                        self.directory, index, '/index.php'
+                    ),
                     'yellow'
                 )
             logging.info(self.directory + index + "/index.php create.")
