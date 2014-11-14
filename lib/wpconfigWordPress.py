@@ -75,7 +75,7 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tName of the database > ')
-        if value == '':
+        if value.strip() == '':
             self.setDbName()
         else:
             self.db_name = value
@@ -85,7 +85,12 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tName of the User > ')
-        if value == '':
+        if value.lower().strip() == 'root':
+            print (
+                colored('\n\tThe use of the root user is not recommended.', 'red')
+            )
+            self.setDbUser()
+        elif value.strip() == '':
             self.setDbUser()
         else:
             self.db_user = value
@@ -95,7 +100,7 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tPassword of the user > ')
-        if value == '':
+        if value.strip() == '':
             self.setDbPassword()
         else:
             self.db_password = value
@@ -105,7 +110,7 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tHost [localhost] > ')
-        if value == '':
+        if value.strip() == '':
             self.db_host = 'localhost'
         else:
             self.db_host = value
@@ -115,7 +120,7 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tTable prefix [wph_] > ')
-        if value == '':
+        if value.strip() == '':
             self.table_prefix = 'wph_'
         else:
             self.table_prefix = value
@@ -125,7 +130,7 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tLanguage [es_ES] > ')
-        if value == '':
+        if value.strip() == '':
             self.language = ''
         else:
             self.language = value
