@@ -144,8 +144,6 @@ def main():
                 deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
                 chmodWordPress(options.path, options.verbose).changePermisions()
-            if options.remove is not None:
-                removeWordPress(options.path).delete()
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
             if options.finger is not None:
@@ -186,6 +184,8 @@ def main():
                 else:
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
+            if options.remove is not None:
+                removeWordPress(options.path).delete()
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
