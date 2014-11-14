@@ -85,7 +85,12 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tName of the User > ')
-        if value == '':
+        if value.lower() == 'root':
+            print (
+                colored('\n\tThe use of the root user is not recommended.', 'red')
+            )
+            self.setDbUser()
+        elif value == '':
             self.setDbUser()
         else:
             self.db_user = value
