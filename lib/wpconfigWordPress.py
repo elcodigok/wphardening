@@ -87,7 +87,9 @@ class wpconfigWordPress():
         value = raw_input('\tName of the User > ')
         if value.lower().strip() == 'root':
             print (
-                colored('\n\tThe use of the root user is not recommended.', 'red')
+                colored(
+                    '\n\tThe use of the root user is not recommended.', 'red'
+                )
             )
             self.setDbUser()
         elif value.strip() == '':
@@ -279,7 +281,12 @@ require_once(ABSPATH . 'wp-settings.php');
             ) +
             'define(\'WPLANG\', \'' + self.language + '\');\n\n'
         )
-	f.write(self.getComment('Disable reporting error.') + 'error_reporting(0);\n' + '@ini_set(\'display_errors\', 0);\n\n')
+        f.write(
+            self.getComment(
+                'Disable reporting error'
+            ) +
+            'error_reporting(0);\n' + '@ini_set(\'display_errors\', 0);\n\n'
+        )
         if self.wpcron == 'true':
             f.write(
                 self.getComment(
