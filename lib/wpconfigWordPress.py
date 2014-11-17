@@ -279,6 +279,7 @@ require_once(ABSPATH . 'wp-settings.php');
             ) +
             'define(\'WPLANG\', \'' + self.language + '\');\n\n'
         )
+	f.write(self.getComment('Disable reporting error.') + 'error_reporting(0);\n\n')
         if self.wpcron == 'true':
             f.write(
                 self.getComment(
