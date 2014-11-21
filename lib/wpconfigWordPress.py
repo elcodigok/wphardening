@@ -66,6 +66,7 @@ class wpconfigWordPress():
         self.salt = self.getSalt()
         self.setTablePrefix()
         self.setLanguage()
+        self.setMemoryLimit()
         self.setWpCron()
         self.setSslCertificate()
         self.getCompletConfig()
@@ -136,6 +137,16 @@ class wpconfigWordPress():
             self.language = ''
         else:
             self.language = value
+
+    def setMemoryLimit(self):
+        """
+        :return: None
+        """
+        value = raw_input('\tMemory Limit [64M] > ')
+        if value.strip() == '':
+            self.memorylimit = '64M'
+        else:
+            self.memorylimit = value
 
     def setWpCron(self):
         """
@@ -280,6 +291,12 @@ require_once(ABSPATH . 'wp-settings.php');
                 'WordPress Localized Language, defaults to English'
             ) +
             'define(\'WPLANG\', \'' + self.language + '\');\n\n'
+        )
+        f.write(
+            self.getComment(
+                'WordPress Memory Limit'
+            ) +
+            'define(\'WP_MEMORY_LIMIT\', \'' + self.memorylimit + '\');\n\n'
         )
         f.write(
             self.getComment(
