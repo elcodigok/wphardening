@@ -107,6 +107,10 @@ def main():
         "--indexes", action="store_true", dest="indexes",
         help="It allows you to display the contents of directories."
     )
+    group2.add_option(
+        "--malware-scan", action="store_true", dest="malwares",
+        help="Malware Scan in WordPress project."
+    )
     parser.add_option_group(group2)
 
     group3 = OptionGroup(
