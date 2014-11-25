@@ -190,7 +190,7 @@ def main():
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
             if options.malwares is not None:
-                malwareScanWordPress(options.path)
+                malwareScanWordPress(options.path).scan()
             if options.remove is not None:
                 removeWordPress(options.path).delete()
     else:
