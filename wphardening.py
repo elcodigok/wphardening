@@ -33,6 +33,7 @@ from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
 from lib.timthumbWordPress import timthumbWordPress
 from lib.updateWPHardening import updateWPHardening
+from lib.malwareScanWordPress import malwareScanWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -188,6 +189,8 @@ def main():
                 else:
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
+            if options.malwares is not None:
+                malwareScanWordPress(options.path)
             if options.remove is not None:
                 removeWordPress(options.path).delete()
     else:
