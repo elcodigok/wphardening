@@ -47,12 +47,10 @@ class timthumbWordPress():
         f = open(self.directory + "/" + pathFile, "r")
         content = f.readlines()
         f.close()
-        #print content
         for i in content:
-            matchObj = re.search( "define.*\'VERSION\'.*;", i )
+            matchObj = re.search("define.*\'VERSION\'.*;", i)
             if matchObj:
                 return matchObj.group()
-        
 
     def loadFile(self):
         """

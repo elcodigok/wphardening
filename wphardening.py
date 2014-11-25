@@ -33,6 +33,7 @@ from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
 from lib.timthumbWordPress import timthumbWordPress
 from lib.updateWPHardening import updateWPHardening
+from lib.malwareScanWordPress import malwareScanWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -106,6 +107,10 @@ def main():
     group2.add_option(
         "--indexes", action="store_true", dest="indexes",
         help="It allows you to display the contents of directories."
+    )
+    group2.add_option(
+        "--malware-scan", action="store_true", dest="malwares",
+        help="Malware Scan in WordPress project."
     )
     parser.add_option_group(group2)
 
@@ -184,6 +189,8 @@ def main():
                 else:
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
+            if options.malwares is not None:
+                malwareScanWordPress(options.path).scan()
             if options.remove is not None:
                 removeWordPress(options.path).delete()
     else:
