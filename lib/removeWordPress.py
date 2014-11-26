@@ -23,6 +23,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import logging
+import shutil
 from lib.termcolor import colored
 
 
@@ -47,7 +48,8 @@ class removeWordPress():
         """
         for pathThemes in self.themes:
             if os.path.exists(self.directory + pathThemes):
-                print self.directory + pathThemes
+                #print self.directory + pathThemes
+                shutil.rmtree(self.directory + pathThemes)
                 logging.info("Delete: Theme " + pathThemes)
                 print colored('\tdelete:\ttheme ' + pathThemes, 'red')
 
