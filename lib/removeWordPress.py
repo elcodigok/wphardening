@@ -40,7 +40,10 @@ class removeWordPress():
         self.directory = os.path.abspath(directory)
         self.readme = "/readme.html"
         self.license = ["/licencia.txt", "/license.txt"]
-        self.themes = ["/wp-content/themes/twentytwelve/", "/wp-content/themes/twentythirteen/"]
+        self.themes = [
+            "/wp-content/themes/twentytwelve/",
+            "/wp-content/themes/twentythirteen/"
+        ]
 
     def deleteThemes(self):
         """
@@ -48,7 +51,6 @@ class removeWordPress():
         """
         for pathThemes in self.themes:
             if os.path.exists(self.directory + pathThemes):
-                #print self.directory + pathThemes
                 shutil.rmtree(self.directory + pathThemes)
                 logging.info("Delete: Theme " + pathThemes)
                 print colored('\tdelete:\ttheme ' + pathThemes, 'red')
