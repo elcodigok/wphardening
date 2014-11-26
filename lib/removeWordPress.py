@@ -39,6 +39,17 @@ class removeWordPress():
         self.directory = os.path.abspath(directory)
         self.readme = "/readme.html"
         self.license = ["/licencia.txt", "/license.txt"]
+        self.themes = ["/wp-content/themes/twentytwelve/", "/wp-content/themes/twentythirteen/"]
+
+    def deleteThemes(self):
+        """
+        :return: None
+        """
+        for pathThemes in self.themes:
+            if os.path.exists(self.directory + pathThemes):
+                print self.directory + pathThemes
+                logging.info("Delete: Theme " + pathThemes)
+                print colored('\tdelete:\ttheme ' + pathThemes, 'red')
 
     def deleteReadme(self):
         """
@@ -66,3 +77,4 @@ class removeWordPress():
         print colored('\nRemove files by defaults', 'yellow')
         self.deleteReadme()
         self.deleteLicense()
+        self.deleteThemes()
