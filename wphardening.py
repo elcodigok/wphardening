@@ -34,6 +34,7 @@ from lib.wpconfigWordPress import wpconfigWordPress
 from lib.timthumbWordPress import timthumbWordPress
 from lib.updateWPHardening import updateWPHardening
 from lib.malwareScanWordPress import malwareScanWordPress
+from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -61,6 +62,10 @@ def main():
     group1.add_option(
         "-d", "--dir", dest="path",
         help="**REQUIRED** - Working Directory.", metavar="DIRECTORY"
+    )
+    group1.add_option(
+        "--load-conf", dest="loadconf", metavar="FILE",
+        help="Load file configuration."
     )
     parser.add_option_group(group1)
 
@@ -124,6 +129,18 @@ def main():
     parser.add_option_group(group3)
 
     (options, args) = parser.parse_args()
+
+    if options.loadconf is not None:
+        options.path = loadConfWordPress(options.loadconf).getDirectory()
+        options.delete_version = loadConfWordPress(options.loadconf).getDeleteVersion()
+        options.chmod = loadConfWordPress(options.loadconf).getChmod()
+        options.robots = loadConfWordPress(options.loadconf).getRobots()
+        options.finger = loadConfWordPress(options.loadconf).getFingerprinting()
+        options.wpconfig = loadConfWordPress(options.loadconf).getWpConfig()
+        options.indexes = loadConfWordPress(options.loadconf).getIndexes()
+        options.timthumb = loadConfWordPress(options.loadconf).getTimthumb()
+        options.malwares = loadConfWordPress(options.loadconf).getMalwareScan()
+        options.output = loadConfWordPress(options.loadconf).getOutput()
 
     if options.output is None:
         filename = 'wphardening.log'
