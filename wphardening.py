@@ -62,6 +62,10 @@ def main():
         "-d", "--dir", dest="path",
         help="**REQUIRED** - Working Directory.", metavar="DIRECTORY"
     )
+    group1.add_option(
+        "--load-conf", dest="loadconf", metavar="FILE",
+        help="Load file configuration."
+    )
     parser.add_option_group(group1)
 
     group2 = OptionGroup(
