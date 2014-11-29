@@ -28,7 +28,7 @@ from lib.termcolor import colored
 
 class indexesWordPress():
     """
-    This class creates and modifies the .htaccess file and 
+    This class creates and modifies the .htaccess file and
     index.php files
 
     :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
@@ -43,12 +43,32 @@ class indexesWordPress():
             '/wp-content', '/wp-content/plugins', '/wp-content/uploads'
         ]
         self.htaccess = [
+            '\n', '# Avoid Full Path Disclosure.\n',
+            'php_flag display_errors off', '\n',
             '\n', '# Avoid the browser access to a folder without index.\n',
             'Options All -Indexes',
             '\n', '<Files .htaccess>',
             '\n', '\torder allow,deny',
             '\n', '\tdeny from all',
-            '\n', '</Files>', '\n'
+            '\n', '</Files>', '\n',
+            '\n',
+            '# The rise of bots, spammers, crack attacks and libwww-perl.\n',
+            'RewriteEngine On\n',
+            'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
+            '\n', 'RewriteRule .* - [F,L]',
+            '\n', '# Query string Exploits.\n',
+            '\n', 'RewriteCond %{QUERY_STRING} ../    [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} boot.ini [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} tag=     [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ftp:     [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} http:    [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} https:   [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} mosConfig [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ^.*(%22|%27|%3C|%3E|%5C|%7B|%7C).* [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127.0).* [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ^.*(globals|encode|config|loopback).* [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ^.*(request|select|insert|union|declare|drop).* [NC]',
+            '\n', 'RewriteRule ^(.*)$ - [F,L]'            
         ]
         self.mode_verbose = verbose
 
@@ -87,7 +107,9 @@ class indexesWordPress():
             f.close()
             if self.mode_verbose:
                 print colored(
-                    '\nCreate Indexes Files in ' + self.directory + index + '/index.php',
+                    '\nCreate Indexes Files in %s%s%s' % (
+                        self.directory, index, '/index.php'
+                    ),
                     'yellow'
                 )
             logging.info(self.directory + index + "/index.php create.")

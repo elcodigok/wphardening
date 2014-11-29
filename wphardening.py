@@ -33,6 +33,8 @@ from lib.indexesWordPress import indexesWordPress
 from lib.wpconfigWordPress import wpconfigWordPress
 from lib.timthumbWordPress import timthumbWordPress
 from lib.updateWPHardening import updateWPHardening
+from lib.malwareScanWordPress import malwareScanWordPress
+from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 import os
@@ -43,7 +45,7 @@ import urllib2
 def main():
     usage = "usage: %prog [options] arg"
     version = colored('WPHardening', 'green') + ' version' + \
-        colored(' 1.3', 'yellow')
+        colored(' 1.4', 'yellow')
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
@@ -60,6 +62,10 @@ def main():
     group1.add_option(
         "-d", "--dir", dest="path",
         help="**REQUIRED** - Working Directory.", metavar="DIRECTORY"
+    )
+    group1.add_option(
+        "--load-conf", dest="loadconf", metavar="FILE",
+        help="Load file configuration."
     )
     parser.add_option_group(group1)
 
@@ -107,6 +113,10 @@ def main():
         "--indexes", action="store_true", dest="indexes",
         help="It allows you to display the contents of directories."
     )
+    group2.add_option(
+        "--malware-scan", action="store_true", dest="malwares",
+        help="Malware Scan in WordPress project."
+    )
     parser.add_option_group(group2)
 
     group3 = OptionGroup(
@@ -119,6 +129,18 @@ def main():
     parser.add_option_group(group3)
 
     (options, args) = parser.parse_args()
+
+    if options.loadconf is not None:
+        options.path = loadConfWordPress(options.loadconf).getDirectory()
+        options.delete_version = loadConfWordPress(options.loadconf).getDeleteVersion()
+        options.chmod = loadConfWordPress(options.loadconf).getChmod()
+        options.robots = loadConfWordPress(options.loadconf).getRobots()
+        options.finger = loadConfWordPress(options.loadconf).getFingerprinting()
+        options.wpconfig = loadConfWordPress(options.loadconf).getWpConfig()
+        options.indexes = loadConfWordPress(options.loadconf).getIndexes()
+        options.timthumb = loadConfWordPress(options.loadconf).getTimthumb()
+        options.malwares = loadConfWordPress(options.loadconf).getMalwareScan()
+        options.output = loadConfWordPress(options.loadconf).getOutput()
 
     if options.output is None:
         filename = 'wphardening.log'
@@ -144,8 +166,6 @@ def main():
                 deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
                 chmodWordPress(options.path, options.verbose).changePermisions()
-            if options.remove is not None:
-                removeWordPress(options.path).delete()
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
             if options.finger is not None:
@@ -186,6 +206,10 @@ def main():
                 else:
                     asdf = pluginsWordPress(options.path, options.proxy)
                 asdf.questions()
+            if options.malwares is not None:
+                malwareScanWordPress(options.path).scan()
+            if options.remove is not None:
+                removeWordPress(options.path).delete()
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')

@@ -22,6 +22,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import re
 import logging
 from lib.termcolor import colored
 
@@ -38,6 +39,18 @@ class timthumbWordPress():
         """
         self.fileWordPress = self.loadFile()
         self.directory = directory
+
+    def searchVersion(self, pathFile):
+        """
+        :return: Content witch version the librery
+        """
+        f = open(self.directory + "/" + pathFile, "r")
+        content = f.readlines()
+        f.close()
+        for i in content:
+            matchObj = re.search("define.*\'VERSION\'.*;", i)
+            if matchObj:
+                return matchObj.group()
 
     def loadFile(self):
         """
@@ -78,7 +91,8 @@ class timthumbWordPress():
                     "/" +
                     f.split("\n")[0], 'yellow') + ' -', \
                     colored(
-                        '\n\tFound file library in ' +
-                        "/" + f.split("\n")[0], 'red'
+                        '\n\tFound file library Timbthumb in ' +
+                        "/" + f.split("\n")[0] + ' - ' +
+                        self.searchVersion(f.split("\n")[0]), 'red'
                     )
         self.decoratorOutput(foundFile)

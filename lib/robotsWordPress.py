@@ -45,9 +45,9 @@ class robotsWordPress:
         """
         :return: None
         """
-        value = raw_input('\tURL your site > ')
+        value = raw_input('\tURL your site [http://localhost] > ')
         if value == '':
-            self.setUrl()
+            self.url = 'http://localhost'
         else:
             self.url = value
 

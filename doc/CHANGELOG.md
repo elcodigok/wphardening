@@ -1,6 +1,24 @@
 Changelog
 =========
 
+v1.4 (2014-11-29)
+-----------------
+
+- Add control Libwww-perl
+- Optimization source code.
+- New set default vales in --wp-config
+- Add Query string Exploits.
+- Validation input options.
+- Add error_reporting(0);
+- Add @ini_set('display_errors', 0);
+- Add filter login_error.
+- Add Options Memori Limit in --wp-config
+- Print version Timthumb library.
+- Create new options --malware-scan
+- Avoid Full Path Disclosure.
+- New structure to eliminate themes.
+- Create new options --load-conf
+
 v1.3 (2014-07-31)
 -----------------
 
