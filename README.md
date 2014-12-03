@@ -19,6 +19,7 @@ Usage
     
         -d DIRECTORY, --dir=DIRECTORY
                             **REQUIRED** - Working Directory.
+        --load-conf=FILE    Load file configuration.
 
       Hardening:
         Different tools to hardening WordPress.
@@ -35,6 +36,7 @@ Usage
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for
                             --plugins and --wp-config.
         --indexes           It allows you to display the contents of directories.
+        --malware-scan      Malware Scan in WordPress project.
     
       Miscellaneous:
         -o FILE, --output=FILE

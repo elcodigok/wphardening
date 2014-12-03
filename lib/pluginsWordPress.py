@@ -49,66 +49,66 @@ class pluginsWordPress():
                 'Useful plugin that will scan your theme templates for' +
                 ' malicious injections. Automatically. Every day.' +
                 ' For more blog security.',
-                'http://wordpress.org/extend/plugins/antivirus/'
+                'https://wordpress.org/extend/plugins/antivirus/'
             ],
             [
                 'Bad Behavior',
                 'Bad Behavior prevents spammers from ever delivering' +
                 ' their junk, and in many cases, from ever reading your' +
                 ' site in the first place.',
-                'http://wordpress.org/extend/plugins/bad-behavior/'
+                'https://wordpress.org/extend/plugins/bad-behavior/'
             ],
             [
                 'Block Bad Queries',
                 'Block Bad Queries (BBQ) helps protect WordPress against' +
                 ' malicious URL requests.',
-                'http://wordpress.org/extend/plugins/block-bad-queries/'
+                'https://wordpress.org/extend/plugins/block-bad-queries/'
             ],
             [
                 'Exploit Scanner',
                 'Search the files and database of your WordPress install' +
                 ' for signs that may indicate that it has fallen victim' +
                 ' to malicious hackers.',
-                'http://wordpress.org/extend/plugins/exploit-scanner/'
+                'https://wordpress.org/extend/plugins/exploit-scanner/'
             ],
             [
                 'Latch',
                 'This Plugin allows developers to integrate Latch on' +
                 ' his/her WordPress service.',
-                'http://wordpress.org/plugins/latch/'
+                'https://wordpress.org/plugins/latch/'
             ],
             [
                 'Limit Login Attempts',
                 'Limit rate of login attempts, including by way of cookies,' +
                 ' for each IP. Fully customizable.',
-                'http://wordpress.org/extend/plugins/limit-login-attempts/'
+                'https://wordpress.org/extend/plugins/limit-login-attempts/'
             ],
             [
                 'One-Time Password',
                 'One-time password system conform RFC 2289 to protect your' +
                 ' weblog in less trustworthy environments, like internet' +
                 ' cafes.',
-                'http://wordpress.org/extend/plugins/one-time-password/'
+                'https://wordpress.org/extend/plugins/one-time-password/'
             ],
             [
                 'UPDATE NOTIFICATIONS',
                 'Check if your installation of wordpress updates are' +
                 ' (core wordpress, themes and plugins). If so send an email.',
-                'http://wordpress.org/extend/plugins/update-notifications/'
+                'https://wordpress.org/extend/plugins/update-notifications/'
             ],
             [
                 'User Locker',
                 'This plugin locks user account after given number' +
                 ' of incorrect login attempts. This makes brute force' +
                 ' and dictionary attacks nearly impossible.',
-                'http://wordpress.org/extend/plugins/user-locker/'
+                'https://wordpress.org/extend/plugins/user-locker/'
             ],
             [
                 'WordPress File Monitor Plus',
                 'Monitor files under your WP installation for changes.' +
                 ' When a change occurs, be notified via email.' +
                 ' This plugin is a fork of WordPress File Monitor.',
-                'http://wordpress.org/extend/plugins/' +
+                'https://wordpress.org/extend/plugins/' +
                 'wordpress-file-monitor-plus/'
             ],
             [
@@ -116,13 +116,13 @@ class pluginsWordPress():
                 'Whitelist User IP addresses. If a user logs in from an' +
                 ' unknown IP the plugin sends an email to the user and' +
                 ' optionally the admin with a one-time key.',
-                'http://wordpress.org/extend/plugins/wp-login-security-2/'
+                'https://wordpress.org/extend/plugins/wp-login-security-2/'
             ],
             [
                 'WP Security Scan',
                 'Scans your WordPress installation for security' +
                 ' vulnerabilities.',
-                'http://wordpress.org/extend/plugins/wp-security-scan/'
+                'https://wordpress.org/extend/plugins/wp-security-scan/'
             ],
             [
                 'WP-DBManager',
@@ -131,7 +131,7 @@ class pluginsWordPress():
                 ' drop/empty tables and run selected queries. Supports' +
                 ' automatic scheduling of backing up, optimizing and' +
                 ' repairing of database.',
-                'http://wordpress.org/extend/plugins/wp-dbmanager/'
+                'https://wordpress.org/extend/plugins/wp-dbmanager/'
             ],
         ]
         if proxy is not None:
@@ -182,7 +182,7 @@ class pluginsWordPress():
                     resp = self.opener.open(request)
                     html = resp.read()
                     patron = re.compile(
-                        "http://downloads.wordpress.org/plugin/" +
+                        "https://downloads.wordpress.org/plugin/" +
                         "[a-zA-Z0-9$-_@.&#+]+\.[zip|rar|gzip|tar.gz|tgz]+"
                     )
                     self.download(patron.findall(html))
