@@ -86,6 +86,11 @@ class removeWordPress():
                 logging.info("Delete: file " + pathLicese)
                 print colored('\tdelete:\tfile ' + pathLicese, 'red')
 
+    def deleteStaticFile(self):
+        """
+        :return: None
+        """
+
     def delete(self):
         """
         :return: None
