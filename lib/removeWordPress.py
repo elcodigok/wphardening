@@ -44,6 +44,18 @@ class removeWordPress():
             "/wp-content/themes/twentytwelve/",
             "/wp-content/themes/twentythirteen/"
         ]
+        self.static_file = [
+            "/wp-includes/images/crystal/license.txt",
+            "/wp-includes/images/crystal/license.txt",
+            "/wp-includes/js/plupload/license.txt",
+            "/wp-includes/js/plupload/changelog.txt",
+            "/wp-includes/js/tinymce/license.txt",
+            "/wp-includes/js/tinymce/plugins/spellchecker/changelog.txt",
+            "/wp-includes/js/swfupload/license.txt",
+            "/wp-includes/ID3/license.txt",
+            "/wp-includes/ID3/readme.txt",
+            "/wp-includes/ID3/license.commercial.txt"
+        ]
 
     def deleteThemes(self):
         """
