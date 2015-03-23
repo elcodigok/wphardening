@@ -44,6 +44,18 @@ class removeWordPress():
             "/wp-content/themes/twentytwelve/",
             "/wp-content/themes/twentythirteen/"
         ]
+        self.static_file = [
+            "/wp-includes/images/crystal/license.txt",
+            "/wp-includes/images/crystal/license.txt",
+            "/wp-includes/js/plupload/license.txt",
+            "/wp-includes/js/plupload/changelog.txt",
+            "/wp-includes/js/tinymce/license.txt",
+            "/wp-includes/js/tinymce/plugins/spellchecker/changelog.txt",
+            "/wp-includes/js/swfupload/license.txt",
+            "/wp-includes/ID3/license.txt",
+            "/wp-includes/ID3/readme.txt",
+            "/wp-includes/ID3/license.commercial.txt"
+        ]
 
     def deleteThemes(self):
         """
@@ -74,6 +86,16 @@ class removeWordPress():
                 logging.info("Delete: file " + pathLicese)
                 print colored('\tdelete:\tfile ' + pathLicese, 'red')
 
+    def deleteStaticFile(self):
+        """
+        :return: None
+        """
+        for pathFile in self.static_file:
+            if os.path.exists(self.directory + pathFile):
+                os.remove(self.directory + pathFile)
+                logging.info("Delete: file " + pathFile)
+                print colored('\tdelete:\tfile ' + pathFile, 'red')
+
     def delete(self):
         """
         :return: None
@@ -82,3 +104,4 @@ class removeWordPress():
         self.deleteReadme()
         self.deleteLicense()
         self.deleteThemes()
+        self.deleteStaticFile()
