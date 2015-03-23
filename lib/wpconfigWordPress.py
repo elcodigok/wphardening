@@ -69,6 +69,7 @@ class wpconfigWordPress():
         self.setMemoryLimit()
         self.setWpCron()
         self.setSslCertificate()
+        self.setMultisite()
         self.getCompletConfig()
 
     def setDbName(self):
@@ -178,7 +179,13 @@ class wpconfigWordPress():
         """
         :return: None
         """
-        pass
+        value = raw_input('\tEnable Multisite? [y/n] > ').lower()
+        if value == 'y':
+            self.multisite = 'true'
+        elif value == 'n':
+            self.multisite = 'false'
+        else:
+            self.multisite = 'false'
 
     def getCompletConfig(self):
         """
