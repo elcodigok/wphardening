@@ -174,6 +174,12 @@ class wpconfigWordPress():
         else:
             self.sslcertificate = 'false'
 
+    def setMultisite(self):
+        """
+        :return: None
+        """
+        pass
+
     def getCompletConfig(self):
         """
         :return: None
