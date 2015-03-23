@@ -69,6 +69,7 @@ class wpconfigWordPress():
         self.setMemoryLimit()
         self.setWpCron()
         self.setSslCertificate()
+        self.setMultisite()
         self.getCompletConfig()
 
     def setDbName(self):
@@ -173,6 +174,18 @@ class wpconfigWordPress():
             self.sslcertificate = 'false'
         else:
             self.sslcertificate = 'false'
+
+    def setMultisite(self):
+        """
+        :return: None
+        """
+        value = raw_input('\tEnable Multisite? [y/n] > ').lower()
+        if value == 'y':
+            self.multisite = 'true'
+        elif value == 'n':
+            self.multisite = 'false'
+        else:
+            self.multisite = 'false'
 
     def getCompletConfig(self):
         """
@@ -329,6 +342,10 @@ require_once(ABSPATH . 'wp-settings.php');
             self.getComment('SSL certificate for Adminstration WordPress') +
             'define(\'FORCE_SSL_LOGIN\', ' + self.sslcertificate + ');\n' +
             'define(\'FORCE_SSL_ADMIN\', ' + self.sslcertificate + ');\n\n'
+        )
+        f.write(
+            self.getComment('Enable Multisite / Network Ability') +
+            'define(\'WP_ALLOW_MULTISITE\', ' + self.multisite + ');\n\n'
         )
         f.write(
             self.getComment('For developers: WordPress debugging mode') +
