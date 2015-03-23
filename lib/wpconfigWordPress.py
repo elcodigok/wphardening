@@ -343,7 +343,7 @@ require_once(ABSPATH . 'wp-settings.php');
             'define(\'FORCE_SSL_LOGIN\', ' + self.sslcertificate + ');\n' +
             'define(\'FORCE_SSL_ADMIN\', ' + self.sslcertificate + ');\n\n'
         )
-	f.write(
+        f.write(
             self.getComment('Enable Multisite / Network Ability') +
             'define(\'WP_ALLOW_MULTISITE\', ' + self.multisite + ');\n\n'
         )
