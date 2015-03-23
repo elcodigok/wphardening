@@ -90,6 +90,11 @@ class removeWordPress():
         """
         :return: None
         """
+        for pathFile in self.static_file:
+            if os.path.exists(self.directory + pathFile):
+                os.remove(self.directory + pathFile)
+                logging.info("Delete: file " + pathFile)
+                print colored('\tdelete:\tfile ' + pathFile, 'red')
 
     def delete(self):
         """
@@ -99,3 +104,4 @@ class removeWordPress():
         self.deleteReadme()
         self.deleteLicense()
         self.deleteThemes()
+        self.deleteStaticFile()
