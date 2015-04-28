@@ -1132,16 +1132,6 @@ wp-includes/js/tinymce/plugins/wpfullscreen/css/wp-fullscreen.css
 wp-includes/js/tinymce/plugins/wpfullscreen/editor_plugin.js
 wp-includes/js/tinymce/plugins/wpfullscreen/editor_plugin_src.js
 wp-includes/js/tinymce/plugins/wpgallery/
-wp-includes/js/tinymce/plugins/wpgallery/editor_plugin.dev.js
-wp-includes/js/tinymce/plugins/wpgallery/editor_plugin.js
-wp-includes/js/tinymce/plugins/wpgallery/editor_plugin_src.js
-wp-includes/js/tinymce/plugins/wpgallery/img
-wp-includes/js/tinymce/plugins/wpgallery/img/
-wp-includes/js/tinymce/plugins/wpgallery/img/delete-2x.png
-wp-includes/js/tinymce/plugins/wpgallery/img/delete.png
-wp-includes/js/tinymce/plugins/wpgallery/img/edit-2x.png
-wp-includes/js/tinymce/plugins/wpgallery/img/edit.png
-wp-includes/js/tinymce/plugins/wpgallery/img/t.gif
 wp-includes/js/tinymce/plugins/wphelp/
 wp-includes/js/tinymce/plugins/wphelp/editor_plugin.js
 wp-includes/js/tinymce/plugins/wphelp/images
