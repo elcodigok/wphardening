@@ -186,6 +186,9 @@ class wpconfigWordPress():
             self.multisite = 'false'
         else:
             self.multisite = 'false'
+            
+    def setUpdateCore(self):
+        pass
 
     def getCompletConfig(self):
         """
