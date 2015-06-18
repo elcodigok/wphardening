@@ -193,6 +193,12 @@ class wpconfigWordPress():
         :return: None
         """
         value = raw_input('\tAuto update Core? [y/n] > ').lower()
+        if value == 'y':
+	    self.updateCore = 'true'
+	elif value == 'n':
+	    self.updateCore = 'false'
+	else:
+	    self.updateCore = 'false'
 
     def getCompletConfig(self):
         """
