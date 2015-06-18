@@ -70,6 +70,7 @@ class wpconfigWordPress():
         self.setWpCron()
         self.setSslCertificate()
         self.setMultisite()
+        self.setUpdateCore()
         self.getCompletConfig()
 
     def setDbName(self):
@@ -188,7 +189,10 @@ class wpconfigWordPress():
             self.multisite = 'false'
             
     def setUpdateCore(self):
-        pass
+        """
+        :return: None
+        """
+        value = raw_input('\tAuto update Core? [y/n] > ').lower()
 
     def getCompletConfig(self):
         """
