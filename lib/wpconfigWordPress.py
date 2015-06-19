@@ -187,18 +187,18 @@ class wpconfigWordPress():
             self.multisite = 'false'
         else:
             self.multisite = 'false'
-            
+
     def setUpdateCore(self):
         """
         :return: None
         """
         value = raw_input('\tAuto update Core? [y/n] > ').lower()
         if value == 'y':
-	    self.updateCore = 'true'
-	elif value == 'n':
-	    self.updateCore = 'false'
-	else:
-	    self.updateCore = 'false'
+            self.updateCore = 'true'
+        elif value == 'n':
+            self.updateCore = 'false'
+        else:
+            self.updateCore = 'false'
 
     def getCompletConfig(self):
         """
@@ -360,10 +360,10 @@ require_once(ABSPATH . 'wp-settings.php');
             self.getComment('Enable Multisite / Network Ability') +
             'define(\'WP_ALLOW_MULTISITE\', ' + self.multisite + ');\n\n'
         )
-	f.write(
-	    self.getComment('Disable Automatic Updates') +
-	    'define(\'WP_AUTO_UPDATE_CORE\', ' + self.updateCore + ');\n\n'
-	)
+        f.write(
+            self.getComment('Disable Automatic Updates') +
+            'define(\'WP_AUTO_UPDATE_CORE\', ' + self.updateCore + ');\n\n'
+        )
         f.write(
             self.getComment('For developers: WordPress debugging mode') +
             'define(\'WP_DEBUG\', false);\n\n'
