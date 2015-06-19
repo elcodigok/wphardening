@@ -360,6 +360,10 @@ require_once(ABSPATH . 'wp-settings.php');
             self.getComment('Enable Multisite / Network Ability') +
             'define(\'WP_ALLOW_MULTISITE\', ' + self.multisite + ');\n\n'
         )
+	f.write(
+	    self.getComment('Disable Automatic Updates') +
+	    'define(\'WP_AUTO_UPDATE_CORE\', ' + self.updateCore + ');\n\n'
+	)
         f.write(
             self.getComment('For developers: WordPress debugging mode') +
             'define(\'WP_DEBUG\', false);\n\n'
