@@ -45,7 +45,7 @@ import urllib2
 def main():
     usage = "usage: %prog [options] arg"
     version = colored('WPHardening', 'green') + ' version' + \
-        colored(' 1.4', 'yellow')
+        colored(' 1.5-dev', 'yellow')
     parser = OptionParser(usage, version=version)
     parser.add_option(
         "-v", "--verbose", action="store_true", dest="verbose",
