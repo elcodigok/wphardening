@@ -52,7 +52,11 @@ class indexesWordPress():
             '\n', '\torder allow,deny',
             '\n', '\tdeny from all',
             '\n', '</Files>', '\n',
-            '\n',
+            '\n', '# Protection wp-config.php file.\n',
+            '\n', '<Files wp-config.php>',
+            '\n', '\torder allow,deny',
+            '\n', '\tdeny from all',
+            '\n', '</Files>', '\n'
             '# The rise of bots, spammers, crack attacks and libwww-perl.\n',
             'RewriteEngine On\n',
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
