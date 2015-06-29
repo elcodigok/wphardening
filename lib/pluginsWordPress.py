@@ -78,14 +78,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'WordPress File Monitor Plus',
-                'Monitor files under your WP installation for changes.' +
-                ' When a change occurs, be notified via email.' +
-                ' This plugin is a fork of WordPress File Monitor.',
-                'https://wordpress.org/extend/plugins/' +
-                'wordpress-file-monitor-plus/'
-            ],
-            [
                 'WP Login Security 2',
                 'Whitelist User IP addresses. If a user logs in from an' +
                 ' unknown IP the plugin sends an email to the user and' +
