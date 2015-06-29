@@ -78,13 +78,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'WP Login Security 2',
-                'Whitelist User IP addresses. If a user logs in from an' +
-                ' unknown IP the plugin sends an email to the user and' +
-                ' optionally the admin with a one-time key.',
-                'https://wordpress.org/extend/plugins/wp-login-security-2/'
-            ],
-            [
                 'WP Security Scan',
                 'Scans your WordPress installation for security' +
                 ' vulnerabilities.',
