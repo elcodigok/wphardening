@@ -78,12 +78,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'Limit Login Attempts',
-                'Limit rate of login attempts, including by way of cookies,' +
-                ' for each IP. Fully customizable.',
-                'https://wordpress.org/extend/plugins/limit-login-attempts/'
-            ],
-            [
                 'One-Time Password',
                 'One-time password system conform RFC 2289 to protect your' +
                 ' weblog in less trustworthy environments, like internet' +
