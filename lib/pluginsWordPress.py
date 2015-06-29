@@ -78,13 +78,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'User Locker',
-                'This plugin locks user account after given number' +
-                ' of incorrect login attempts. This makes brute force' +
-                ' and dictionary attacks nearly impossible.',
-                'https://wordpress.org/extend/plugins/user-locker/'
-            ],
-            [
                 'WordPress File Monitor Plus',
                 'Monitor files under your WP installation for changes.' +
                 ' When a change occurs, be notified via email.' +
