@@ -78,13 +78,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'One-Time Password',
-                'One-time password system conform RFC 2289 to protect your' +
-                ' weblog in less trustworthy environments, like internet' +
-                ' cafes.',
-                'https://wordpress.org/extend/plugins/one-time-password/'
-            ],
-            [
                 'UPDATE NOTIFICATIONS',
                 'Check if your installation of wordpress updates are' +
                 ' (core wordpress, themes and plugins). If so send an email.',
