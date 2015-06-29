@@ -78,47 +78,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'Limit Login Attempts',
-                'Limit rate of login attempts, including by way of cookies,' +
-                ' for each IP. Fully customizable.',
-                'https://wordpress.org/extend/plugins/limit-login-attempts/'
-            ],
-            [
-                'One-Time Password',
-                'One-time password system conform RFC 2289 to protect your' +
-                ' weblog in less trustworthy environments, like internet' +
-                ' cafes.',
-                'https://wordpress.org/extend/plugins/one-time-password/'
-            ],
-            [
-                'UPDATE NOTIFICATIONS',
-                'Check if your installation of wordpress updates are' +
-                ' (core wordpress, themes and plugins). If so send an email.',
-                'https://wordpress.org/extend/plugins/update-notifications/'
-            ],
-            [
-                'User Locker',
-                'This plugin locks user account after given number' +
-                ' of incorrect login attempts. This makes brute force' +
-                ' and dictionary attacks nearly impossible.',
-                'https://wordpress.org/extend/plugins/user-locker/'
-            ],
-            [
-                'WordPress File Monitor Plus',
-                'Monitor files under your WP installation for changes.' +
-                ' When a change occurs, be notified via email.' +
-                ' This plugin is a fork of WordPress File Monitor.',
-                'https://wordpress.org/extend/plugins/' +
-                'wordpress-file-monitor-plus/'
-            ],
-            [
-                'WP Login Security 2',
-                'Whitelist User IP addresses. If a user logs in from an' +
-                ' unknown IP the plugin sends an email to the user and' +
-                ' optionally the admin with a one-time key.',
-                'https://wordpress.org/extend/plugins/wp-login-security-2/'
-            ],
-            [
                 'WP Security Scan',
                 'Scans your WordPress installation for security' +
                 ' vulnerabilities.',
