@@ -78,12 +78,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'UPDATE NOTIFICATIONS',
-                'Check if your installation of wordpress updates are' +
-                ' (core wordpress, themes and plugins). If so send an email.',
-                'https://wordpress.org/extend/plugins/update-notifications/'
-            ],
-            [
                 'User Locker',
                 'This plugin locks user account after given number' +
                 ' of incorrect login attempts. This makes brute force' +
