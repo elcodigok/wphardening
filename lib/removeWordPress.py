@@ -42,7 +42,8 @@ class removeWordPress():
         self.license = ["/licencia.txt", "/license.txt"]
         self.themes = [
             "/wp-content/themes/twentytwelve/",
-            "/wp-content/themes/twentythirteen/"
+            "/wp-content/themes/twentythirteen/",
+            "/wp-content/themes/twentyfourteen/"
         ]
         self.static_file = [
             "/wp-includes/images/crystal/license.txt",
