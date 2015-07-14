@@ -57,6 +57,9 @@ class removeWordPress():
             "/wp-includes/ID3/readme.txt",
             "/wp-includes/ID3/license.commercial.txt"
         ]
+        self.plugins = [
+            "/wp-content/plugins/hello.php"
+        ]
 
     def deleteThemes(self):
         """
