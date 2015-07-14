@@ -57,6 +57,9 @@ class removeWordPress():
             "/wp-includes/ID3/readme.txt",
             "/wp-includes/ID3/license.commercial.txt"
         ]
+        self.plugins = [
+            "/wp-content/plugins/hello.php"
+        ]
 
     def deleteThemes(self):
         """
@@ -97,6 +100,16 @@ class removeWordPress():
                 logging.info("Delete: file " + pathFile)
                 print colored('\tdelete:\tfile ' + pathFile, 'red')
 
+    def deletePlugins(self):
+        """
+        :return: None
+        """
+        for pathPlugins in self.plugins:
+            if os.path.exists(self.directory + pathPlugins):
+                os.remove(self.directory + pathPlugins)
+                logging.info("Delete: plugin " + pathPlugins)
+                print colored('\tdelete:\tplugin ' + pathPlugins, 'red')
+
     def delete(self):
         """
         :return: None
@@ -105,4 +118,5 @@ class removeWordPress():
         self.deleteReadme()
         self.deleteLicense()
         self.deleteThemes()
+        self.deletePlugins()
         self.deleteStaticFile()
