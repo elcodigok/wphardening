@@ -79,8 +79,9 @@ class pluginsWordPress():
             ],
             [
                 'Simple History',
-                'View changes made by users within WordPress. See who created a' +
-                ' page, uploaded an attachment or approved an comment, and more.',
+                'View changes made by users within WordPress. See who' +
+                ' created a page, uploaded an attachment or approved' +
+                ' an comment, and more.',
                 'https://wordpress.org/plugins/simple-history/'
             ],
             [
