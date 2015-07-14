@@ -78,6 +78,13 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
+                'Simple History',
+                'View changes made by users within WordPress. See who' +
+                ' created a page, uploaded an attachment or approved' +
+                ' an comment, and more.',
+                'https://wordpress.org/plugins/simple-history/'
+            ],
+            [
                 'Stream',
                 'Stream is the easiest and safest way to track content' +
                 ' changes happening to your WordPress site and then view' +
