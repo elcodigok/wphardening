@@ -78,6 +78,13 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
+                'Stream',
+                'Stream is the easiest and safest way to track content changes' +
+                ' happening to your WordPress site and then view them in beautifully' +
+                'organized detail.',
+                'https://wordpress.org/plugins/stream/'
+            ],
+            [
                 'WP Security Scan',
                 'Scans your WordPress installation for security' +
                 ' vulnerabilities.',
