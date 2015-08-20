@@ -7,3 +7,4 @@ install:
   - pip install coveralls
 script: nosetests
 after_success: coveralls
+sudo: false
