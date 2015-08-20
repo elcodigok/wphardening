@@ -385,6 +385,10 @@ require_once(ABSPATH . 'wp-settings.php');
             'define(\'DISALLOW_FILE_EDIT\', true);\n\n'
         )
         f.write(
+            self.getComment('Default directory permissions') +
+            'define(\'FS_CHMOD_DIR\', (0755 & ~ umask()));\n\n'
+        )
+        f.write(
             self.getComment('Default file permissions') +
             'define(\'FS_CHMOD_FILE\', (0644 & ~ umask()));\n\n'
         )
