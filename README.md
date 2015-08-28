@@ -28,10 +28,9 @@ Usage
         -r, --remove        Remove files and directory.
         -b, --robots        Create file robots.txt
         -f, --fingerprinting
-                            Deleted fingerprinting WordPress.
+                            Deleted fingerprinting and Version WordPress.
         -t, --timthumb      Find the library TimThumb.
         --wp-config         Wizard generated wp-config.php
-        --delete-version    Deleted version WordPress.
         --plugins           Download Plugins Security.
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for
                             --plugins and --wp-config.
@@ -62,7 +61,7 @@ Create your robots.txt file
 
     $ python wphardening.py -d /home/path/wordpress --robots -v
 
-Remove all fingerprinting
+Remove all fingerprinting and Version
 
     $ python wphardening.py -d /home/path/wordpress --fingerprinting -v
 
@@ -82,17 +81,13 @@ Wizard generated wp-config.php
 
     $ python wphardening.py -d /home/path/wordpress --wp-config
 
-Deleted version WordPress
-
-    $ python wphardening.py -d /home/path/wordpress --delete-version -v
-
 WPHardening update
 
     $ python wphardening.py --update
 
 Use all options
 
-    $ python wphardening.py -d /home/user/wordpress -c -r -f -t --wp-config --delete-version --indexes --plugins -o /home/user/wphardening.log
+    $ python wphardening.py -d /home/user/wordpress -c -r -f -t --wp-config --indexes --plugins -o /home/user/wphardening.log
 
 
 Project Home
