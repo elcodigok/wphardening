@@ -96,10 +96,10 @@ def main():
         "--wp-config", action="store_true", dest="wpconfig",
         help="Wizard generated wp-config.php"
     )
-    group2.add_option(
-        "--delete-version", action="store_true",
-        dest="delete_version", help="Deleted version WordPress."
-    )
+    #group2.add_option(
+        #"--delete-version", action="store_true",
+        #dest="delete_version", help="Deleted version WordPress."
+    #)
     group2.add_option(
         "--plugins", action="store_true", dest="plugins",
         help="Download Plugins Security."
@@ -132,7 +132,7 @@ def main():
 
     if options.loadconf is not None:
         options.path = loadConfWordPress(options.loadconf).getDirectory()
-        options.delete_version = loadConfWordPress(options.loadconf).getDeleteVersion()
+        #options.delete_version = loadConfWordPress(options.loadconf).getDeleteVersion()
         options.chmod = loadConfWordPress(options.loadconf).getChmod()
         options.robots = loadConfWordPress(options.loadconf).getRobots()
         options.finger = loadConfWordPress(options.loadconf).getFingerprinting()
@@ -162,13 +162,14 @@ def main():
     options.path = os.path.abspath(options.path)
     if os.path.exists(options.path):
         if checkWordpress(options.path, options.verbose).isWordPress():
-            if options.delete_version is not None:
-                deleteVersionWordPress(options.path).delete()
+            #if options.delete_version is not None:
+            #    deleteVersionWordPress(options.path).delete()
             if options.chmod is not None:
                 chmodWordPress(options.path, options.verbose).changePermisions()
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
             if options.finger is not None:
+                deleteVersionWordPress(options.path).delete()
                 fingerprintingWordPress(options.path, options.verbose).searchStaticFile()
             if options.wpconfig is not None:
                 if options.proxy is not None:
