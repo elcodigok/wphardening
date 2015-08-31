@@ -45,11 +45,11 @@ class chownWordPress():
         else:
             value_check = self.value.split(":")
             if len(value_check) == 2:
-                #uid = pwd.getpwnam(value_check[0]).pw_uid
                 try:
                     uid = pwd.getpwnam(value_check[0]).pw_uid
                     gid = grp.getgrnam(value_check[1]).gr_gid
                     print uid, gid
+                    return True
                 except KeyError:
                     print "The user or group does not exist on this system."
                     return False
@@ -58,4 +58,7 @@ class chownWordPress():
                 uid = pwd.getpwnam(value_check[0]).pw_uid
                 gid = grp.getgrnam(value_check[0]).gr_gid
                 print uid, gid
-            return True
+                return True
+            else:
+                return False
+            return False
