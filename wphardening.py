@@ -24,6 +24,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 from optparse import OptionParser, OptionGroup
 from lib.checkWordpress import checkWordpress
 from lib.chmodWordPress import chmodWordPress
+from lib.chownWordPress import chownWordPress
 from lib.removeWordPress import removeWordPress
 from lib.robotsWordPress import robotsWordPress
 from lib.deleteVersionWordPress import deleteVersionWordPress
@@ -93,6 +94,10 @@ def main():
         help="Find the library TimThumb."
     )
     group2.add_option(
+        "--chown", action="store", type="string", dest="chown",
+        metavar="user:group", help="Changing file and directory owner."
+    )
+    group2.add_option(
         "--wp-config", action="store_true", dest="wpconfig",
         help="Wizard generated wp-config.php"
     )
@@ -157,6 +162,10 @@ def main():
     options.path = os.path.abspath(options.path)
     if os.path.exists(options.path):
         if checkWordpress(options.path, options.verbose).isWordPress():
+            if options.chown is not None:
+                changeOwner = chownWordPress(options.path, options.chown, options.verbose)
+                if changeOwner.isValid():
+                    changeOwner.changeOwner()
             if options.chmod is not None:
                 chmodWordPress(options.path, options.verbose).changePermisions()
             if options.robots is not None:
