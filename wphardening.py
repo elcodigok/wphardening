@@ -166,7 +166,6 @@ def main():
                 changeOwner = chownWordPress(options.path, options.chown, options.verbose)
                 if changeOwner.isValid():
                     changeOwner.changeOwner()
-                    print "yes"
             if options.chmod is not None:
                 chmodWordPress(options.path, options.verbose).changePermisions()
             if options.robots is not None:

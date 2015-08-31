@@ -40,6 +40,9 @@ class chownWordPress():
         self.mode_verbose = verbose
 
     def isValid(self):
+        """
+        :return: True if successful, False otherwise.
+        """
         if self.value == "":
             return False
         else:
@@ -53,7 +56,7 @@ class chownWordPress():
                 except KeyError:
                     print "The user or group does not exist on this system."
                     return False
-                
+
             elif len(value_check) == 1:
                 self.uid = pwd.getpwnam(value_check[0]).pw_uid
                 self.gid = grp.getgrnam(value_check[0]).gr_gid
@@ -70,16 +73,36 @@ class chownWordPress():
         for r, d, f in os.walk(self.directory):
             os.chown(r, self.uid, self.gid)
             if self.mode_verbose:
-                print colored('\tchown %s:%s ' + r, 'green')%(pwd.getpwuid(self.uid).pw_name, pwd.getpwuid(self.gid).pw_name)
-                logging.info("chown " + pwd.getpwuid(self.uid).pw_name + ":" + pwd.getpwuid(self.gid).pw_name + " " + r)
+                print colored('\tchown %s:%s ' + r, 'green') % (
+                    pwd.getpwuid(self.uid).pw_name,
+                    pwd.getpwuid(self.gid).pw_name)
+                logging.info(
+                    "chown " + pwd.getpwuid(self.uid).pw_name +
+                    ":" + pwd.getpwuid(self.gid).pw_name + " " + r
+                )
             for wpfile in f:
                 os.chown(os.path.join(r, wpfile), self.uid, self.gid)
                 if self.mode_verbose:
-                    print colored('\t\tchown %s:%s ' + wpfile, 'green')%(pwd.getpwuid(self.uid).pw_name, pwd.getpwuid(self.gid).pw_name)
-                    logging.info("chown " + pwd.getpwuid(self.uid).pw_name + ":" + pwd.getpwuid(self.gid).pw_name + " " + r + wpfile)
+                    print colored('\t\tchown %s:%s ' + wpfile, 'green') % (
+                        pwd.getpwuid(self.uid).pw_name,
+                        pwd.getpwuid(self.gid).pw_name)
+                    logging.info(
+                        "chown " + pwd.getpwuid(self.uid).pw_name +
+                        ":" + pwd.getpwuid(self.gid).pw_name + " " + r + wpfile
+                    )
         print colored('\nchown on Directories', 'yellow')
-        print colored('\tAll directories\t %s:%s', 'green')%(pwd.getpwuid(self.uid).pw_name, pwd.getpwuid(self.gid).pw_name)
-        logging.info("All directories " + pwd.getpwuid(self.uid).pw_name + ":" + pwd.getpwuid(self.gid).pw_name)
+        print colored('\tAll directories\t %s:%s', 'green') % (
+            pwd.getpwuid(self.uid).pw_name,
+            pwd.getpwuid(self.gid).pw_name)
+        logging.info(
+            "All directories " + pwd.getpwuid(self.uid).pw_name +
+            ":" + pwd.getpwuid(self.gid).pw_name
+        )
         print colored('\nchown on Files', 'yellow')
-        print colored('\tAll files\t %s:%s', 'green')%(pwd.getpwuid(self.uid).pw_name, pwd.getpwuid(self.gid).pw_name)
-        logging.info("All files " + pwd.getpwuid(self.uid).pw_name + ":" + pwd.getpwuid(self.gid).pw_name)
+        print colored('\tAll files\t %s:%s', 'green') % (
+            pwd.getpwuid(self.uid).pw_name,
+            pwd.getpwuid(self.gid).pw_name)
+        logging.info(
+            "All files " + pwd.getpwuid(self.uid).pw_name +
+            ":" + pwd.getpwuid(self.gid).pw_name
+        )
