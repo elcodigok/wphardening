@@ -75,7 +75,7 @@ class removeWordPress():
             "/lgpl-3.0.txt"
         ]
 
-    def loadPlugins(self):
+    def loadFilePlugins(self):
         for base, dirs, files in os.walk(self.directory+"/wp-content/plugins"):
             for pathFile in self.filesPlugins:
                 if os.path.exists(base + pathFile):
@@ -140,4 +140,4 @@ class removeWordPress():
         #self.deleteThemes()
         #self.deletePlugins()
         #self.deleteStaticFile()
-        self.loadPlugins()
+        self.loadFilePlugins()
