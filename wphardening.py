@@ -163,7 +163,9 @@ def main():
     if os.path.exists(options.path):
         if checkWordpress(options.path, options.verbose).isWordPress():
             if options.chown is not None:
-                if chownWordPress(options.path, options.chown, options.verbose).isValid():
+                changeOwner = chownWordPress(options.path, options.chown, options.verbose)
+                if changeOwner.isValid():
+                    changeOwner.changeOwner()
                     print "yes"
             if options.chmod is not None:
                 chmodWordPress(options.path, options.verbose).changePermisions()
