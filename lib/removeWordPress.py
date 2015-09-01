@@ -128,10 +128,12 @@ class removeWordPress():
         """
         :return: None
         """
-        for base, dirs, files in os.walk(self.directory+"/wp-content/plugins"):
+        for base, dirs, files in os.walk(self.directory + "/wp-content/plugins"):
             for pathFile in self.filesPlugins:
                 if os.path.exists(base + pathFile):
-                    print base + pathFile
+                    os.remove(base + pathFile)
+                    logging.info("Delete: file " + pathFile)
+                    print colored('\tdelete:\tfile ' + pathFile, 'red')
 
     def delete(self):
         """
