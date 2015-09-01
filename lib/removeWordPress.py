@@ -128,7 +128,9 @@ class removeWordPress():
         """
         :return: None
         """
-        for base, dirs, files in os.walk(self.directory + "/wp-content/plugins"):
+        for base, dirs, files in os.walk(
+            self.directory + "/wp-content/plugins"
+        ):
             for pathFile in self.filesPlugins:
                 if os.path.exists(base + pathFile):
                     os.remove(base + pathFile)
@@ -140,9 +142,9 @@ class removeWordPress():
         :return: None
         """
         print colored('\nRemove files by defaults', 'yellow')
-        #self.deleteReadme()
-        #self.deleteLicense()
-        #self.deleteThemes()
-        #self.deletePlugins()
-        #self.deleteStaticFile()
+        self.deleteReadme()
+        self.deleteLicense()
+        self.deleteThemes()
+        self.deletePlugins()
+        self.deleteStaticFile()
         self.deleteFilePlugins()
