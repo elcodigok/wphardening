@@ -66,14 +66,10 @@ class minifyWordPress():
             files = [f for f in files if re.match(self.includes_css, f)]
             for fname in files:
                 f = open(fname, "r").read()
-                #script = f.readlines()
-                #f.close()
-                #f = open(fname, "w")
-                #f.writelines(self.getDateTime() + script)
-                #f.close()
-                print fname
                 data = cssmin(f)
-                print data
+                f = open(fname, "w+b")
+                f.write(data)
+                f.close()
                 if self.mode_verbose:
                     print colored('\tChange content in ' + fname, 'green')
                     logging.info("Change content in " + fname)
