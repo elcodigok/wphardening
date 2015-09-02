@@ -219,7 +219,7 @@ def main():
             if options.remove is not None:
                 removeWordPress(options.path).delete()
             if options.minify is not None:
-                minifyWordPress(options.path, options.verbose).searchStaticFileCSS()
+                minifyWordPress(options.path, options.verbose).minify()
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
