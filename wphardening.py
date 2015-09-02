@@ -35,6 +35,7 @@ from lib.wpconfigWordPress import wpconfigWordPress
 from lib.timthumbWordPress import timthumbWordPress
 from lib.updateWPHardening import updateWPHardening
 from lib.malwareScanWordPress import malwareScanWordPress
+from lib.minifyWordPress import minifyWordPress
 from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
@@ -113,6 +114,10 @@ def main():
     group2.add_option(
         "--indexes", action="store_true", dest="indexes",
         help="It allows you to display the contents of directories."
+    )
+    group2.add_option(
+        "--minify", action="store_true", dest="minify",
+        help="Compressing static file .css and .js"
     )
     group2.add_option(
         "--malware-scan", action="store_true", dest="malwares",
