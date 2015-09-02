@@ -28,13 +28,13 @@ import re
 import datetime
 import logging
 from lib.termcolor import colored
-from minify.cssmin import cssmin
-from minify.jsmin import jsmin
+from lib.minify.cssmin import cssmin
+from lib.minify.jsmin import jsmin
 
 
 class minifyWordPress():
     """
-    This class minify the .js .css static files 
+    This class minify the .js .css static files
     to prevent attacks signature verification.
 
     :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
@@ -54,7 +54,7 @@ class minifyWordPress():
             [fnmatch.translate(x) for x in self.includes_css]
         )
         self.mode_verbose = verbose
-    
+
     def searchStaticFileCSS(self):
         """
         :return: None
@@ -71,8 +71,8 @@ class minifyWordPress():
                 f.write(data)
                 f.close()
                 if self.mode_verbose:
-                    print colored('\tChange content in ' + fname, 'green')
-                    logging.info("Change content in " + fname)
+                    print colored('\tCompress content in ' + fname, 'green')
+                    logging.info("Compress content in " + fname)
         print colored('\nDeleted fingerprinting WordPress', 'yellow')
         logging.info("Fingerprinting: All changes implemented.")
         print colored('\tAll changes implemented.', 'green')
@@ -93,12 +93,15 @@ class minifyWordPress():
                 f.write(data)
                 f.close()
                 if self.mode_verbose:
-                    print colored('\tChange content in ' + fname, 'green')
-                    logging.info("Change content in " + fname)
+                    print colored('\tCompress content in ' + fname, 'green')
+                    logging.info("Compress content in " + fname)
         print colored('\nDeleted fingerprinting WordPress', 'yellow')
         logging.info("Fingerprinting: All changes implemented.")
         print colored('\tAll changes implemented.', 'green')
 
     def minify(self):
+        """
+        :return: None
+        """
         self.searchStaticFileCSS()
         self.searchStaticFileJS()
