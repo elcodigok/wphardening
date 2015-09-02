@@ -76,3 +76,25 @@ class minifyWordPress():
         print colored('\nDeleted fingerprinting WordPress', 'yellow')
         logging.info("Fingerprinting: All changes implemented.")
         print colored('\tAll changes implemented.', 'green')
+
+    def searchStaticFileJSS(self):
+        """
+        :return: None
+        """
+        for root, dirs, files in os.walk(self.directory):
+            dirs[:] = [os.path.join(root, d) for d in dirs]
+            # exclude/include files
+            files = [os.path.join(root, f) for f in files]
+            files = [f for f in files if re.match(self.includes_js, f)]
+            for fname in files:
+                f = open(fname, "r").read()
+                data = cssmin(f)
+                f = open(fname, "w+b")
+                f.write(data)
+                f.close()
+                if self.mode_verbose:
+                    print colored('\tChange content in ' + fname, 'green')
+                    logging.info("Change content in " + fname)
+        print colored('\nDeleted fingerprinting WordPress', 'yellow')
+        logging.info("Fingerprinting: All changes implemented.")
+        print colored('\tAll changes implemented.', 'green')
