@@ -135,6 +135,17 @@ def main():
     )
     parser.add_option_group(group3)
 
+    print "\n"
+    print " __          _______  _    _               _            _  "           
+    print " \ \        / /  __ \| |  | |             | |          (_)            "
+    print "  \ \  /\  / /| |__) | |__| | __ _ _ __ __| | ___ _ __  _ _ __   __ _ "
+    print "   \ \/  \/ / |  ___/|  __  |/ _` | '__/ _` |/ _ \ '_ \| | '_ \ / _` |"
+    print "    \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |"
+    print "     \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |"
+    print "                                                                 __/ |"
+    print "                                                                |___/ "
+    print "\n"
+
     (options, args) = parser.parse_args()
 
     if options.loadconf is not None:
