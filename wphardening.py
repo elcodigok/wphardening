@@ -40,6 +40,8 @@ from lib.minifyWordPress import minifyWordPress
 from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
+
+from lib.cmdLineParser import cmdLineParser
 import os
 import sys
 import urllib2
@@ -143,7 +145,7 @@ def main():
     print "    \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |"
     print "     \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |"
     print "                                                                 __/ |"
-    print "                                                                |___/ "
+    print "          Fortification is a Security Tool for WordPress.       |___/ "
     print "\n"
 
     (options, args) = parser.parse_args()
