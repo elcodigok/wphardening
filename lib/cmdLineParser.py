@@ -22,8 +22,13 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
+import os
+import sys
+import urllib2
+
 from optparse import OptionParser
 from optparse import OptionGroup
+
 from lib.checkWordpress import checkWordpress
 from lib.chmodWordPress import chmodWordPress
 from lib.chownWordPress import chownWordPress
@@ -42,9 +47,6 @@ from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 
-import os
-import sys
-import urllib2
 
 def cmdLineParser():
     usage = "usage: python %prog [options]"
@@ -59,82 +61,83 @@ def cmdLineParser():
         "--update", action="store_true", dest="update",
         default=False, help="Check for WPHardening latest stable version"
     )
-    group1 = OptionGroup(
+    target = OptionGroup(
         parser, "Target",
         "This option must be specified to modify the package WordPress."
     )
-    group1.add_option(
+    target.add_option(
         "-d", "--dir", dest="path",
         help="**REQUIRED** - Working Directory.", metavar="DIRECTORY"
     )
-    group1.add_option(
+    target.add_option(
         "--load-conf", dest="loadconf", metavar="FILE",
         help="Load file configuration."
     )
-    parser.add_option_group(group1)
 
-    group2 = OptionGroup(
+    hardening = OptionGroup(
         parser, "Hardening", "Different tools to hardening WordPress."
     )
-    group2.add_option(
+    hardening.add_option(
         "-c", "--chmod", action="store_true", dest="chmod",
         help="Chmod 755 in directory and 644 in files."
     )
-    group2.add_option(
+    hardening.add_option(
         "-r", "--remove", action="store_true", dest="remove",
         help="Remove files and directory."
     )
-    group2.add_option(
+    hardening.add_option(
         "-b", "--robots", action="store_true", dest="robots",
         help="Create file robots.txt"
     )
-    group2.add_option(
+    hardening.add_option(
         "-f", "--fingerprinting", action="store_true",
         dest="finger", help="Deleted fingerprinting WordPress."
     )
-    group2.add_option(
+    hardening.add_option(
         "-t", "--timthumb", action="store_true", dest="timthumb",
         help="Find the library TimThumb."
     )
-    group2.add_option(
+    hardening.add_option(
         "--chown", action="store", type="string", dest="chown",
         metavar="user:group", help="Changing file and directory owner."
     )
-    group2.add_option(
+    hardening.add_option(
         "--wp-config", action="store_true", dest="wpconfig",
         help="Wizard generated wp-config.php"
     )
-    group2.add_option(
+    hardening.add_option(
         "--plugins", action="store_true", dest="plugins",
         help="Download Plugins Security."
     )
-    group2.add_option(
+    hardening.add_option(
         "--proxy", action="store", type="string", dest="proxy",
         help="Use a HTTP proxy to connect to the target url for --plugins and \
 --wp-config."
     )
-    group2.add_option(
+    hardening.add_option(
         "--indexes", action="store_true", dest="indexes",
         help="It allows you to display the contents of directories."
     )
-    group2.add_option(
+    hardening.add_option(
         "--minify", action="store_true", dest="minify",
         help="Compressing static file .css and .js"
     )
-    group2.add_option(
+    hardening.add_option(
         "--malware-scan", action="store_true", dest="malwares",
         help="Malware Scan in WordPress project."
     )
-    parser.add_option_group(group2)
 
-    group3 = OptionGroup(
+    miscellaneous = OptionGroup(
         parser, "Miscellaneous",
     )
-    group3.add_option(
+    miscellaneous.add_option(
         "-o", "--output", help="Write log report to FILE.log", metavar="FILE",
         dest="output"
     )
-    parser.add_option_group(group3)
+    
+    parser.add_option_group(target)
+    parser.add_option_group(hardening)
+    parser.add_option_group(miscellaneous)
 
     print "\n"
     print " __          _______  _    _               _            _  "           
