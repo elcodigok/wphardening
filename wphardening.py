@@ -21,7 +21,8 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-from optparse import OptionParser, OptionGroup
+from optparse import OptionParser
+from optparse import OptionGroup
 from lib.checkWordpress import checkWordpress
 from lib.chmodWordPress import chmodWordPress
 from lib.chownWordPress import chownWordPress
@@ -45,7 +46,7 @@ import urllib2
 
 
 def main():
-    usage = "usage: %prog [options] arg"
+    usage = "usage: python %prog [options]"
     version = colored('WPHardening', 'green') + ' version' + \
         colored(' 1.5-dev', 'yellow')
     parser = OptionParser(usage, version=version)
