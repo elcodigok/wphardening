@@ -8,6 +8,20 @@ Usage
 =====
 
     $ python wphardening.py -h 
+
+     __          _______  _    _               _            _
+     \ \        / /  __ \| |  | |             | |          (_)
+      \ \  /\  / /| |__) | |__| | __ _ _ __ __| | ___ _ __  _ _ __   __ _
+       \ \/  \/ / |  ___/|  __  |/ _` | '__/ _` |/ _ \ '_ \| | '_ \ / _` |
+        \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |
+         \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |
+                                                                     __/ |
+              Fortification is a Security Tool for WordPress.       |___/
+    
+
+
+    Usage: python wphardening.py [options]
+
     Options:
       --version             show program's version number and exit
       -h, --help            show this help message and exit
@@ -16,27 +30,29 @@ Usage
 
       Target:
         This option must be specified to modify the package WordPress.
-    
+
         -d DIRECTORY, --dir=DIRECTORY
                             **REQUIRED** - Working Directory.
         --load-conf=FILE    Load file configuration.
 
       Hardening:
         Different tools to hardening WordPress.
-    
+
         -c, --chmod         Chmod 755 in directory and 644 in files.
         -r, --remove        Remove files and directory.
         -b, --robots        Create file robots.txt
         -f, --fingerprinting
-                            Deleted fingerprinting and Version WordPress.
+                            Deleted fingerprinting WordPress.
         -t, --timthumb      Find the library TimThumb.
+        --chown=user:group  Changing file and directory owner.
         --wp-config         Wizard generated wp-config.php
         --plugins           Download Plugins Security.
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for
                             --plugins and --wp-config.
         --indexes           It allows you to display the contents of directories.
+        --minify            Compressing static file .css and .js
         --malware-scan      Malware Scan in WordPress project.
-    
+
       Miscellaneous:
         -o FILE, --output=FILE
                             Write log report to FILE.log
