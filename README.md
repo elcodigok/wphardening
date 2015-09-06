@@ -1,4 +1,4 @@
-WPHardening
+WPHardening [![Build Status](https://travis-ci.org/elcodigok/wphardening.svg?branch=develop)](https://travis-ci.org/elcodigok/wphardening)
 ===========
 
 WPHardening fortification is a security tool for WordPress
