@@ -8,6 +8,6 @@ install:
   - pip install pep8
 script:
   - nosetests
-  - pep8 wphardening
+  - pep8
 after_success: coveralls
 sudo: false
