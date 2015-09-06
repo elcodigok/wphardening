@@ -50,16 +50,17 @@ from lib.registerLog import registerLog
 
 def cmdBanner():
     """Banner printing."""
-
     print "\n"
-    print " __          _______  _    _               _            _             "
-    print " \ \        / /  __ \| |  | |             | |          (_)            "
-    print "  \ \  /\  / /| |__) | |__| | __ _ _ __ __| | ___ _ __  _ _ __   __ _ "
-    print "   \ \/  \/ / |  ___/|  __  |/ _` | '__/ _` |/ _ \ '_ \| | '_ \ / _` |"
-    print "    \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |"
-    print "     \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |"
-    print "                                                                 __/ |"
-    print "          Fortification is a Security Tool for WordPress.       |___/ "
+    print """
+     __          _______  _    _               _            _
+     \ \        / /  __ \| |  | |             | |          (_)
+      \ \  /\  / /| |__) | |__| | __ _ _ __ __| | ___ _ __  _ _ __   __ _
+       \ \/  \/ / |  ___/|  __  |/ _` | '__/ _` |/ _ \ '_ \| | '_ \ / _` |
+        \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |
+         \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |
+                                                                     __/ |
+              Fortification is a Security Tool for WordPress.       |___/
+    """
     print "\n"
 
 
@@ -150,7 +151,9 @@ def cmdLineParser():
         options.path = loadConfWordPress(options.loadconf).getDirectory()
         options.chmod = loadConfWordPress(options.loadconf).getChmod()
         options.robots = loadConfWordPress(options.loadconf).getRobots()
-        options.finger = loadConfWordPress(options.loadconf).getFingerprinting()
+        options.finger = loadConfWordPress(
+            options.loadconf
+        ).getFingerprinting()
         options.wpconfig = loadConfWordPress(options.loadconf).getWpConfig()
         options.indexes = loadConfWordPress(options.loadconf).getIndexes()
         options.timthumb = loadConfWordPress(options.loadconf).getTimthumb()
@@ -182,20 +185,26 @@ def cmdLineParser():
         if checkWordpress(options.path, options.verbose).isWordPress():
 
             if options.chown is not None:
-                changeOwner = chownWordPress(options.path, options.chown, options.verbose)
+                changeOwner = chownWordPress(
+                    options.path, options.chown, options.verbose
+                )
 
                 if changeOwner.isValid():
                     changeOwner.changeOwner()
 
             if options.chmod is not None:
-                chmodWordPress(options.path, options.verbose).changePermisions()
+                chmodWordPress(
+                    options.path, options.verbose
+                ).changePermisions()
 
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
 
             if options.finger is not None:
                 deleteVersionWordPress(options.path).delete()
-                fingerprintingWordPress(options.path, options.verbose).searchStaticFile()
+                fingerprintingWordPress(
+                    options.path, options.verbose
+                ).searchStaticFile()
 
             if options.wpconfig is not None:
 
