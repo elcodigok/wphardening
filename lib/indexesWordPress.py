@@ -46,13 +46,18 @@ class indexesWordPress():
             '\n', '# Avoid Full Path Disclosure.\n',
             'php_flag display_errors off', '\n',
             '\n', '# Avoid the browser access to a folder without index.\n',
-            'Options All -Indexes',
-            '\n', '<Files .htaccess>',
+            'Options All -Indexes\n',
+            '\n', '# Protection .htaccess file.\n',
+            '<Files .htaccess>',
             '\n', '\torder allow,deny',
             '\n', '\tdeny from all',
             '\n', '</Files>', '\n',
-            '\n',
-            '# The rise of bots, spammers, crack attacks and libwww-perl.\n',
+            '\n', '# Protection wp-config.php file.\n',
+            '<Files wp-config.php>',
+            '\n', '\torder allow,deny',
+            '\n', '\tdeny from all',
+            '\n', '</Files>', '\n',
+            '\n', '# The rise of bots, spammers, crack and libwww-perl.\n',
             'RewriteEngine On\n',
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
             '\n', 'RewriteRule .* - [F,L]',
@@ -64,11 +69,15 @@ class indexesWordPress():
             '\n', 'RewriteCond %{QUERY_STRING} http:    [NC,OR]',
             '\n', 'RewriteCond %{QUERY_STRING} https:   [NC,OR]',
             '\n', 'RewriteCond %{QUERY_STRING} mosConfig [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ^.*(%22|%27|%3C|%3E|%5C|%7B|%7C).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127.0).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ^.*(globals|encode|config|loopback).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ^.*(request|select|insert|union|declare|drop).* [NC]',
-            '\n', 'RewriteRule ^(.*)$ - [F,L]'            
+            '\n', 'RewriteCond %{QUERY_STRING} ' +
+            '^.*(%22|%27|%3C|%3E|%5C|%7B|%7C).* [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ' +
+            '^.*(%0|%A|%B|%C|%D|%E|%F|127.0).* [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ' +
+            '^.*(globals|encode|config|loopback).* [NC,OR]',
+            '\n', 'RewriteCond %{QUERY_STRING} ' +
+            '^.*(request|select|insert|union|declare|drop).* [NC]',
+            '\n', 'RewriteRule ^(.*)$ - [F,L]'
         ]
         self.mode_verbose = verbose
 

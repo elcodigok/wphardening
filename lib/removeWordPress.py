@@ -42,7 +42,37 @@ class removeWordPress():
         self.license = ["/licencia.txt", "/license.txt"]
         self.themes = [
             "/wp-content/themes/twentytwelve/",
-            "/wp-content/themes/twentythirteen/"
+            "/wp-content/themes/twentythirteen/",
+            "/wp-content/themes/twentyfourteen/"
+        ]
+        self.static_file = [
+            "/wp-includes/images/crystal/license.txt",
+            "/wp-includes/images/crystal/license.txt",
+            "/wp-includes/js/plupload/license.txt",
+            "/wp-includes/js/plupload/changelog.txt",
+            "/wp-includes/js/tinymce/license.txt",
+            "/wp-includes/js/tinymce/plugins/spellchecker/changelog.txt",
+            "/wp-includes/js/swfupload/license.txt",
+            "/wp-includes/ID3/license.txt",
+            "/wp-includes/ID3/readme.txt",
+            "/wp-includes/ID3/license.commercial.txt"
+        ]
+        self.plugins = [
+            "/wp-content/plugins/hello.php"
+        ]
+        self.filesPlugins = [
+            "/readme.txt",
+            "/README.txt",
+            "/README.md",
+            "/readme.md",
+            "/license.txt",
+            "/LICENSE",
+            "/changelog.txt",
+            "/ChangeLog.txt",
+            "/CONTRIBUTING.md",
+            "/contributing.md",
+            "/gpl-3.0.txt",
+            "/lgpl-3.0.txt"
         ]
 
     def deleteThemes(self):
@@ -74,6 +104,39 @@ class removeWordPress():
                 logging.info("Delete: file " + pathLicese)
                 print colored('\tdelete:\tfile ' + pathLicese, 'red')
 
+    def deleteStaticFile(self):
+        """
+        :return: None
+        """
+        for pathFile in self.static_file:
+            if os.path.exists(self.directory + pathFile):
+                os.remove(self.directory + pathFile)
+                logging.info("Delete: file " + pathFile)
+                print colored('\tdelete:\tfile ' + pathFile, 'red')
+
+    def deletePlugins(self):
+        """
+        :return: None
+        """
+        for pathPlugins in self.plugins:
+            if os.path.exists(self.directory + pathPlugins):
+                os.remove(self.directory + pathPlugins)
+                logging.info("Delete: plugin " + pathPlugins)
+                print colored('\tdelete:\tplugin ' + pathPlugins, 'red')
+
+    def deleteFilePlugins(self):
+        """
+        :return: None
+        """
+        for base, dirs, files in os.walk(
+            self.directory + "/wp-content/plugins"
+        ):
+            for pathFile in self.filesPlugins:
+                if os.path.exists(base + pathFile):
+                    os.remove(base + pathFile)
+                    logging.info("Delete: file " + pathFile)
+                    print colored('\tdelete:\tfile ' + pathFile, 'red')
+
     def delete(self):
         """
         :return: None
@@ -82,3 +145,6 @@ class removeWordPress():
         self.deleteReadme()
         self.deleteLicense()
         self.deleteThemes()
+        self.deletePlugins()
+        self.deleteStaticFile()
+        self.deleteFilePlugins()

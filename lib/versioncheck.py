@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-wphardening.py
+versionchek.py
 
 Copyright 2013 Daniel Maldonado
 
@@ -21,9 +21,12 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-from lib import versioncheck
-from lib.cmdLineParser import cmdLineParser
 
+import sys
 
-if __name__ == "__main__":
-    cmdLineParser()
+PYVERSION = sys.version.split()[0]
+
+if PYVERSION >= "3" or PYVERSION < "2.6":
+    exit("[CRITICAL] incompatible Python version detected ('%s'). For " +
+         "successfully running sqlmap you'll have to use version 2.6 " +
+         "or 2.7 (visit 'http://www.python.org/download/')" % PYVERSION)

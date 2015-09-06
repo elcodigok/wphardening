@@ -78,45 +78,18 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
-                'Limit Login Attempts',
-                'Limit rate of login attempts, including by way of cookies,' +
-                ' for each IP. Fully customizable.',
-                'https://wordpress.org/extend/plugins/limit-login-attempts/'
+                'Simple History',
+                'View changes made by users within WordPress. See who' +
+                ' created a page, uploaded an attachment or approved' +
+                ' an comment, and more.',
+                'https://wordpress.org/plugins/simple-history/'
             ],
             [
-                'One-Time Password',
-                'One-time password system conform RFC 2289 to protect your' +
-                ' weblog in less trustworthy environments, like internet' +
-                ' cafes.',
-                'https://wordpress.org/extend/plugins/one-time-password/'
-            ],
-            [
-                'UPDATE NOTIFICATIONS',
-                'Check if your installation of wordpress updates are' +
-                ' (core wordpress, themes and plugins). If so send an email.',
-                'https://wordpress.org/extend/plugins/update-notifications/'
-            ],
-            [
-                'User Locker',
-                'This plugin locks user account after given number' +
-                ' of incorrect login attempts. This makes brute force' +
-                ' and dictionary attacks nearly impossible.',
-                'https://wordpress.org/extend/plugins/user-locker/'
-            ],
-            [
-                'WordPress File Monitor Plus',
-                'Monitor files under your WP installation for changes.' +
-                ' When a change occurs, be notified via email.' +
-                ' This plugin is a fork of WordPress File Monitor.',
-                'https://wordpress.org/extend/plugins/' +
-                'wordpress-file-monitor-plus/'
-            ],
-            [
-                'WP Login Security 2',
-                'Whitelist User IP addresses. If a user logs in from an' +
-                ' unknown IP the plugin sends an email to the user and' +
-                ' optionally the admin with a one-time key.',
-                'https://wordpress.org/extend/plugins/wp-login-security-2/'
+                'Stream',
+                'Stream is the easiest and safest way to track content' +
+                ' changes happening to your WordPress site and then view' +
+                ' them in beautifully organized detail.',
+                'https://wordpress.org/plugins/stream/'
             ],
             [
                 'WP Security Scan',

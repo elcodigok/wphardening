@@ -69,6 +69,8 @@ class wpconfigWordPress():
         self.setMemoryLimit()
         self.setWpCron()
         self.setSslCertificate()
+        self.setMultisite()
+        self.setUpdateCore()
         self.getCompletConfig()
 
     def setDbName(self):
@@ -173,6 +175,30 @@ class wpconfigWordPress():
             self.sslcertificate = 'false'
         else:
             self.sslcertificate = 'false'
+
+    def setMultisite(self):
+        """
+        :return: None
+        """
+        value = raw_input('\tEnable Multisite? [y/n] > ').lower()
+        if value == 'y':
+            self.multisite = 'true'
+        elif value == 'n':
+            self.multisite = 'false'
+        else:
+            self.multisite = 'false'
+
+    def setUpdateCore(self):
+        """
+        :return: None
+        """
+        value = raw_input('\tAuto update Core? [y/n] > ').lower()
+        if value == 'y':
+            self.updateCore = 'true'
+        elif value == 'n':
+            self.updateCore = 'false'
+        else:
+            self.updateCore = 'false'
 
     def getCompletConfig(self):
         """
@@ -331,6 +357,14 @@ require_once(ABSPATH . 'wp-settings.php');
             'define(\'FORCE_SSL_ADMIN\', ' + self.sslcertificate + ');\n\n'
         )
         f.write(
+            self.getComment('Enable Multisite / Network Ability') +
+            'define(\'WP_ALLOW_MULTISITE\', ' + self.multisite + ');\n\n'
+        )
+        f.write(
+            self.getComment('Disable Automatic Updates') +
+            'define(\'WP_AUTO_UPDATE_CORE\', ' + self.updateCore + ');\n\n'
+        )
+        f.write(
             self.getComment('For developers: WordPress debugging mode') +
             'define(\'WP_DEBUG\', false);\n\n'
         )
@@ -349,6 +383,14 @@ require_once(ABSPATH . 'wp-settings.php');
         f.write(
             self.getComment('Disable Editing of Plugin & Theme Files') +
             'define(\'DISALLOW_FILE_EDIT\', true);\n\n'
+        )
+        f.write(
+            self.getComment('Default directory permissions') +
+            'define(\'FS_CHMOD_DIR\', (0755 & ~ umask()));\n\n'
+        )
+        f.write(
+            self.getComment('Default file permissions') +
+            'define(\'FS_CHMOD_FILE\', (0644 & ~ umask()));\n\n'
         )
         f.write('define(\'DISALLOW_FILE_MODS\', true);\n\n')
         f.write('define(\'DISALLOW_UNFILTERED_HTML\', true);\n\n')
