@@ -32,7 +32,7 @@ from lib.termcolor import colored
 
 class fingerprintingWordPress():
     """
-    This class modifies the .js .css .txt and .scss static files 
+    This class modifies the .js .css .txt and .scss static files
     to prevent attacks signature verification.
 
     :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)

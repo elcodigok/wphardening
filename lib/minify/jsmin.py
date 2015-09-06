@@ -9,15 +9,15 @@
 #
 # Copyright (c) 2002 Douglas Crockford  (www.crockford.com)
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy of
-# this software and associated documentation files (the "Software"), to deal in
-# the Software without restriction, including without limitation the rights to
-# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-# of the Software, and to permit persons to whom the Software is furnished to do
-# so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
 #
 # The Software shall be used for Good, not Evil.
 #
@@ -32,6 +32,7 @@
 
 from StringIO import StringIO
 
+
 def jsmin(js):
     ins = StringIO(js)
     outs = StringIO()
@@ -41,26 +42,33 @@ def jsmin(js):
         str = str[1:]
     return str
 
+
 def isAlphanum(c):
     """return true if the character is a letter, digit, underscore,
            dollar sign, or non-ASCII character.
     """
     return ((c >= 'a' and c <= 'z') or (c >= '0' and c <= '9') or
-            (c >= 'A' and c <= 'Z') or c == '_' or c == '$' or c == '\\' or (c is not None and ord(c) > 126));
+            (c >= 'A' and c <= 'Z') or c == '_' or c == '$' or c == '\\' or
+            (c is not None and ord(c) > 126))
+
 
 class UnterminatedComment(Exception):
     pass
 
+
 class UnterminatedStringLiteral(Exception):
     pass
 
+
 class UnterminatedRegularExpression(Exception):
     pass
+
 
 class JavascriptMinify(object):
 
     def _outA(self):
         self.outstream.write(self.theA)
+
     def _outB(self):
         self.outstream.write(self.theB)
 
@@ -71,11 +79,12 @@ class JavascriptMinify(object):
         """
         c = self.theLookahead
         self.theLookahead = None
-        if c == None:
+
+        if c is None:
             c = self.instream.read(1)
         if c >= ' ' or c == '\n':
             return c
-        if c == '': # EOF
+        if c == '':
             return '\000'
         if c == '\r':
             return '\n'
@@ -116,7 +125,8 @@ class JavascriptMinify(object):
            2   Copy B to A. Get the next B. (Delete A).
            3   Get the next B. (Delete B).
            action treats a string as a single character. Wow!
-           action recognizes a regular expression if it is preceded by ( or , or =.
+           action recognizes a regular expression if it is preceded
+           by ( or , or =.
         """
         if action <= 1:
             self._outA()
@@ -134,7 +144,6 @@ class JavascriptMinify(object):
                     if self.theA == '\\':
                         self._outA()
                         self.theA = self._get()
-
 
         if action <= 3:
             self.theB = self._next()
@@ -159,11 +168,11 @@ class JavascriptMinify(object):
                     self._outA()
                 self.theB = self._next()
 
-
     def _jsmin(self):
         """Copy the input to the output, deleting the characters which are
            insignificant to JavaScript. Comments will be removed. Tabs will be
-           replaced with spaces. Carriage returns will be replaced with linefeeds.
+           replaced with spaces. Carriage returns will be replaced with
+           linefeeds.
            Most spaces and linefeeds will be removed.
         """
         self.theA = '\n'

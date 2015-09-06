@@ -4,7 +4,7 @@
 # `cssmin.py` - A Python port of the YUI CSS compressor.
 
 
-from StringIO import StringIO # The pure-Python StringIO supports unicode.
+from StringIO import StringIO
 import re
 
 
@@ -52,7 +52,7 @@ def remove_unnecessary_whitespace(css):
 
         """
         Prevents 'p :link' from becoming 'p:link'.
-        
+
         Translates 'p :link' into 'p ___PSEUDOCLASSCOLON___link'; this is
         translated back again later.
         """
@@ -141,13 +141,17 @@ def condense_floating_points(css):
 def condense_hex_colors(css):
     """Shorten colors from #AABBCC to #ABC where possible."""
 
-    regex = re.compile(r"([^\"'=\s])(\s*)#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])")
+    regex = re.compile(
+        r"([^\"'=\s])(\s*)#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])"
+        "([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])"
+    )
     match = regex.search(css)
     while match:
         first = match.group(3) + match.group(5) + match.group(7)
         second = match.group(4) + match.group(6) + match.group(8)
         if first.lower() == second.lower():
-            css = css.replace(match.group(), match.group(1) + match.group(2) + '#' + first)
+            css = css.replace(
+                match.group(), match.group(1) + match.group(2) + '#' + first)
             match = regex.search(css, match.end() - 3)
         else:
             match = regex.search(css, match.end())
@@ -182,13 +186,12 @@ def wrap_css_lines(css, line_length):
     return '\n'.join(lines)
 
 
-def cssmin(css, wrap = None):
+def cssmin(css, wrap=None):
     css = remove_comments(css)
     css = condense_whitespace(css)
     # A pseudo class for the Box Model Hack
     # (see http://tantek.com/CSS/Examples/boxmodelhack.html)
     css = css.replace('"\\"}\\""', "___PSEUDOCLASSBMH___")
-    #css = remove_unnecessary_whitespace(css)
     css = remove_unnecessary_semicolons(css)
     css = condense_zero_units(css)
     css = condense_multidimensional_zeros(css)
