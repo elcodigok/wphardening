@@ -73,67 +73,89 @@ $ pip install -r requirements.txt
 Examples
 --------
 
-Check a WordPress Project
+### Check a WordPress Project
+
+Before using the tool, we must ensure that our working directory is **WordPress**.
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress -v
 ```
 
-Change permissions
+### Change permissions
+
+This option is to add the correct permissions to files and directories.
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --chmod -v
 ```
 
-Remove files that are not used
+### Remove files that are not used
+
+Part of the fortification of any system is to remove those files, directories or components required.
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --remove -v
 ```
 
-Create your robots.txt file
+### Create your robots.txt file
+
+WordPress default does not incorporate the robots.txt file with this option poemos customize our robots.txt
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --robots -v
 ```
 
-Remove all fingerprinting and Version
+For more information [robots.txt](http://www.robotstxt.org/)
+
+### Remove all fingerprinting and Version
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --fingerprinting -v
 ```
 
-Check a TimThumb library
+### Check a TimThumb library
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --timthumb -v
 ```
 
-Create Index file
+### Create Index file
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --indexes -v
 ```
 
-Download Plugins security
+### Download Plugins security
+
+The following is a list of the most commonly used security plugins that you can download automatically:
+
+ * [AntiVirus](https://wordpress.org/extend/plugins/antivirus/)
+ * [Bad Behavior](https://wordpress.org/extend/plugins/bad-behavior/)
+ * [Block Bad Queries](https://wordpress.org/extend/plugins/block-bad-queries/)
+ * [Exploit Scanner](https://wordpress.org/extend/plugins/exploit-scanner/)
+ * [Latch](https://wordpress.org/plugins/latch/)
+ * [Simple History](https://wordpress.org/plugins/simple-history/)
+ * [Stream](https://wordpress.org/plugins/stream/)
+ * [WP Security Scan](https://wordpress.org/extend/plugins/wp-security-scan/)
+ * [WP-DBManager](https://wordpress.org/extend/plugins/wp-dbmanager/)
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --plugins
 ```
 
-Wizard generated wp-config.php
+### Wizard generated wp-config.php
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --wp-config
 ```
 
-WPHardening update
+### WPHardening update
 
 ```bash
 $ python wphardening.py --update
 ```
 
-Use all options
+### Use all options
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress -c -r -f -t --wp-config --indexes --plugins -o /home/user/wphardening.log
