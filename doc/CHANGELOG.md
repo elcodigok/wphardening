@@ -1,6 +1,32 @@
 Changelog
 =========
 
+v1.5
+----
+
+- Fix #10 - Separate Class for menu.
+- Fix #21 - Compressing static files.
+- Fix #38 - Improve updateWPHardening class.
+- Fix #49 - Improve malware scanner.
+- Fix #50 - Changing file and directory owner. --chown
+- Fix #51 - Unify options --fingerprinting and --delete-version
+- Fix #53 - Implement option WP_ALLOW_MULTISITE
+- Fix #55 - Remove statics files.
+- Fix #56 - Remove Full Path Disclosure.
+- Fix #57 - Remove Plugins readme.txt file.
+- Fix #61 - Debug wordpress.fuzz.txt list.
+- Fix #64 - Enumeration Malware scan.
+- Fix #65 - Protection wp-config.php file.
+- Fix #66 - Disable automatic updates.
+- Fix #67 - Debug list of recommended plugins.ç
+- Fix #68 - Remove Theme twentyfourteen.
+- Fix #71 - Stream recommended plugin.
+- Fix #72 - Simple History recommended plugin.
+- Fix #73 - Override of default file permissions in wp-config.php
+- Fix #77 - Integration with Travis CI.
+- Fix #78 - Integration with Coveralls.
+- Normalized Source Code to PEP8.
+.
 v1.4 (2014-11-29)
 -----------------
 
