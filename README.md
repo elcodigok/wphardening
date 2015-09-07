@@ -3,9 +3,12 @@ WPHardening [![Build Status](https://travis-ci.org/elcodigok/wphardening.svg?bra
 
 WPHardening fortification is a security tool for WordPress
 
+**❮ NOTE ❯** This tool releases new versions on a regular basis. Make sure to update your dependencies frequently to get the latest version. Check out the [changelog](https://github.com/elcodigok/wphardening/releases) or [CHANGELOG.md](https://github.com/elcodigok/wphardening/blob/master/doc/CHANGELOG.md) to learn about the new features.
+
+-----
 
 Usage
-=====
+-----
 
     $ python wphardening.py -h 
 
@@ -58,67 +61,97 @@ Usage
                             Write log report to FILE.log
 
 
+Installation
+------------
+
+Installing WPHardening requires you to execute one console command:
+
+```bash
+$ pip install -r requirements.txt
+```
+
 Examples
-========
+--------
 
 Check a WordPress Project
 
-    $ python wphardening.py -d /home/path/wordpress -v
+```bash
+$ python wphardening.py -d /home/path/to/wordpress -v
+```
 
 Change permissions
 
-    $ python wphardening.py -d /home/path/wordpress --chmod -v
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --chmod -v
+```
 
 Remove files that are not used
 
-    $ python wphardening.py -d /home/path/wordpress --remove -v
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --remove -v
+```
 
 Create your robots.txt file
 
-    $ python wphardening.py -d /home/path/wordpress --robots -v
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --robots -v
+```
 
 Remove all fingerprinting and Version
 
-    $ python wphardening.py -d /home/path/wordpress --fingerprinting -v
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --fingerprinting -v
+```
 
 Check a TimThumb library
 
-    $ python wphardening.py -d /home/path/wordpress --timthumb -v
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --timthumb -v
+```
 
 Create Index file
 
-    $ python wphardening.py -d /home/path/wordpress --indexes -v
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --indexes -v
+```
 
 Download Plugins security
 
-    $ python wphardening.py -d /home/path/wordpress --plugins
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --plugins
+```
 
 Wizard generated wp-config.php
 
-    $ python wphardening.py -d /home/path/wordpress --wp-config
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --wp-config
+```
 
 WPHardening update
 
-    $ python wphardening.py --update
+```bash
+$ python wphardening.py --update
+```
 
 Use all options
 
-    $ python wphardening.py -d /home/user/wordpress -c -r -f -t --wp-config --indexes --plugins -o /home/user/wphardening.log
-
+```bash
+$ python wphardening.py -d /home/path/to/wordpress -c -r -f -t --wp-config --indexes --plugins -o /home/user/wphardening.log
+```
 
 Project Home
-============
+------------
 
 www.caceriadespammers.com.ar
 
 
 Git Repository
-==============
+--------------
 
 https://github.com/elcodigok/wphardening
 
 
 Issues
-======
+------
 
 https://github.com/elcodigok/wphardening/issues

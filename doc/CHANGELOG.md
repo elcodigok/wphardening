@@ -26,11 +26,12 @@ v1.5
 - Fix #77 - Integration with Travis CI.
 - Fix #78 - Integration with Coveralls.
 - Normalized Source Code to PEP8.
-.
+
+
 v1.4 (2014-11-29)
 -----------------
 
-- Add control Libwww-perl
+- Add control Libwww-perl.
 - Optimization source code.
 - New set default vales in --wp-config
 - Add Query string Exploits.
@@ -44,6 +45,7 @@ v1.4 (2014-11-29)
 - Avoid Full Path Disclosure.
 - New structure to eliminate themes.
 - Create new options --load-conf
+
 
 v1.3 (2014-07-31)
 -----------------
@@ -62,6 +64,7 @@ v1.3 (2014-07-31)
 - Full functionality with verbose mode.
 - WPHardening compatible with WordPress 3.9, 3.9.1 and 3.9.2
 
+
 v1.2 (2014-03-16)
 -----------------
 
@@ -73,6 +76,7 @@ v1.2 (2014-03-16)
 - chmod 0640 to the file wp-config-wphardening.php
 - FORCE_SSL_LOGIN and FORCE_SSL_ADMIN to the file wp-config-wphardening.php
 
+
 v1.1 (2013-05-02)
 -----------------
 
@@ -81,6 +85,7 @@ v1.1 (2013-05-02)
 - New record of activities in log file.
 - New --wp-config option to generate the configuration file.
 - Entering the URL option --robots
+
 
 v1.0 (2013-04-12)
 ------------------
