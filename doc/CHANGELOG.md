@@ -6,35 +6,35 @@ v1.5
 
 ### Featured
 
-- Compressing static files (Fix #21).
-- Changing file and directory owner. --chown (Fix #50).
-- Implement option WP_ALLOW_MULTISITE (Fix #53).
-- Remove Plugins readme.txt file (Fix #57).
-- Enumeration Malware scan (Fix #64).
-- Disable automatic updates (Fix #66).
-- Remove Theme twentyfourteen (Fix #68).
-- Stream recommended plugin (Fix #71).
-- Simple History recommended plugin (Fix #72).
-- Override of default file permissions in wp-config.php (Fix #73).
-- Integration with Travis CI (Fix #77).
-- Integration with Coveralls (Fix #78).
+- Compressing static files *.css and *.js --minify (FIX #21).
+- Changing file and directory Owner. --chown (FIX #50).
+- Implement option WP_ALLOW_MULTISITE in wp-config.php (FIX #53).
+- Remove Plugins readme.txt file (FIX #57).
+- Enumeration Malware Scan (FIX #64).
+- Disable automatic updates (FIX #66).
+- Remove Theme Twentyfourteen (FIX #68).
+- Stream recommended plugin (FIX #71).
+- Simple History recommended plugin (FIX #72).
+- Override of default file permissions in wp-config.php (FIX #73).
+- Integration with Travis CI (FIX #77).
+- Integration with Coveralls (FIX #78).
 
 ### Improvement
 
-- Separate Class for menu (Fix #10).
-- Improve malware scanner (Fix #49).
-- Unify options --fingerprinting and --delete-version (Fix #51).
-- Remove statics files (Fix #55).
-- Protection wp-config.php file (Fix #65).
-- Debug list of recommended plugins (Fix #67).
+- Separate Class for menu (FIX #10).
+- Improve malware scanner (FIX #49).
+- Unify options --fingerprinting and --delete-version (FIX #51).
+- Remove statics files (FIX #55).
+- Protection wp-config.php file with .htaccess (FIX #65).
+- Debug list of recommended plugins (FIX #67).
 - Normalized Source Code to PEP8.
 - WPHardening compatible with WordPress 4.1.1, 4.1.2, 4.2, 4.2.1, 4.2.2, 4.2.3, 4.2.4 and 4.3
 
 ### Bug
 
-- Improve updateWPHardening class (Fix #38).
-- Remove Full Path Disclosure (Fix #56).
-- Debug wordpress.fuzz.txt list (Fix #61).
+- Improve updateWPHardening class (FIX #38).
+- Remove Full Path Disclosure (FIX #56).
+- Debug data/wordpress.fuzz.txt list (FIX #61).
 
 
 v1.4 (2014-11-29)
