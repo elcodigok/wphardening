@@ -1,6 +1,7 @@
-<img src="https://raw.githubusercontent.com/elcodigok/wphardening/develop/doc/images/logo-wphardening-v1.png" alt="WPHardening" title="WPHardening" align="right" />
 WPHardening [![Build Status](https://travis-ci.org/elcodigok/wphardening.svg?branch=master)](https://travis-ci.org/elcodigok/wphardening) [![Coverage Status](https://coveralls.io/repos/elcodigok/wphardening/badge.svg?branch=master&service=github)](https://coveralls.io/github/elcodigok/wphardening?branch=master)
 ===========
+
+<img src="https://raw.githubusercontent.com/elcodigok/wphardening/develop/doc/images/logo-wphardening-v1.png" alt="WPHardening" title="WPHardening" height="250px" align="right" />
 
 WPHardening fortification is a security tool for WordPress
 
