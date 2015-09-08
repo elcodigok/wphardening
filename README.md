@@ -1,3 +1,4 @@
+<img src="https://raw.githubusercontent.com/elcodigok/wphardening/develop/doc/images/logo-wphardening-v1.png" alt="WPHardening" title="WPHardening" align="right" />
 WPHardening [![Build Status](https://travis-ci.org/elcodigok/wphardening.svg?branch=master)](https://travis-ci.org/elcodigok/wphardening) [![Coverage Status](https://coveralls.io/repos/elcodigok/wphardening/badge.svg?branch=master&service=github)](https://coveralls.io/github/elcodigok/wphardening?branch=master)
 ===========
 
@@ -6,6 +7,15 @@ WPHardening fortification is a security tool for WordPress
 **❮ NOTE ❯** This tool releases new versions on a regular basis. Make sure to update your dependencies frequently to get the latest version. Check out the [changelog](https://github.com/elcodigok/wphardening/releases) or [CHANGELOG.md](https://github.com/elcodigok/wphardening/blob/master/doc/CHANGELOG.md) to learn about the new features.
 
 -----
+
+Installation
+------------
+
+Installing WPHardening requires you to execute one console command:
+
+```bash
+$ pip install -r requirements.txt
+```
 
 Usage
 -----
@@ -60,15 +70,6 @@ Usage
         -o FILE, --output=FILE
                             Write log report to FILE.log
 
-
-Installation
-------------
-
-Installing WPHardening requires you to execute one console command:
-
-```bash
-$ pip install -r requirements.txt
-```
 
 Examples
 --------
