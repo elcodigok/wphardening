@@ -35,6 +35,7 @@ v1.5
 - Improve updateWPHardening class (FIX #38).
 - Remove Full Path Disclosure (FIX #56).
 - Debug data/wordpress.fuzz.txt list (FIX #61).
+- Remove options php_flag display_errors off (FIX #79).
 
 
 v1.4 (2014-11-29)
