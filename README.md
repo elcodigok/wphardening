@@ -32,7 +32,7 @@ Usage
                                                                      __/ |
               Fortification is a Security Tool for WordPress.       |___/
     
-
+               Sponsored by SYHUNT - http://www.syhunt.com
 
     Usage: python wphardening.py [options]
 
@@ -123,6 +123,8 @@ $ python wphardening.py -d /home/path/to/wordpress --timthumb -v
 
 ### Create Index file
 
+This file is created as a way to avoid sailing in a directory.
+
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --indexes -v
 ```
@@ -147,11 +149,15 @@ $ python wphardening.py -d /home/path/to/wordpress --plugins
 
 ### Wizard generated wp-config.php
 
+This command automatically creates a file called **wp-config-wphardening.php** which can then rename it.
+
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --wp-config
 ```
 
 ### WPHardening update
+
+With this option you can always have the latest version of WPHardening.
 
 ```bash
 $ python wphardening.py --update
