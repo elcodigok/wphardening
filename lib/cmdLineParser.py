@@ -59,9 +59,9 @@ def cmdBanner():
         \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |
          \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |
                                                                      __/ |
-              Fortification is a Security Tool for WordPress.       |___/
+             Fortify the security of any WordPress installation.    |___/
 
-               Sponsored by SYHUNT - http://www.syhunt.com
+                Sponsored by SYHUNT - http://www.syhunt.com
     """
 
 

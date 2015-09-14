@@ -3,7 +3,7 @@ WPHardening [![Build Status](https://travis-ci.org/elcodigok/wphardening.svg?bra
 
 <img src="https://raw.githubusercontent.com/elcodigok/wphardening/develop/doc/images/logo-wphardening-v1.png" alt="WPHardening" title="WPHardening" height="200px" align="right" />
 
-WPHardening fortification is a security tool for WordPress
+Fortify the security of any WordPress installation.
 
 **❮ NOTE ❯** This tool releases new versions on a regular basis. Make sure to update your dependencies frequently to get the latest version. Check out the [changelog](https://github.com/elcodigok/wphardening/releases) or [CHANGELOG.md](https://github.com/elcodigok/wphardening/blob/master/doc/CHANGELOG.md) to learn about the new features.
 
@@ -30,7 +30,7 @@ Usage
         \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |
          \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |
                                                                      __/ |
-              Fortification is a Security Tool for WordPress.       |___/
+            Fortify the security of any WordPress installation.     |___/
     
                Sponsored by SYHUNT - http://www.syhunt.com
 
