@@ -43,8 +43,6 @@ class indexesWordPress():
             '/wp-content', '/wp-content/plugins', '/wp-content/uploads'
         ]
         self.htaccess = [
-            '\n', '# Avoid Full Path Disclosure.\n',
-            'php_flag display_errors off', '\n',
             '\n', '# Avoid the browser access to a folder without index.\n',
             'Options All -Indexes\n',
             '\n', '# Protection .htaccess file.\n',

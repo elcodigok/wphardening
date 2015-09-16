@@ -1,11 +1,22 @@
 WPHardening [![Build Status](https://travis-ci.org/elcodigok/wphardening.svg?branch=master)](https://travis-ci.org/elcodigok/wphardening) [![Coverage Status](https://coveralls.io/repos/elcodigok/wphardening/badge.svg?branch=master&service=github)](https://coveralls.io/github/elcodigok/wphardening?branch=master)
 ===========
 
-WPHardening fortification is a security tool for WordPress
+<img src="https://raw.githubusercontent.com/elcodigok/wphardening/develop/doc/images/logo-wphardening-v1.png" alt="WPHardening" title="WPHardening" height="200px" align="right" />
+
+Fortify the security of any WordPress installation.
 
 **❮ NOTE ❯** This tool releases new versions on a regular basis. Make sure to update your dependencies frequently to get the latest version. Check out the [changelog](https://github.com/elcodigok/wphardening/releases) or [CHANGELOG.md](https://github.com/elcodigok/wphardening/blob/master/doc/CHANGELOG.md) to learn about the new features.
 
 -----
+
+Installation
+------------
+
+Installing WPHardening requires you to execute one console command:
+
+```bash
+$ pip install -r requirements.txt
+```
 
 Usage
 -----
@@ -19,9 +30,9 @@ Usage
         \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |
          \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |
                                                                      __/ |
-              Fortification is a Security Tool for WordPress.       |___/
+            Fortify the security of any WordPress installation.     |___/
     
-
+               Sponsored by SYHUNT - http://www.syhunt.com
 
     Usage: python wphardening.py [options]
 
@@ -60,15 +71,6 @@ Usage
         -o FILE, --output=FILE
                             Write log report to FILE.log
 
-
-Installation
-------------
-
-Installing WPHardening requires you to execute one console command:
-
-```bash
-$ pip install -r requirements.txt
-```
 
 Examples
 --------
@@ -121,6 +123,8 @@ $ python wphardening.py -d /home/path/to/wordpress --timthumb -v
 
 ### Create Index file
 
+This file is created as a way to avoid sailing in a directory.
+
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --indexes -v
 ```
@@ -145,11 +149,15 @@ $ python wphardening.py -d /home/path/to/wordpress --plugins
 
 ### Wizard generated wp-config.php
 
+This command automatically creates a file called **wp-config-wphardening.php** which can then rename it.
+
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --wp-config
 ```
 
 ### WPHardening update
+
+With this option you can always have the latest version of WPHardening.
 
 ```bash
 $ python wphardening.py --update

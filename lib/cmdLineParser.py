@@ -59,9 +59,10 @@ def cmdBanner():
         \  /\  /  | |    | |  | | (_| | | | (_| |  __/ | | | | | | | (_| |
          \/  \/   |_|    |_|  |_|\__,_|_|  \__,_|\___|_| |_|_|_| |_|\__, |
                                                                      __/ |
-              Fortification is a Security Tool for WordPress.       |___/
+             Fortify the security of any WordPress installation.    |___/
+
+                Sponsored by SYHUNT - http://www.syhunt.com
     """
-    print "\n"
 
 
 def cmdLineParser():
@@ -69,7 +70,7 @@ def cmdLineParser():
 
     usage = "usage: python %prog [options]"
     version = colored('WPHardening', 'green') + ' version' + \
-        colored(' 1.5', 'yellow')
+        colored(' 1.5', 'yellow') + '\n'
 
     parser = OptionParser(usage, version=version)
 
@@ -143,9 +144,9 @@ def cmdLineParser():
     parser.add_option_group(hardening)
     parser.add_option_group(miscellaneous)
 
-    (options, args) = parser.parse_args()
-
     cmdBanner()
+
+    (options, args) = parser.parse_args()
 
     if options.loadconf is not None:
         options.path = loadConfWordPress(options.loadconf).getDirectory()
