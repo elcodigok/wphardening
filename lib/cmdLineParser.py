@@ -61,7 +61,7 @@ def cmdBanner():
                                                                      __/ |
              Fortify the security of any WordPress installation.    |___/
 
-                Sponsored by SYHUNT - http://www.syhunt.com
+          Caceria de Spammers - http://www.caceriadespammers.com.ar
     """
 
 
