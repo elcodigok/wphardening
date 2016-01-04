@@ -43,7 +43,8 @@ class removeWordPress():
         self.themes = [
             "/wp-content/themes/twentytwelve/",
             "/wp-content/themes/twentythirteen/",
-            "/wp-content/themes/twentyfourteen/"
+            "/wp-content/themes/twentyfourteen/",
+            "/wp-content/themes/twentyfifteen/"
         ]
         self.static_file = [
             "/wp-includes/images/crystal/license.txt",
