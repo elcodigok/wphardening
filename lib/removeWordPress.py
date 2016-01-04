@@ -48,6 +48,7 @@ class removeWordPress():
         ]
         self.static_file = [
             "/wp-includes/images/crystal/license.txt",
+            "/wp-includes/js/swfupload/license.txt",
             "/wp-includes/js/plupload/license.txt",
             "/wp-includes/js/plupload/changelog.txt",
             "/wp-includes/js/tinymce/license.txt",
