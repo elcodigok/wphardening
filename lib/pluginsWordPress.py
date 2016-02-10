@@ -62,7 +62,7 @@ class pluginsWordPress():
                 'Block Bad Queries',
                 'Block Bad Queries (BBQ) helps protect WordPress against' +
                 ' malicious URL requests.',
-                'https://wordpress.org/extend/plugins/block-bad-queries/'
+                'https://wordpress.org/plugins/block-bad-queries/'
             ],
             [
                 'Exploit Scanner',
