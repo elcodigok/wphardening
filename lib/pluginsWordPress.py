@@ -95,7 +95,7 @@ class pluginsWordPress():
                 'WP Security Scan',
                 'Scans your WordPress installation for security' +
                 ' vulnerabilities.',
-                'https://wordpress.org/extend/plugins/wp-security-scan/'
+                'https://wordpress.org/plugins/wp-security-scan/'
             ],
             [
                 'WP-DBManager',
