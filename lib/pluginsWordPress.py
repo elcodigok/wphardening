@@ -49,7 +49,7 @@ class pluginsWordPress():
                 'Useful plugin that will scan your theme templates for' +
                 ' malicious injections. Automatically. Every day.' +
                 ' For more blog security.',
-                'https://wordpress.org/extend/plugins/antivirus/'
+                'https://wordpress.org/plugins/antivirus/'
             ],
             [
                 'Bad Behavior',
