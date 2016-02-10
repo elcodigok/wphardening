@@ -49,27 +49,27 @@ class pluginsWordPress():
                 'Useful plugin that will scan your theme templates for' +
                 ' malicious injections. Automatically. Every day.' +
                 ' For more blog security.',
-                'https://wordpress.org/extend/plugins/antivirus/'
+                'https://wordpress.org/plugins/antivirus/'
             ],
             [
                 'Bad Behavior',
                 'Bad Behavior prevents spammers from ever delivering' +
                 ' their junk, and in many cases, from ever reading your' +
                 ' site in the first place.',
-                'https://wordpress.org/extend/plugins/bad-behavior/'
+                'https://wordpress.org/plugins/bad-behavior/'
             ],
             [
                 'Block Bad Queries',
                 'Block Bad Queries (BBQ) helps protect WordPress against' +
                 ' malicious URL requests.',
-                'https://wordpress.org/extend/plugins/block-bad-queries/'
+                'https://wordpress.org/plugins/block-bad-queries/'
             ],
             [
                 'Exploit Scanner',
                 'Search the files and database of your WordPress install' +
                 ' for signs that may indicate that it has fallen victim' +
                 ' to malicious hackers.',
-                'https://wordpress.org/extend/plugins/exploit-scanner/'
+                'https://wordpress.org/plugins/exploit-scanner/'
             ],
             [
                 'Latch',
@@ -95,7 +95,7 @@ class pluginsWordPress():
                 'WP Security Scan',
                 'Scans your WordPress installation for security' +
                 ' vulnerabilities.',
-                'https://wordpress.org/extend/plugins/wp-security-scan/'
+                'https://wordpress.org/plugins/wp-security-scan/'
             ],
             [
                 'WP-DBManager',
@@ -104,7 +104,7 @@ class pluginsWordPress():
                 ' drop/empty tables and run selected queries. Supports' +
                 ' automatic scheduling of backing up, optimizing and' +
                 ' repairing of database.',
-                'https://wordpress.org/extend/plugins/wp-dbmanager/'
+                'https://wordpress.org/plugins/wp-dbmanager/'
             ],
         ]
         if proxy is not None:
