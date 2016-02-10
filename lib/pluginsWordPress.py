@@ -104,7 +104,7 @@ class pluginsWordPress():
                 ' drop/empty tables and run selected queries. Supports' +
                 ' automatic scheduling of backing up, optimizing and' +
                 ' repairing of database.',
-                'https://wordpress.org/extend/plugins/wp-dbmanager/'
+                'https://wordpress.org/plugins/wp-dbmanager/'
             ],
         ]
         if proxy is not None:
