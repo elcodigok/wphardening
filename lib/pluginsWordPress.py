@@ -69,7 +69,7 @@ class pluginsWordPress():
                 'Search the files and database of your WordPress install' +
                 ' for signs that may indicate that it has fallen victim' +
                 ' to malicious hackers.',
-                'https://wordpress.org/extend/plugins/exploit-scanner/'
+                'https://wordpress.org/plugins/exploit-scanner/'
             ],
             [
                 'Latch',
