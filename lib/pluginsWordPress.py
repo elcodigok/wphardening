@@ -78,6 +78,12 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/latch/'
             ],
             [
+                'NinjaFirewall (WP Edition)',
+                'A true Web Application Firewall to protect and secure' +
+                ' WordPress.',
+                'https://wordpress.org/plugins/ninjafirewall/'
+            ],
+            [
                 'Simple History',
                 'View changes made by users within WordPress. See who' +
                 ' created a page, uploaded an attachment or approved' +
