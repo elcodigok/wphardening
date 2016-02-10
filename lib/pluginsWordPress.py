@@ -56,7 +56,7 @@ class pluginsWordPress():
                 'Bad Behavior prevents spammers from ever delivering' +
                 ' their junk, and in many cases, from ever reading your' +
                 ' site in the first place.',
-                'https://wordpress.org/extend/plugins/bad-behavior/'
+                'https://wordpress.org/plugins/bad-behavior/'
             ],
             [
                 'Block Bad Queries',
