@@ -133,15 +133,16 @@ $ python wphardening.py -d /home/path/to/wordpress --indexes -v
 
 The following is a list of the most commonly used security plugins that you can download automatically:
 
- * [AntiVirus](https://wordpress.org/extend/plugins/antivirus/)
- * [Bad Behavior](https://wordpress.org/extend/plugins/bad-behavior/)
- * [Block Bad Queries](https://wordpress.org/extend/plugins/block-bad-queries/)
- * [Exploit Scanner](https://wordpress.org/extend/plugins/exploit-scanner/)
+ * [AntiVirus](https://wordpress.org/plugins/antivirus/)
+ * [Bad Behavior](https://wordpress.org/plugins/bad-behavior/)
+ * [Block Bad Queries](https://wordpress.org/plugins/block-bad-queries/)
+ * [Exploit Scanner](https://wordpress.org/plugins/exploit-scanner/)
  * [Latch](https://wordpress.org/plugins/latch/)
+ * [NinjaFirewall](https://wordpress.org/plugins/ninjafirewall/)
  * [Simple History](https://wordpress.org/plugins/simple-history/)
  * [Stream](https://wordpress.org/plugins/stream/)
- * [WP Security Scan](https://wordpress.org/extend/plugins/wp-security-scan/)
- * [WP-DBManager](https://wordpress.org/extend/plugins/wp-dbmanager/)
+ * [WP Security Scan](https://wordpress.org/plugins/wp-security-scan/)
+ * [WP-DBManager](https://wordpress.org/plugins/wp-dbmanager/)
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --plugins
