@@ -267,7 +267,7 @@ require_once(ABSPATH . 'wp-settings.php');
         :param file_name: file name to wp-config-wphardening.php
         :return: None
         """
-        os.chmod(self.directory + file_name, 0640)
+        os.chmod(self.directory + file_name, 0444)
 
     def createConfig(self):
         """
