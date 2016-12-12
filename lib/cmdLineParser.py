@@ -136,6 +136,9 @@ def cmdLineParser():
                          dest="malwares", help="Malware Scan in WordPress "
                          "project.")
 
+    hardening.add_option("--6g-firewall", action="store_true",
+                         dest="sixg", help="6G Firewall.")
+
     miscellaneous = OptionGroup(parser, "Miscellaneous")
 
     miscellaneous.add_option("-o", "--output", help="Write log report to "
