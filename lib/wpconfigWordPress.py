@@ -369,6 +369,10 @@ require_once(ABSPATH . 'wp-settings.php');
             'define(\'WP_DEBUG\', false);\n\n'
         )
         f.write(
+            self.getComment('Empty Trash') +
+            'define(\'EMPTY_TRASH_DAYS\', 5);\n\n'
+        )
+        f.write(
             self.getComment('Disable the Revisions') +
             'define(\'WP_POST_REVISIONS\', false);\n\n'
         )
