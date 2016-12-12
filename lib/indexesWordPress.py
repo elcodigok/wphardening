@@ -63,25 +63,8 @@ class indexesWordPress():
             '\n', '# The rise of bots, spammers, crack and libwww-perl.\n',
             'RewriteEngine On\n',
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
-            '\n', 'RewriteRule .* - [F,L]\n',
-            '\n', '# Query string Exploits.',
-            '\n', 'RewriteCond %{QUERY_STRING} ../    [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} boot.ini [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} tag=     [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ftp:     [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} http:    [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} https:   [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} mosConfig [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(%22|%27|%3C|%3E|%5C|%7B|%7C).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(%0|%A|%B|%C|%D|%E|%F|127.0).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(globals|encode|config|loopback).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(request|select|insert|union|declare|drop).* [NC]',
-            '\n', 'RewriteRule ^(.*)$ - [F,L]'
-        ]
+            '\n', 'RewriteRule .* - [F,L]\n'
+            ]
         self.mode_verbose = verbose
 
     def writeHtaccess(self):
