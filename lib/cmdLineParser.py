@@ -265,6 +265,9 @@ def cmdLineParser():
 
             if options.minify is not None:
                 minifyWordPress(options.path, options.verbose).minify()
+
+            if options.sixg is not None:
+                sixgWordPress(options.path, options.verbose).createFirewall()
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')

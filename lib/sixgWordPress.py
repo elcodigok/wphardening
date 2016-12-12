@@ -27,4 +27,8 @@ from lib.termcolor import colored
 
 
 class sixgWordPress():
-	pass
+    def __init__(self, directory, verbose=False):
+        self.directory = os.path.abspath(directory)
+
+    def createFirewall(self):
+        pass

@@ -64,7 +64,7 @@ class indexesWordPress():
             'RewriteEngine On\n',
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
             '\n', 'RewriteRule .* - [F,L]\n'
-            ]
+        ]
         self.mode_verbose = verbose
 
     def writeHtaccess(self):
