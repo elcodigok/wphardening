@@ -46,6 +46,7 @@ from lib.minifyWordPress import minifyWordPress
 from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
+from lib.sixgWordPress import sixgWordPress
 
 
 def cmdBanner():
@@ -134,6 +135,9 @@ def cmdLineParser():
     hardening.add_option("--malware-scan", action="store_true",
                          dest="malwares", help="Malware Scan in WordPress "
                          "project.")
+
+    hardening.add_option("--6g-firewall", action="store_true",
+                         dest="sixg", help="6G Firewall.")
 
     miscellaneous = OptionGroup(parser, "Miscellaneous")
 
@@ -261,6 +265,9 @@ def cmdLineParser():
 
             if options.minify is not None:
                 minifyWordPress(options.path, options.verbose).minify()
+
+            if options.sixg is not None:
+                sixgWordPress(options.path, options.verbose).createFirewall()
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
