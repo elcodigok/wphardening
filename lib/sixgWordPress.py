@@ -61,6 +61,20 @@ class sixgWordPress():
 '\tRewriteCond %{HTTP_REFERER} ([a-z0-9]{2000,}) [NC,OR]', '\n',
 '\tRewriteCond %{HTTP_REFERER} (semalt.com|todaperfeita) [NC]', '\n',
 '\tRewriteRule .* - [F]', '\n',
+'</IfModule>', '\n',
+'\n', '# 6G:[REQUEST STRINGS]', '\n',
+'<IfModule mod_alias.c>', '\n',
+'\tRedirectMatch 403 (?i)([a-z0-9]{2000,})', '\n',
+'\tRedirectMatch 403 (?i)(https?|ftp|php):/', '\n',
+'\tRedirectMatch 403 (?i)(base64_encode)(.*)(\()', '\n',
+'\tRedirectMatch 403 (?i)(=\\\'|=\\%27|/\\\'/?)\.', '\n',
+'\tRedirectMatch 403 (?i)/(\$(\&)?|\*|\"|\.|,|&|&amp;?)/?$', '\n',
+'\tRedirectMatch 403 (?i)(\{0\}|\(/\(|\.\.\.|\+\+\+|\\\"\\\")', '\n',
+'\tRedirectMatch 403 (?i)(~|`|<|>|:|;|,|%|\\|\s|\{|\}|\[|\]|\|)', '\n',
+'\tRedirectMatch 403 (?i)/(=|\$&|_mm|cgi-|etc/passwd|muieblack)', '\n',
+'\tRedirectMatch 403 (?i)(&pws=0|_vti_|\(null\)|\{\$itemURL\}|echo(.*)kae|etc/passwd|eval\(|self/environ)', '\n',
+'\tRedirectMatch 403 (?i)\.(aspx?|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rar|rdf)$', '\n',
+'\tRedirectMatch 403 (?i)/(^$|(wp-)?config|mobiquo|phpinfo|shell|sqlpatch|thumb|thumb_editor|thumbopen|timthumb|webshell)\.php', '\n',
 '</IfModule>', '\n'
         ]
         self.mode_verbose = verbose
