@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-6gWordPress.py
+sixgWordPress.py
 
 Copyright 2013 Daniel Maldonado
 
@@ -27,8 +27,70 @@ from lib.termcolor import colored
 
 
 class sixgWordPress():
+    
     def __init__(self, directory, verbose=False):
+        """
+        :param directory: Absolute path of the directory to check.
+        :param verbose: Mode verbose.
+        """
         self.directory = os.path.abspath(directory)
+        self.htaccess = [
+            '\n', '# 6G:[QUERY STRINGS]', '\n',
+'<IfModule mod_rewrite.c>', '\n',
+'\tRewriteEngine On', '\n',
+'\tRewriteCond %{QUERY_STRING} (eval\() [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (127\.0\.0\.1) [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} ([a-z0-9]{2000,}) [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (javascript:)(.*)(;) [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (base64_encode)(.*)(\() [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (GLOBALS|REQUEST)(=|\[|%) [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (<|%3C)(.*)script(.*)(>|%3) [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (\\|\.\.\.|\.\./|~|`|<|>|\|) [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (boot\.ini|etc/passwd|self/environ) [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (thumbs?(_editor|open)?|tim(thumb)?)\.php [NC,OR]', '\n',
+'\tRewriteCond %{QUERY_STRING} (\'|\")(.*)(drop|insert|md5|select|union) [NC]', '\n',
+'\tRewriteRule .* - [F]', '\n',
+'</IfModule>', '\n',
+'\n', '# 6G:[REQUEST METHOD]', '\n',
+'<IfModule mod_rewrite.c>', '\n',
+'\tRewriteCond %{REQUEST_METHOD} ^(connect|debug|move|put|trace|track) [NC]', '\n',
+'\tRewriteRule .* - [F]', '\n',
+'</IfModule>', '\n',
+'\n', '# 6G:[REFERRERS]', '\n',
+'<IfModule mod_rewrite.c>', '\n',
+'\tRewriteCond %{HTTP_REFERER} ([a-z0-9]{2000,}) [NC,OR]', '\n',
+'\tRewriteCond %{HTTP_REFERER} (semalt.com|todaperfeita) [NC]', '\n',
+'\tRewriteRule .* - [F]', '\n',
+'</IfModule>', '\n'
+        ]
+        self.mode_verbose = verbose
+
+    def writeHtaccess(self):
+        """
+        :return: None
+        """
+        if os.path.exists(self.directory + '/.htaccess'):
+            f = open(self.directory + '/.htaccess', 'r')
+            self.script = f.readlines()
+            f.close()
+            f = open(self.directory + '/.htaccess', 'w')
+            f.writelines(self.script + self.htaccess)
+            f.close()
+            if self.mode_verbose:
+                logging.info("Add options to " + self.directory + '/.htaccess')
+                print colored('\tAdd options to ', 'green') + \
+                    self.directory + '/.htaccess'
+        else:
+            f = open(self.directory + '/.htaccess', 'w')
+            f.writelines(self.htaccess)
+            f.close()
+            if self.mode_verbose:
+                logging.info("Create .htaccess file.")
+                print colored('\tCreate Htaccess file ', 'green') + \
+                    self.directory + '/.htaccess'
 
     def createFirewall(self):
-        pass
+        """
+        :return: None
+        """
+        self.writeHtaccess()
