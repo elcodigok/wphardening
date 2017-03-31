@@ -65,6 +65,12 @@ class indexesWordPress():
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
             '\n', 'RewriteRule .* - [F,L]\n'
         ]
+        self.headers = [
+            '\n', '#Add Header X-Content-Type-Options.\n',
+            '<IfModule mod_headers.c>',
+            '\n', '\tHeader set X-Content-Type-Options nosniff',
+            '\n', '</IfModule>', '\n'
+        ]
         self.mode_verbose = verbose
 
     def writeHtaccess(self):
