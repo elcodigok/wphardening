@@ -65,6 +65,12 @@ class indexesWordPress():
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
             '\n', 'RewriteRule .* - [F,L]\n'
         ]
+        self.headers = [
+            '\n', '#Add Header X-Content-Type-Options.\n',
+            '<IfModule mod_headers.c>',
+            '\n', '\tHeader set X-Content-Type-Options nosniff',
+            '\n', '</IfModule>', '\n'
+        ]
         self.mode_verbose = verbose
 
     def writeHtaccess(self):
@@ -76,7 +82,7 @@ class indexesWordPress():
             self.script = f.readlines()
             f.close()
             f = open(self.directory + '/.htaccess', 'w')
-            f.writelines(self.script + self.htaccess)
+            f.writelines(self.script + self.htaccess + self.headers)
             f.close()
             if self.mode_verbose:
                 logging.info("Add options to " + self.directory + '/.htaccess')
@@ -84,7 +90,7 @@ class indexesWordPress():
                     self.directory + '/.htaccess'
         else:
             f = open(self.directory + '/.htaccess', 'w')
-            f.writelines(self.htaccess)
+            f.writelines(self.htaccess + self.headers)
             f.close()
             if self.mode_verbose:
                 logging.info("Create .htaccess file.")
