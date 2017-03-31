@@ -82,7 +82,7 @@ class indexesWordPress():
             self.script = f.readlines()
             f.close()
             f = open(self.directory + '/.htaccess', 'w')
-            f.writelines(self.script + self.htaccess)
+            f.writelines(self.script + self.htaccess + self.headers)
             f.close()
             if self.mode_verbose:
                 logging.info("Add options to " + self.directory + '/.htaccess')
@@ -90,7 +90,7 @@ class indexesWordPress():
                     self.directory + '/.htaccess'
         else:
             f = open(self.directory + '/.htaccess', 'w')
-            f.writelines(self.htaccess)
+            f.writelines(self.htaccess + self.headers)
             f.close()
             if self.mode_verbose:
                 logging.info("Create .htaccess file.")
