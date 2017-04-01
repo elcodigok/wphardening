@@ -69,6 +69,7 @@ class indexesWordPress():
             '\n', '#Add Header X-Content-Type-Options.\n',
             '<IfModule mod_headers.c>',
             '\n', '\tHeader set X-Content-Type-Options nosniff',
+            '\n', '\tHeader always append X-Frame-Options SAMEORIGIN',
             '\n', '</IfModule>', '\n'
         ]
         self.mode_verbose = verbose
