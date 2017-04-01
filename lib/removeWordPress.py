@@ -51,6 +51,7 @@ class removeWordPress():
             "/wp-includes/js/swfupload/license.txt",
             "/wp-includes/js/plupload/license.txt",
             "/wp-includes/js/plupload/changelog.txt",
+            "/wp-includes/js/tinymce/skins/lightgray/fonts/readme.md",
             "/wp-includes/js/tinymce/license.txt",
             "/wp-includes/js/tinymce/plugins/spellchecker/changelog.txt",
             "/wp-includes/js/swfupload/license.txt",
