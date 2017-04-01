@@ -150,11 +150,13 @@ class pluginsWordPress():
         """
         :return: None
         """
+        idx = 1
         for plugin in self.list_plugins:
-            print colored('\n' + plugin[0], 'yellow')
+            print colored('\n%s) ' + plugin[0], 'yellow') % (idx)
             print colored('\t' + plugin[1], 'green')
             print colored('\t' + plugin[2], 'green')
             q = raw_input('\tYou want to download [y/n] > ').lower()
+            idx += 1
             if q in self.yes:
                 request = urllib2.Request(plugin[2])
                 try:
