@@ -70,6 +70,7 @@ class indexesWordPress():
             '<IfModule mod_headers.c>',
             '\n', '\tHeader set X-Content-Type-Options nosniff',
             '\n', '\tHeader always append X-Frame-Options SAMEORIGIN',
+            '\n', '\tHeader set X-XSS-Protection "1; mode=block"',
             '\n', '</IfModule>', '\n'
         ]
         self.mode_verbose = verbose
