@@ -66,10 +66,13 @@ class indexesWordPress():
             '\n', 'RewriteRule .* - [F,L]\n'
         ]
         self.headers = [
-            '\n', '#Add Header X-Content-Type-Options.\n',
+            '\n',
             '<IfModule mod_headers.c>',
+            '\n', '\t# Add Header X-Content-Type-Options.',
             '\n', '\tHeader set X-Content-Type-Options nosniff',
+            '\n', '\t# Security Headers - X-Frame-Options',
             '\n', '\tHeader always append X-Frame-Options SAMEORIGIN',
+            '\n', '\t# Headers - X-XSS-Protection',
             '\n', '\tHeader set X-XSS-Protection "1; mode=block"',
             '\n', '</IfModule>', '\n'
         ]
