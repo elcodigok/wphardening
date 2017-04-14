@@ -46,61 +46,79 @@ class pluginsWordPress():
         self.list_plugins = [
             [
                 'AntiVirus',
-                'Useful plugin that will scan your theme templates for' +
-                ' malicious injections. Automatically. Every day.' +
-                ' For more blog security.',
+                'AntiVirus for WordPress is a easy-to-use, safe tool to' +
+                ' harden your WordPress site against exploits, malware' +
+                ' and spam injections.',
                 'https://wordpress.org/plugins/antivirus/'
             ],
             [
                 'Bad Behavior',
-                'Bad Behavior prevents spammers from ever delivering' +
-                ' their junk, and in many cases, from ever reading your' +
-                ' site in the first place.',
+                'Bad Behavior complements other link spam solutions by' +
+                ' acting as a gatekeeper, preventing spammers from ever' +
+                ' delivering their junk, and in many cases, from ever' +
+                ' reading your site in the first place. This keeps your' +
+                ' site\'s load down, makes your site logs cleaner, and can' +
+                ' help prevent denial of service conditions caused by' +
+                ' spammers.',
                 'https://wordpress.org/plugins/bad-behavior/'
             ],
             [
                 'Block Bad Queries',
-                'Block Bad Queries (BBQ) helps protect WordPress against' +
-                ' malicious URL requests.',
+                'Block Bad Queries (BBQ) is a simple, super-fast plugin that' +
+                ' protects your site against malicious URL requests. BBQ' +
+                ' checks all incoming traffic and quietly blocks bad' +
+                ' requests containing nasty stuff like eval(, base64_,' +
+                ' and excessively long request-strings. This is a simple' +
+                ' yet solid solution for sites that are unable to use a' +
+                ' strong .htaccess firewall.',
                 'https://wordpress.org/plugins/block-bad-queries/'
             ],
             [
                 'Exploit Scanner',
-                'Search the files and database of your WordPress install' +
-                ' for signs that may indicate that it has fallen victim' +
-                ' to malicious hackers.',
+                'This plugin searches the files on your website, and the' +
+                ' posts and comments tables of your database for anything' +
+                ' suspicious. It also examines your list of active plugins' +
+                ' for unusual filenames.',
                 'https://wordpress.org/plugins/exploit-scanner/'
             ],
             [
                 'Latch',
-                'This Plugin allows developers to integrate Latch on' +
-                ' his/her WordPress service.',
+                'This Plugin allows developers to integrate Latch on his/her' +
+                ' WordPress service. Latch is a service that lets end-users' +
+                ' add an extra level of security to their online accounts' +
+                ' and services.',
                 'https://wordpress.org/plugins/latch/'
             ],
             [
                 'NinjaFirewall (WP Edition)',
-                'A true Web Application Firewall to protect and secure' +
-                ' WordPress.',
+                'NinjaFirewall (WP Edition) is a true Web Application' +
+                ' Firewall. Although it can be installed and configured just' +
+                ' like a plugin, it is a stand-alone firewall that sits in' +
+                ' front of WordPress.',
                 'https://wordpress.org/plugins/ninjafirewall/'
             ],
             [
                 'Simple History',
-                'View changes made by users within WordPress. See who' +
-                ' created a page, uploaded an attachment or approved' +
-                ' an comment, and more.',
+                'Simple History shows recent changes made within' +
+                ' WordPress, directly on your dashboard or on a separate' +
+                ' page.',
                 'https://wordpress.org/plugins/simple-history/'
             ],
             [
                 'Stream',
-                'Stream is the easiest and safest way to track content' +
-                ' changes happening to your WordPress site and then view' +
-                ' them in beautifully organized detail.',
+                'With Stream, you\'re never left in the dark about WordPress' +
+                ' Admin activity. Every logged-in user action is displayed' +
+                ' in an activity stream and organised for easy filtering by' +
+                ' User, Role, Context, Action or IP address.',
                 'https://wordpress.org/plugins/stream/'
             ],
             [
                 'WP Security Scan',
-                'Scans your WordPress installation for security' +
-                ' vulnerabilities.',
+                'Acunetix WP Security plugin is a free and comprehensive' +
+                ' security tool that helps you secure your WordPress' +
+                ' installation and suggests corrective measures for:' +
+                ' securing file permissions, security of the database,' +
+                ' version hiding, WordPress admin protection and lots more.',
                 'https://wordpress.org/plugins/wp-security-scan/'
             ],
             [
