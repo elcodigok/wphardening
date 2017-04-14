@@ -71,7 +71,7 @@ def cmdLineParser():
 
     usage = "usage: python %prog [options]"
     version = colored('WPHardening', 'green') + ' version' + \
-        colored(' 1.5', 'yellow') + '\n'
+        colored(' 1.6RC1', 'yellow') + '\n'
 
     parser = OptionParser(usage, version=version)
 
