@@ -98,19 +98,6 @@ class pluginsWordPress():
                 'https://wordpress.org/plugins/stream/'
             ],
             [
-                'WPS Hide Login',
-                'WPS Hide Login is a very light plugin that lets you easily' +
-                ' and safely change the url of the login form page to' +
-                ' anything you want. It doesn\'t literally rename or change' +
-                ' files in core, nor does it add rewrite rules. It simply' +
-                ' intercepts page requests and works on any WordPress' +
-                ' website. The wp-admin directory and wp-login.php page' +
-                ' become inaccessible, so you should bookmark or remember' +
-                ' the url. Deactivating this plugin brings your site back' +
-                ' exactly to the state it was before.',
-                'https://wordpress.org/plugins/wps-hide-login/'
-            ],
-            [
                 'WP Security Scan',
                 'Scans your WordPress installation for security' +
                 ' vulnerabilities.',
@@ -124,6 +111,19 @@ class pluginsWordPress():
                 ' automatic scheduling of backing up, optimizing and' +
                 ' repairing of database.',
                 'https://wordpress.org/plugins/wp-dbmanager/'
+            ],
+            [
+                'WPS Hide Login',
+                'WPS Hide Login is a very light plugin that lets you easily' +
+                ' and safely change the url of the login form page to' +
+                ' anything you want. It doesn\'t literally rename or change' +
+                ' files in core, nor does it add rewrite rules. It simply' +
+                ' intercepts page requests and works on any WordPress' +
+                ' website. The wp-admin directory and wp-login.php page' +
+                ' become inaccessible, so you should bookmark or remember' +
+                ' the url. Deactivating this plugin brings your site back' +
+                ' exactly to the state it was before.',
+                'https://wordpress.org/plugins/wps-hide-login/'
             ],
         ]
         if proxy is not None:
