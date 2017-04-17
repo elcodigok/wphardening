@@ -138,6 +138,9 @@ def cmdLineParser():
 
     hardening.add_option("--6g-firewall", action="store_true",
                          dest="sixg", help="6G Firewall.")
+    
+    hardening.add_option("--rest-api", action="store_true",
+                         dest="api", help="Disable REST API.")
 
     miscellaneous = OptionGroup(parser, "Miscellaneous")
 
