@@ -47,6 +47,7 @@ from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 from lib.sixgWordPress import sixgWordPress
+from lib.restApiWordPress import restApiWordPress
 
 
 def cmdBanner():
