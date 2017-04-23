@@ -90,10 +90,10 @@ class restApiWordPress():
             '\n', ' */',
             '\n', 'function DRA_only_allow_logged_in_rest_access( $access ) {',
             '\n', '\tif( ! is_user_logged_in() ) {', '\n',
-            '\treturn new WP_Error( \'rest_cannot_access\',',
+            '\t\treturn new WP_Error( \'rest_cannot_access\',',
             ' __( \'Only authenticated users can access the REST API.\',',
             ' \'disable-json-api\' ), array( \'status\' =>',
-            ' rest_authorization_required_code() ) );', '\n', '}',
+            ' rest_authorization_required_code() ) );', '\n', '\t}',
             '\n', '\treturn $access;', '\n', '}'
         ]
 
