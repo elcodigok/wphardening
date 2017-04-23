@@ -38,7 +38,7 @@ class restApiWordPress():
 
     def setFunctions(self):
         self.functions = [
-            '\n', 'if ( version_compare( get_bloginfo(\'version\'), \'4.7\', \'>=\' ) ) {',
+            '\n', 'if ( version_compare( $wp_version, \'4.7\', \'>=\' ) ) {',
             '\n', '\tDRA_Force_Auth_Error();',
             '\n', '} else {',
             '\n', '\tDRA_Disable_Via_Filters();',
@@ -93,18 +93,12 @@ class restApiWordPress():
         return self.script
 
     def disableRestApi(self):
-        print self.filters
-        #print self.getScript()
-        #print self.getFunctions()
         f = open(self.filters, "w")
-        print self.getScript() + self.getFunctions()
         f.writelines(self.getScript() + self.getFunctions())
         f.close
-        #f.write(self.getScript() + self.getFunctions())
-        #f.close
-        #print colored('\nDisabled REST API', 'yellow')
-        #print colored(
-            #'\tModified:\twp-includes/default-filters.php',
-            #'red'
-        #)
-        #logging.info("Modified: wp-includes/default-filters.php")
+        print colored('\nDisabled REST API', 'yellow')
+        print colored(
+            '\tModified:\twp-includes/default-filters.php',
+            'red'
+        )
+        logging.info("Modified: wp-includes/default-filters.php")
