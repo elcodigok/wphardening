@@ -47,6 +47,7 @@ from lib.loadConfWordPress import loadConfWordPress
 from lib.termcolor import colored
 from lib.registerLog import registerLog
 from lib.sixgWordPress import sixgWordPress
+from lib.restApiWordPress import restApiWordPress
 
 
 def cmdBanner():
@@ -138,6 +139,9 @@ def cmdLineParser():
 
     hardening.add_option("--6g-firewall", action="store_true",
                          dest="sixg", help="6G Firewall.")
+
+    hardening.add_option("--rest-api", action="store_true",
+                         dest="api", help="Disable REST API.")
 
     miscellaneous = OptionGroup(parser, "Miscellaneous")
 
@@ -268,6 +272,9 @@ def cmdLineParser():
 
             if options.sixg is not None:
                 sixgWordPress(options.path, options.verbose).createFirewall()
+
+            if options.api is not None:
+                restApiWordPress(options.path).disableRestApi()
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
