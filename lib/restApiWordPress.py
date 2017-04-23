@@ -27,16 +27,30 @@ from lib.termcolor import colored
 
 
 class restApiWordPress():
+    """
+    This class Disable REST API.
+
+    :author: Daniel Maldonado (daniel_5502@yahoo.com.ar)
+    """
     def __init__(self, directory):
+        """
+        :param directory: Absolute path of the directory to check.
+        """
         self.directory = os.path.abspath(directory)
         self.filters = self.directory + "/wp-includes/default-filters.php"
         self.setFunctions()
         self.setScript()
 
     def getFilter(self):
+        """
+        :return: Path to the file /wp-includes/default-filters.php
+        """
         return self.filters
 
     def setFunctions(self):
+        """
+        :return: None
+        """
         self.functions = [
             '\n', 'if ( version_compare( $wp_version, \'4.7\', \'>=\' ) ) {',
             '\n', '\tDRA_Force_Auth_Error();',
@@ -46,8 +60,7 @@ class restApiWordPress():
             ' WordPress is 4.7 or above',
             '\n', ' * Forcibly raise an authentication error to the REST API',
             ' if the user is not logged in',
-            '\n', ' */',
-            '\n', 'function DRA_Force_Auth_Error() {',
+            '\n', ' */', '\n', 'function DRA_Force_Auth_Error() {',
             '\n', '\tadd_filter( \'rest_authentication_errors\', ',
             '\'DRA_only_allow_logged_in_rest_access\' );',
             '\n', '}', '\n', '/**',
@@ -56,8 +69,8 @@ class restApiWordPress():
             '\n', ' * We are able to make use of filters to actually disable',
             ' the functionality entirely', '\n', ' */',
             '\n', 'function DRA_Disable_Via_Filters() {',
-            '\n', '\t// Filters for WP-API version 1.x',
-            '\n', '\tadd_filter( \'json_enabled\', \'__return_false\' );',
+            '\n', '\t// Filters for WP-API version 1.x', '\n',
+            '\tadd_filter( \'json_enabled\', \'__return_false\' );',
             '\n',
             '\tadd_filter( \'json_jsonp_enabled\', \'__return_false\' );',
             '\n',
@@ -70,8 +83,7 @@ class restApiWordPress():
             '\n', '\tremove_action( \'wp_head\',',
             ' \'rest_output_link_wp_head\', 10 );', '\n',
             '\tremove_action( \'template_redirect\',',
-            ' \'rest_output_link_header\', 11 );', '\n', '}',
-            '\n', '/**',
+            ' \'rest_output_link_header\', 11 );', '\n', '}', '\n', '/**',
             '\n', ' * Returning an authentication error if a user who is not',
             ' logged in tries to query the REST API',
             '\n', ' * @param $access', '\n', ' * @return WP_Error',
@@ -86,17 +98,29 @@ class restApiWordPress():
         ]
 
     def getFunctions(self):
+        """
+        :return: Content new functions
+        """
         return self.functions
 
     def setScript(self):
+        """
+        :return: None
+        """
         self.f = open(self.filters, "r")
         self.script = self.f.readlines()
         self.f.close()
 
     def getScript(self):
+        """
+        :return: File contents /wp-includes/default-filters.php
+        """
         return self.script
 
     def disableRestApi(self):
+        """
+        :return: None
+        """
         f = open(self.filters, "w")
         f.writelines(self.getScript() + self.getFunctions())
         f.close
