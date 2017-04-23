@@ -272,6 +272,9 @@ def cmdLineParser():
 
             if options.sixg is not None:
                 sixgWordPress(options.path, options.verbose).createFirewall()
+
+            if options.api is not None:
+                restApiWordPress(options.path).disableRestApi()
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
