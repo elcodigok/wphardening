@@ -22,6 +22,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import fnmatch
+import hashlib
 import os
 import os.path
 import re
@@ -77,6 +78,6 @@ class fingerprintingWordPress():
         :return: Signature text
         """
         self.now = [
-            '/* WP Hardening - ', str(datetime.datetime.now()) + ' */\n'
+            '/* WP Hardening - ', hashlib.sha256(str(datetime.datetime.now())).hexdigest() + ' */\n'
         ]
         return self.now
