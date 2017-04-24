@@ -78,6 +78,7 @@ class fingerprintingWordPress():
         :return: Signature text
         """
         self.now = [
-            '/* WP Hardening - ', hashlib.sha256(str(datetime.datetime.now())).hexdigest() + ' */\n'
+            '/* WP Hardening - ',
+            hashlib.sha256(str(datetime.datetime.now())).hexdigest() + ' */\n'
         ]
         return self.now
