@@ -66,6 +66,8 @@ Usage
         --indexes           It allows you to display the contents of directories.
         --minify            Compressing static file .css and .js
         --malware-scan      Malware Scan in WordPress project.
+        --6g-firewall       6G Firewall.
+        --rest-api          Disable REST API.
 
       Miscellaneous:
         -o FILE, --output=FILE
@@ -143,6 +145,7 @@ The following is a list of the most commonly used security plugins that you can 
  * [Stream](https://wordpress.org/plugins/stream/)
  * [WP Security Scan](https://wordpress.org/plugins/wp-security-scan/)
  * [WP-DBManager](https://wordpress.org/plugins/wp-dbmanager/)
+ * [WPS Hide Login](https://wordpress.org/plugins/wps-hide-login/)
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --plugins
@@ -156,6 +159,18 @@ This command automatically creates a file called **wp-config-wphardening.php** w
 $ python wphardening.py -d /home/path/to/wordpress --wp-config
 ```
 
+### 6G Firewalls
+
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --6g-firewall
+```
+
+### Disable REST API
+
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --rest-api
+```
+
 ### WPHardening update
 
 With this option you can always have the latest version of WPHardening.
@@ -167,7 +182,7 @@ $ python wphardening.py --update
 ### Use all options
 
 ```bash
-$ python wphardening.py -d /home/path/to/wordpress -c -r -f -t --wp-config --indexes --plugins -o /home/user/wphardening.log
+$ python wphardening.py -d /home/path/to/wordpress -c -r -f -t --wp-config --indexes --plugins --6g-firewall --rest-api -o /home/user/wphardening.log
 ```
 
 Project Home
