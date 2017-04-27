@@ -1,6 +1,7 @@
 Changelog
 =========
 
+
 v1.6
 ----
 
@@ -18,6 +19,7 @@ v1.6
 - Headers - X-XSS-Protection (FIX #99).
 - Add WPS Hide Login Plugin for WordPress (FIX #107).
 - Disable REST API (FIX #85).
+- Summary of changes in HTML format (FIX #109).
 
 ### Improvement
 
@@ -25,6 +27,7 @@ v1.6
 - Empty Trash 5 days (FIX #101).
 - Disable Javascript Concatenation (FIX #105).
 - Delete watermark on every files (FIX #92).
+
 
 v1.5
 ----
