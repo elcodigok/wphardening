@@ -295,6 +295,7 @@ def cmdLineParser():
 
             if options.sixg is not None:
                 sixgWordPress(options.path, options.verbose).createFirewall()
+                context['sixg'] = True
 
             if options.api is not None:
                 restApiWordPress(options.path).disableRestApi()
