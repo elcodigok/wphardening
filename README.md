@@ -63,7 +63,7 @@ Usage
         --plugins           Download Plugins Security.
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for
                             --plugins and --wp-config.
-        --indexes           It allows you to display the contents of directories.
+        --indexes           It deny you to display the contents of directories.
         --minify            Compressing static file .css and .js
         --malware-scan      Malware Scan in WordPress project.
         --6g-firewall       6G Firewall.

@@ -82,7 +82,7 @@ def cmdBanner():
 def cmdLineParser():
     """Implementation to WPHardening."""
 
-    version_wph = "1.6RC2"
+    version_wph = "1.6"
     usage = "usage: python %prog [options]"
     version = colored('WPHardening', 'green') + ' version ' + \
         colored(version_wph, 'yellow') + '\n'
