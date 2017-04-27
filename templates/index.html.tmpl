@@ -89,6 +89,14 @@
       </ul>
       {% endif %}
       
+      {% if chmod %}
+      <h1 class="page-header">Change the permissions of files and directories <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <ul>
+        <li>All permissions directories <code> drwxr-xr-x (<strong>0755</strong>)</code></li>
+        <li>All permissions files <code> -rw-r--r-- (<strong>0644</strong>)</code></li>
+      </ul>
+      {% endif %}
+      
       <h1 class="page-header" id="robots">File robots.txt</h1>
       <p>Create new file:  {{ directory }}/robots.txt</p>
       <div>

@@ -223,6 +223,7 @@ def cmdLineParser():
                 chmodWordPress(
                     options.path, options.verbose
                 ).changePermisions()
+                context['chmod'] = True
 
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
