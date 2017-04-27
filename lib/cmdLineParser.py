@@ -227,6 +227,7 @@ def cmdLineParser():
 
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
+                context['robots'] = True
 
             if options.finger is not None:
                 deleteVersionWordPress(options.path).delete()

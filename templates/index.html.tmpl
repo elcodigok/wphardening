@@ -97,9 +97,9 @@
       </ul>
       {% endif %}
       
-      <h1 class="page-header" id="robots">File robots.txt</h1>
-      <p>Create new file:  {{ directory }}/robots.txt</p>
-      <div>
+      {% if robots %}
+      <h1 class="page-header" id="robots">Create file robots.txt <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <p>Create new file:  <code>{{ directory }}/robots.txt</code></p>
       <figure class=highlight><pre><code class=language-html data-lang=html>
 # Files and Directories to not indexing of our WordPress
 
@@ -167,7 +167,7 @@ Disallow: /
 User-agent: libwww
 Disallow: / 
       </code></pre></figure>
-      </div>
+      {% endif %}
 
     </div> <!-- /container -->
 
