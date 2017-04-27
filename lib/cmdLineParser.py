@@ -217,6 +217,7 @@ def cmdLineParser():
 
                 if changeOwner.isValid():
                     changeOwner.changeOwner()
+                    context['chown'] = options.chown
 
             if options.chmod is not None:
                 chmodWordPress(

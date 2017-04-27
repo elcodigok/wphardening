@@ -81,6 +81,14 @@
       <h1 class="page-header">Work local directory <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
       <figure class=highlight><pre><code class=language-html data-lang=html> {{ directory }}</code></pre></figure>
       
+      {% if chown %}
+      <h1 class="page-header">Change file and directory owner <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <ul>
+        <li>All directories owner <code>{{ chown }}</code></li>
+        <li>All files owner <code>{{ chown }}</code></li>
+      </ul>
+      {% endif %}
+      
       <h1 class="page-header" id="robots">File robots.txt</h1>
       <p>Create new file:  {{ directory }}/robots.txt</p>
       <div>
