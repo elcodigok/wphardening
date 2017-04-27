@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="WPHardening - Daniel Maldonado">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+
+    <title>WPHardening</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <!--<link href="navbar-fixed-top.css" rel="stylesheet">-->
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    body {
+  min-height: 2000px;
+  padding-top: 70px;
+    }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">WPHardening</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="https://github.com/elcodigok/wphardening/" target="_blank">GitHub</a></li>
+            <li><a href="http://www.caceriadespammers.com.ar" target="_blank">Project Home</a></li>
+            <li><a href="https://github.com/elcodigok/wphardening/blob/master/doc/AUTHOR" target="_blank">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="https://twitter.com/elcodigok" target="_blank">@elcodigok <span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>WPHardening <small><span class="label label-success">v{{ version }}</span></small></h1>
+        <p>Fortify the security of any WordPress installation.</p>
+        <!--<p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>-->
+      </div>
+      
+      <h1 class="page-header">Work local directory <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <figure class=highlight><pre><code class=language-html data-lang=html> {{ directory }}</code></pre></figure>
+      
+      {% if chown %}
+      <h1 class="page-header">Change file and directory owner <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <ul>
+        <li>All directories owner <code>{{ chown }}</code></li>
+        <li>All files owner <code>{{ chown }}</code></li>
+      </ul>
+      {% endif %}
+      
+      {% if chmod %}
+      <h1 class="page-header">Change the permissions of files and directories <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <ul>
+        <li>All permissions directories <code> drwxr-xr-x (<strong>0755</strong>)</code></li>
+        <li>All permissions files <code> -rw-r--r-- (<strong>0644</strong>)</code></li>
+      </ul>
+      {% endif %}
+      
+      {% if robots %}
+      <h1 class="page-header" id="robots">Create file robots.txt <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <p>Create new file:  <code>{{ directory }}/robots.txt</code></p>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# Files and Directories to not indexing of our WordPress
+
+User-Agent: *
+Allow: /wp-content/uploads/
+Allow: /feed/$
+Disallow: /wp-
+Disallow: /wp-content/
+Disallow: /trackback/
+Disallow: /wp-admin/
+Disallow: /feed/
+Disallow: /?s=
+Disallow: /search
+Disallow: /archives/
+Disallow: /index.php
+Disallow: /*?
+Disallow: /*.php$
+Disallow: /*.js$
+Disallow: /*.inc$
+Disallow: /*.css$
+Disallow: */feed/
+Disallow: */trackback/
+Disallow: /page/
+Disallow: /tag/
+Disallow: /category/
+
+# Rules for most known bots
+
+User-agent: Googlebot
+
+User-agent: Googlebot-Image
+Disallow: /wp-includes/
+Allow: /wp-content/uploads/
+
+User-agent: Mediapartners-Google*
+Disallow:
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: duggmirror
+Disallow: /
+
+User-agent: noxtrumbot
+Crawl-delay: 50
+
+User-agent: msnbot
+Crawl-delay: 30
+
+User-agent: Slurp
+Crawl-delay: 10
+
+User-agent: MSIECrawler
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Microsoft.URL.Control
+Disallow: /
+
+User-agent: libwww
+Disallow: / 
+      </code></pre></figure>
+      {% endif %}
+      
+      {% if finger %}
+      <h1 class="page-header">Remove fingerprinting <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <h2>Delete WordPress Version</h2>
+      <p>Add code in: <code>{{ directory }}/wp-includes/default-filters.php</code></p>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+// This is a function that removes versions of WordPress.
+function delete_version_wp() {
+    return "";
+}
+
+add_filter('the_generator', 'delete_version_wp');
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'rsd_link');
+      </code></pre></figure>
+      
+      <h2>Remove the WP version of any JS and CSS</h2>
+      <p>Add code in: <code>{{ directory }}/wp-includes/default-filters.php</code></p>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+function vc_remove_wp_ver_css_js( $src ) {
+    if ( strpos( $src, 'ver=' ) )
+    $src = remove_query_arg( 'ver', $src );
+    return $src;
+}
+
+add_filter('style_loader_src', 'vc_remove_wp_ver_css_js', 9999);
+add_filter('script_loader_src', 'vc_remove_wp_ver_css_js', 9999);
+add_filter('login_errors', create_function('$a', "return null;"));
+      </code></pre></figure>
+      
+      <h2>Modifies the .js .css .txt and .scss static files</h2>
+      <p>Add a line in the header of static files. For example:</p>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+/* WP Hardening - ad01f6a38f8fd275d0ebff42f2291f836887453cfa9635743748049e4ef7e58b */
+      </code></pre></figure>
+      {% endif %}
+      
+      {% if indexes %}
+      <h1 class="page-header">It deny you to display the contents of directories <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# Avoid the browser access to a folder without index.
+Options All -Indexes
+        </code></pre></figure>
+
+        <h2>Protection .htaccess file</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# Protection .htaccess file.
+&lt;Files .htaccess&gt;
+    order allow,deny
+    deny from all
+&lt;/Files&gt;
+        </code></pre></figure>
+        
+        <h2>Protection wp-config.php file.</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# Protection wp-config.php file.
+&lt;Files wp-config.php&gt;
+    order allow,deny
+    deny from all
+&lt;/Files&gt;
+        </code></pre></figure>
+
+        <h2>Protection error_log file.</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# Protection error_log file.
+&lt;Files error_log&gt;
+    order allow,deny
+    deny from all
+&lt;/Files&gt;
+        </code></pre></figure>
+
+        <h2>The rise of bots, spammers, crack and libwww-perl.</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# The rise of bots, spammers, crack and libwww-perl.
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+RewriteRule .* - [F,L]
+        </code></pre></figure>
+
+        <h2>Headers Protection</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+&lt;IfModule mod_headers.c&gt;
+    # Add Header X-Content-Type-Options.
+    Header set X-Content-Type-Options nosniff
+    
+    # Security Headers - X-Frame-Options
+    Header always append X-Frame-Options SAMEORIGIN
+    
+    # Headers - X-XSS-Protection
+    Header set X-XSS-Protection "1; mode=block"
+&lt;/IfModule&gt;
+      </code></pre></figure>
+      {% endif %}
+      
+      {% if remove %}
+      <h1 class="page-header">Remove files and directories <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <h2>Remove Themes</h2>
+      <ul>
+        <li><code>{{ directory }}/wp-content/themes/twentytwelve/</code></li>
+        <li><code>{{ directory }}/wp-content/themes/twentythirteen/</code></li>
+        <li><code>{{ directory }}/wp-content/themes/twentyfourteen/</code></li>
+        <li><code>{{ directory }}/wp-content/themes/twentyfifteen/</code></li>
+      </ul>
+      
+      <h2>Remove Plugins</h2>
+      <ul>
+        <li><code>{{ directory }}/wp-content/plugins/hello.php</code></li>
+      </ul>
+      
+      <h2>Remove Static File</h2>
+      <ul>
+        <li><code>{{ directory }}/license.txt</code></li>
+        <li><code>{{ directory }}/readme.html</code></li>
+        <li><code>{{ directory }}/wp-includes/images/crystal/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/swfupload/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/plupload/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/plupload/changelog.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/tinymce/skins/lightgray/fonts/readme.md</code></li>
+        <li><code>{{ directory }}/wp-includes/js/tinymce/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/tinymce/plugins/spellchecker/changelog.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/swfupload/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/ID3/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/ID3/readme.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/ID3/license.commercial.txt</code></li>
+      </ul>
+      {% endif %}
+      
+      {% if sixg %}
+      <h1 class="page-header">6G Firewall 2017 <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <p>Add code in: <code>{{ directory }}/.htaccess</code></p>
+      <h2>6G - QUERY STRINGS</h2>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# 6G:[QUERY STRINGS]
+&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine On
+    RewriteCond %{QUERY_STRING} (eval\() [NC,OR]
+    RewriteCond %{QUERY_STRING} (127\.0\.0\.1) [NC,OR]
+    RewriteCond %{QUERY_STRING} ([a-z0-9]{2000,}) [NC,OR]
+    RewriteCond %{QUERY_STRING} (javascript:)(.*)(;) [NC,OR]
+    RewriteCond %{QUERY_STRING} (base64_encode)(.*)(\() [NC,OR]
+    RewriteCond %{QUERY_STRING} (GLOBALS|REQUEST)(=|\[|%) [NC,OR]
+    RewriteCond %{QUERY_STRING} (<|%3C)(.*)script(.*)(>|%3) [NC,OR]
+    RewriteCond %{QUERY_STRING} (\\|\.\.\.|\.\./|~|`|<|>|\|) [NC,OR]
+    RewriteCond %{QUERY_STRING} (boot\.ini|etc/passwd|self/environ) [NC,OR]
+    RewriteCond %{QUERY_STRING} (thumbs?(_editor|open)?|tim(thumb)?)\.php [NC,OR]
+    RewriteCond %{QUERY_STRING} (\'|\")(.*)(drop|insert|md5|select|union) [NC]
+    RewriteRule .* - [F]
+&lt;/IfModule&gt;
+    </code></pre></figure>
+
+      <h2>6G - REQUEST METHOD</h2>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# 6G:[REQUEST METHOD]
+&lt;IfModule mod_rewrite.c&gt;
+    RewriteCond %{REQUEST_METHOD} ^(connect|debug|move|put|trace|track) [NC]
+    RewriteRule .* - [F]
+&lt;/IfModule&gt;
+    </code></pre></figure>
+
+    <h2>6G - REFERRERS</h2>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# 6G:[REFERRERS]
+&lt;IfModule mod_rewrite.c&gt;
+    RewriteCond %{HTTP_REFERER} ([a-z0-9]{2000,}) [NC,OR]
+    RewriteCond %{HTTP_REFERER} (semalt.com|todaperfeita) [NC]
+    RewriteRule .* - [F]
+&lt;/IfModule&gt;
+    </code></pre></figure>
+
+      <h2>6G - REQUEST STRINGS</h2>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# 6G:[REQUEST STRINGS]
+&lt;IfModule mod_alias.c&gt;
+    RedirectMatch 403 (?i)([a-z0-9]{2000,})
+    RedirectMatch 403 (?i)(https?|ftp|php):/
+    RedirectMatch 403 (?i)(base64_encode)(.*)(\()
+    RedirectMatch 403 (?i)(=\\\'|=\\%27|/\\\'/?)\.
+    RedirectMatch 403 (?i)/(\$(\&)?|\*|\"|\.|,|&|&amp;?)/?$
+    RedirectMatch 403 (?i)(\{0\}|\(/\(|\.\.\.|\+\+\+|\\\"\\\")
+    RedirectMatch 403 (?i)(~|`|<|>|:|;|,|%|\\|\s|\{|\}|\[|\]|\|)
+    RedirectMatch 403 (?i)/(=|\$&|_mm|cgi-|etc/passwd|muieblack)
+    RedirectMatch 403 (?i)(&pws=0|_vti_|\(null\)|\{\$itemURL\}|echo(.*)kae|etc/passwd|eval\(|self/environ)
+    RedirectMatch 403 (?i)\.(aspx?|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rar|rdf)$
+    RedirectMatch 403 (?i)/(^$|(wp-)?config|mobiquo|phpinfo|shell|sqlpatch|thumb|thumb_editor|thumbopen|timthumb|webshell)\.php
+&lt;/IfModule&gt;
+    </code></pre></figure>
+
+    <h2>6G - USER AGENTS</h2>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# 6G:[USER AGENTS]
+&lt;IfModule mod_setenvif.c&gt;
+    SetEnvIfNoCase User-Agent ([a-z0-9]{2000,}) bad_bot
+    SetEnvIfNoCase User-Agent (archive.org|binlar|casper|checkpriv|choppy|clshttp|cmsworld|diavol|dotbot|extract|feedfinder|flicky|g00g1e|harvest|heritrix|httrack|kmccrew|loader|miner|nikto|nutch|planetwork|postrank|purebot|pycurl|python|seekerspider|siclab|skygrid|sqlmap|sucker|turnit|vikspider|winhttp|xxxyy|youda|zmeu|zune) bad_bot
+
+    # Apache < 2.3
+    &lt;IfModule !mod_authz_core.c&gt;
+            Order Allow,Deny
+            Allow from all
+            Deny from env=bad_bot
+    &lt;/IfModule&gt;
+
+    # Apache >= 2.3
+    &lt;IfModule mod_authz_core.c&gt;
+            &lt;RequireAll&gt;
+                    Require all Granted
+                    Require not env bad_bot
+            &lt;/RequireAll&gt;
+    &lt;/IfModule&gt;
+&lt;/IfModule&gt;
+      </code></pre></figure>
+      {% endif %}
+
+      {% if api %}
+      <h1 class="page-header">Disable REST API <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <p>Add code in: <code>{{ directory }}/wp-includes/default-filters.php</code></p>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+
+if ( version_compare( $wp_version, '4.7', '>=' ) ) {
+    DRA_Force_Auth_Error();
+} else {
+    DRA_Disable_Via_Filters();
+}
+
+/**
+ * This function is called if the current version of WordPress is 4.7 or above
+ * Forcibly raise an authentication error to the REST API if the user is not logged in
+ */
+function DRA_Force_Auth_Error() {
+    add_filter( 'rest_authentication_errors', 'DRA_only_allow_logged_in_rest_access' );
+}
+
+/**
+ * This function gets called if the current version of WordPress is less than 4.7
+ * We are able to make use of filters to actually disable the functionality entirely
+ */
+function DRA_Disable_Via_Filters() {
+    // Filters for WP-API version 1.x
+    add_filter( 'json_enabled', '__return_false' );
+    add_filter( 'json_jsonp_enabled', '__return_false' );
+
+    // Filters for WP-API version 2.x
+    add_filter( 'rest_enabled', '__return_false' );
+    add_filter( 'rest_jsonp_enabled', '__return_false' );
+
+    // Remove REST API info from head and headers
+    remove_action( 'xmlrpc_rsd_apisrest_output_rsd' );
+    remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+    remove_action( 'template_redirect', 'rest_output_link_header', 11 );
+}
+
+/**
+ * Returning an authentication error if a user who is not logged in tries to query the REST API
+ * @param $access
+ * @return WP_Error
+ */
+function DRA_only_allow_logged_in_rest_access( $access ) {
+    if( ! is_user_logged_in() ) {
+            return new WP_Error( 'rest_cannot_access', __( 'Only authenticated users can access the REST API.', 'disable-json-api' ), array( 'status' => rest_authorization_required_code() ) );
+    }
+    return $access;
+}      
+      </code></pre></figure>
+      {% endif %}
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"><\/script>')</script>
+    <!--<script src="../../dist/js/bootstrap.min.js"></script>-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+  </body>
+</html>

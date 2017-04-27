@@ -23,6 +23,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import os
+from jinja2 import Environment, FileSystemLoader
 import sys
 import urllib2
 
@@ -50,6 +51,17 @@ from lib.sixgWordPress import sixgWordPress
 from lib.restApiWordPress import restApiWordPress
 
 
+PATH = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_ENVIRONMENT = Environment(
+        autoescape=False,
+        loader=FileSystemLoader(os.path.join(PATH, '../templates')),
+        trim_blocks=False)
+
+
+def render_template(template_filename, context):
+    return TEMPLATE_ENVIRONMENT.get_template(template_filename).render(context)
+
+
 def cmdBanner():
     """Banner printing."""
     print "\n"
@@ -70,9 +82,10 @@ def cmdBanner():
 def cmdLineParser():
     """Implementation to WPHardening."""
 
+    version_wph = "1.6RC2"
     usage = "usage: python %prog [options]"
-    version = colored('WPHardening', 'green') + ' version' + \
-        colored(' 1.6RC1', 'yellow') + '\n'
+    version = colored('WPHardening', 'green') + ' version ' + \
+        colored(version_wph, 'yellow') + '\n'
 
     parser = OptionParser(usage, version=version)
 
@@ -127,7 +140,7 @@ def cmdLineParser():
                          "the target url for --plugins and --wp-config.")
 
     hardening.add_option("--indexes", action="store_true", dest="indexes",
-                         help="It allows you to display the contents of "
+                         help="It deny you to display the contents of "
                          "directories.")
 
     hardening.add_option("--minify", action="store_true", dest="minify",
@@ -191,6 +204,12 @@ def cmdLineParser():
 
     if os.path.exists(options.path):
 
+        fname = "output.html"
+        context = {
+            'directory': options.path,
+            'version': version_wph
+        }
+
         if checkWordpress(options.path, options.verbose).isWordPress():
 
             if options.chown is not None:
@@ -200,20 +219,24 @@ def cmdLineParser():
 
                 if changeOwner.isValid():
                     changeOwner.changeOwner()
+                    context['chown'] = options.chown
 
             if options.chmod is not None:
                 chmodWordPress(
                     options.path, options.verbose
                 ).changePermisions()
+                context['chmod'] = True
 
             if options.robots is not None:
                 robotsWordPress(options.path).createRobots()
+                context['robots'] = True
 
             if options.finger is not None:
                 deleteVersionWordPress(options.path).delete()
                 fingerprintingWordPress(
                     options.path, options.verbose
                 ).searchStaticFile()
+                context['finger'] = True
 
             if options.wpconfig is not None:
 
@@ -237,6 +260,7 @@ def cmdLineParser():
 
             if options.indexes is not None:
                 indexesWordPress(options.path, options.verbose).createIndexes()
+                context['indexes'] = True
 
             if options.timthumb is not None:
                 timthumbWordPress(options.path).checkTimbthumb()
@@ -266,15 +290,24 @@ def cmdLineParser():
 
             if options.remove is not None:
                 removeWordPress(options.path).delete()
+                context['remove'] = True
 
             if options.minify is not None:
                 minifyWordPress(options.path, options.verbose).minify()
 
             if options.sixg is not None:
                 sixgWordPress(options.path, options.verbose).createFirewall()
+                context['sixg'] = True
 
             if options.api is not None:
                 restApiWordPress(options.path).disableRestApi()
+                context['api'] = True
+
+        # output jinja2
+        with open(fname, 'w') as f:
+            html = render_template('index.html.tmpl', context)
+            f.write(html)
+
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
