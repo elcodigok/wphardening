@@ -63,9 +63,11 @@ Usage
         --plugins           Download Plugins Security.
         --proxy=PROXY       Use a HTTP proxy to connect to the target url for
                             --plugins and --wp-config.
-        --indexes           It allows you to display the contents of directories.
+        --indexes           It deny you to display the contents of directories.
         --minify            Compressing static file .css and .js
         --malware-scan      Malware Scan in WordPress project.
+        --6g-firewall       6G Firewall.
+        --rest-api          Disable REST API.
 
       Miscellaneous:
         -o FILE, --output=FILE
@@ -133,15 +135,17 @@ $ python wphardening.py -d /home/path/to/wordpress --indexes -v
 
 The following is a list of the most commonly used security plugins that you can download automatically:
 
- * [AntiVirus](https://wordpress.org/extend/plugins/antivirus/)
- * [Bad Behavior](https://wordpress.org/extend/plugins/bad-behavior/)
- * [Block Bad Queries](https://wordpress.org/extend/plugins/block-bad-queries/)
- * [Exploit Scanner](https://wordpress.org/extend/plugins/exploit-scanner/)
+ * [AntiVirus](https://wordpress.org/plugins/antivirus/)
+ * [Bad Behavior](https://wordpress.org/plugins/bad-behavior/)
+ * [Block Bad Queries](https://wordpress.org/plugins/block-bad-queries/)
+ * [Exploit Scanner](https://wordpress.org/plugins/exploit-scanner/)
  * [Latch](https://wordpress.org/plugins/latch/)
+ * [NinjaFirewall](https://wordpress.org/plugins/ninjafirewall/)
  * [Simple History](https://wordpress.org/plugins/simple-history/)
  * [Stream](https://wordpress.org/plugins/stream/)
- * [WP Security Scan](https://wordpress.org/extend/plugins/wp-security-scan/)
- * [WP-DBManager](https://wordpress.org/extend/plugins/wp-dbmanager/)
+ * [WP Security Scan](https://wordpress.org/plugins/wp-security-scan/)
+ * [WP-DBManager](https://wordpress.org/plugins/wp-dbmanager/)
+ * [WPS Hide Login](https://wordpress.org/plugins/wps-hide-login/)
 
 ```bash
 $ python wphardening.py -d /home/path/to/wordpress --plugins
@@ -155,6 +159,18 @@ This command automatically creates a file called **wp-config-wphardening.php** w
 $ python wphardening.py -d /home/path/to/wordpress --wp-config
 ```
 
+### 6G Firewalls
+
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --6g-firewall
+```
+
+### Disable REST API
+
+```bash
+$ python wphardening.py -d /home/path/to/wordpress --rest-api
+```
+
 ### WPHardening update
 
 With this option you can always have the latest version of WPHardening.
@@ -166,7 +182,7 @@ $ python wphardening.py --update
 ### Use all options
 
 ```bash
-$ python wphardening.py -d /home/path/to/wordpress -c -r -f -t --wp-config --indexes --plugins -o /home/user/wphardening.log
+$ python wphardening.py -d /home/path/to/wordpress -c -r -f -t --wp-config --indexes --plugins --6g-firewall --rest-api -o /home/user/wphardening.log
 ```
 
 Project Home

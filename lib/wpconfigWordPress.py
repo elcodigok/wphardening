@@ -267,7 +267,7 @@ require_once(ABSPATH . 'wp-settings.php');
         :param file_name: file name to wp-config-wphardening.php
         :return: None
         """
-        os.chmod(self.directory + file_name, 0640)
+        os.chmod(self.directory + file_name, 0444)
 
     def createConfig(self):
         """
@@ -367,6 +367,14 @@ require_once(ABSPATH . 'wp-settings.php');
         f.write(
             self.getComment('For developers: WordPress debugging mode') +
             'define(\'WP_DEBUG\', false);\n\n'
+        )
+        f.write(
+            self.getComment('Disable Javascript Concatenation') +
+            'define(\'CONCATENATE_SCRIPTS\', false);\n\n'
+        )
+        f.write(
+            self.getComment('Empty Trash') +
+            'define(\'EMPTY_TRASH_DAYS\', 5);\n\n'
         )
         f.write(
             self.getComment('Disable the Revisions') +

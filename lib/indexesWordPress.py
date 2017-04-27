@@ -55,27 +55,26 @@ class indexesWordPress():
             '\n', '\torder allow,deny',
             '\n', '\tdeny from all',
             '\n', '</Files>', '\n',
+            '\n', '# Protection error_log file.\n',
+            '<Files error_log>',
+            '\n', '\torder allow,deny',
+            '\n', '\tdeny from all',
+            '\n', '</Files>', '\n',
             '\n', '# The rise of bots, spammers, crack and libwww-perl.\n',
             'RewriteEngine On\n',
             'RewriteCond %{HTTP_USER_AGENT} libwww-perl.*',
-            '\n', 'RewriteRule .* - [F,L]',
-            '\n', '# Query string Exploits.\n',
-            '\n', 'RewriteCond %{QUERY_STRING} ../    [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} boot.ini [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} tag=     [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ftp:     [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} http:    [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} https:   [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} mosConfig [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(%22|%27|%3C|%3E|%5C|%7B|%7C).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(%0|%A|%B|%C|%D|%E|%F|127.0).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(globals|encode|config|loopback).* [NC,OR]',
-            '\n', 'RewriteCond %{QUERY_STRING} ' +
-            '^.*(request|select|insert|union|declare|drop).* [NC]',
-            '\n', 'RewriteRule ^(.*)$ - [F,L]'
+            '\n', 'RewriteRule .* - [F,L]\n'
+        ]
+        self.headers = [
+            '\n',
+            '<IfModule mod_headers.c>',
+            '\n', '\t# Add Header X-Content-Type-Options.',
+            '\n', '\tHeader set X-Content-Type-Options nosniff',
+            '\n', '\t# Security Headers - X-Frame-Options',
+            '\n', '\tHeader always append X-Frame-Options SAMEORIGIN',
+            '\n', '\t# Headers - X-XSS-Protection',
+            '\n', '\tHeader set X-XSS-Protection "1; mode=block"',
+            '\n', '</IfModule>', '\n'
         ]
         self.mode_verbose = verbose
 
@@ -88,7 +87,7 @@ class indexesWordPress():
             self.script = f.readlines()
             f.close()
             f = open(self.directory + '/.htaccess', 'w')
-            f.writelines(self.script + self.htaccess)
+            f.writelines(self.script + self.htaccess + self.headers)
             f.close()
             if self.mode_verbose:
                 logging.info("Add options to " + self.directory + '/.htaccess')
@@ -96,7 +95,7 @@ class indexesWordPress():
                     self.directory + '/.htaccess'
         else:
             f = open(self.directory + '/.htaccess', 'w')
-            f.writelines(self.htaccess)
+            f.writelines(self.htaccess + self.headers)
             f.close()
             if self.mode_verbose:
                 logging.info("Create .htaccess file.")

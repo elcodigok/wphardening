@@ -21,6 +21,9 @@ lib64
 pip-log.txt
 *.log
 
+# report html
+*.html
+
 # Unit test / coverage reports
 .coverage
 .tox

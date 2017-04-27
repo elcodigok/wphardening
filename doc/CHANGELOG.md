@@ -1,6 +1,34 @@
 Changelog
 =========
 
+
+v1.6
+----
+
+### Featured
+
+- Remove Theme twentyfifteen (FIX #82).
+- Checking static files (FIX #83).
+- Change url in Plugins, add https:// (FIX #87).
+- Add Ninja Firewall Plugin for WordPress (FIX #81).
+- Change permission 444 to wp-config-wphardening.php (FIX #95).
+- Information Leak file error_log (FIX #97).
+- Add 6G Firewall 2016 (FIX #88).
+- Header X-Content-Type-Options (FIX #98).
+- Security Headers - X-Frame-Options (FIX #100).
+- Headers - X-XSS-Protection (FIX #99).
+- Add WPS Hide Login Plugin for WordPress (FIX #107).
+- Disable REST API (FIX #85).
+- Summary of changes in HTML format (FIX #109).
+
+### Improvement
+
+- WPHardening compatible with WordPress 4.4, 4.4.1, 4.4.2, 4.5, 4.5.1, 4.5.2, 4.5.3, 4.6, 4.6.1, 4.7, 4.7.1, 4.7.2, 4.7.3 and 4.7.4
+- Empty Trash 5 days (FIX #101).
+- Disable Javascript Concatenation (FIX #105).
+- Delete watermark on every files (FIX #92).
+
+
 v1.5
 ----
 
