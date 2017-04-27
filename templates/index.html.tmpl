@@ -268,6 +268,39 @@ RewriteRule .* - [F,L]
 &lt;/IfModule&gt;
       </code></pre></figure>
       {% endif %}
+      
+      {% if remove %}
+      <h1 class="page-header">Remove files and directories <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <h2>Remove Themes</h2>
+      <ul>
+        <li><code>{{ directory }}/wp-content/themes/twentytwelve/</code></li>
+        <li><code>{{ directory }}/wp-content/themes/twentythirteen/</code></li>
+        <li><code>{{ directory }}/wp-content/themes/twentyfourteen/</code></li>
+        <li><code>{{ directory }}/wp-content/themes/twentyfifteen/</code></li>
+      </ul>
+      
+      <h2>Remove Plugins</h2>
+      <ul>
+        <li><code>{{ directory }}/wp-content/plugins/hello.php</code></li>
+      </ul>
+      
+      <h2>Remove Static File</h2>
+      <ul>
+        <li><code>{{ directory }}/license.txt</code></li>
+        <li><code>{{ directory }}/readme.html</code></li>
+        <li><code>{{ directory }}/wp-includes/images/crystal/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/swfupload/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/plupload/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/plupload/changelog.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/tinymce/skins/lightgray/fonts/readme.md</code></li>
+        <li><code>{{ directory }}/wp-includes/js/tinymce/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/tinymce/plugins/spellchecker/changelog.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/js/swfupload/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/ID3/license.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/ID3/readme.txt</code></li>
+        <li><code>{{ directory }}/wp-includes/ID3/license.commercial.txt</code></li>
+      </ul>
+      {% endif %}
 
     </div> <!-- /container -->
 

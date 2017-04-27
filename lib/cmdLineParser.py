@@ -288,6 +288,7 @@ def cmdLineParser():
 
             if options.remove is not None:
                 removeWordPress(options.path).delete()
+                context['remove'] = True
 
             if options.minify is not None:
                 minifyWordPress(options.path, options.verbose).minify()
