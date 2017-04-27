@@ -234,6 +234,7 @@ def cmdLineParser():
                 fingerprintingWordPress(
                     options.path, options.verbose
                 ).searchStaticFile()
+                context['finger'] = True
 
             if options.wpconfig is not None:
 
