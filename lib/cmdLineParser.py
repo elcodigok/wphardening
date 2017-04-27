@@ -138,7 +138,7 @@ def cmdLineParser():
                          "the target url for --plugins and --wp-config.")
 
     hardening.add_option("--indexes", action="store_true", dest="indexes",
-                         help="It allows you to display the contents of "
+                         help="It deny you to display the contents of "
                          "directories.")
 
     hardening.add_option("--minify", action="store_true", dest="minify",
@@ -258,6 +258,7 @@ def cmdLineParser():
 
             if options.indexes is not None:
                 indexesWordPress(options.path, options.verbose).createIndexes()
+                context['indexes'] = True
 
             if options.timthumb is not None:
                 timthumbWordPress(options.path).checkTimbthumb()

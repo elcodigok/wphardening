@@ -205,6 +205,69 @@ add_filter('login_errors', create_function('$a', "return null;"));
 /* WP Hardening - ad01f6a38f8fd275d0ebff42f2291f836887453cfa9635743748049e4ef7e58b */
       </code></pre></figure>
       {% endif %}
+      
+      {% if indexes %}
+      <h1 class="page-header">It deny you to display the contents of directories <small><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></small></h1>
+      <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+      <figure class=highlight><pre><code class=language-html data-lang=html>
+# Avoid the browser access to a folder without index.
+Options All -Indexes
+        </code></pre></figure>
+
+        <h2>Protection .htaccess file</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# Protection .htaccess file.
+&lt;Files .htaccess&gt;
+    order allow,deny
+    deny from all
+&lt;/Files&gt;
+        </code></pre></figure>
+        
+        <h2>Protection wp-config.php file.</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# Protection wp-config.php file.
+&lt;Files wp-config.php&gt;
+    order allow,deny
+    deny from all
+&lt;/Files&gt;
+        </code></pre></figure>
+
+        <h2>Protection error_log file.</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# Protection error_log file.
+&lt;Files error_log&gt;
+    order allow,deny
+    deny from all
+&lt;/Files&gt;
+        </code></pre></figure>
+
+        <h2>The rise of bots, spammers, crack and libwww-perl.</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+# The rise of bots, spammers, crack and libwww-perl.
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+RewriteRule .* - [F,L]
+        </code></pre></figure>
+
+        <h2>Headers Protection</h2>
+        <p>Add a line the code in file: <code>{{ directory }}/.htaccess</code></p>
+        <figure class=highlight><pre><code class=language-html data-lang=html>
+&lt;IfModule mod_headers.c&gt;
+    # Add Header X-Content-Type-Options.
+    Header set X-Content-Type-Options nosniff
+    
+    # Security Headers - X-Frame-Options
+    Header always append X-Frame-Options SAMEORIGIN
+    
+    # Headers - X-XSS-Protection
+    Header set X-XSS-Protection "1; mode=block"
+&lt;/IfModule&gt;
+      </code></pre></figure>
+      {% endif %}
 
     </div> <!-- /container -->
 
