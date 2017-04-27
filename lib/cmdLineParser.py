@@ -57,8 +57,10 @@ TEMPLATE_ENVIRONMENT = Environment(
         loader=FileSystemLoader(os.path.join(PATH, '../templates')),
         trim_blocks=False)
 
+
 def render_template(template_filename, context):
     return TEMPLATE_ENVIRONMENT.get_template(template_filename).render(context)
+
 
 def cmdBanner():
     """Banner printing."""
@@ -201,7 +203,7 @@ def cmdLineParser():
     options.path = os.path.abspath(options.path)
 
     if os.path.exists(options.path):
-        
+
         fname = "output.html"
         context = {
             'directory': options.path,
@@ -302,7 +304,7 @@ def cmdLineParser():
                 context['api'] = True
 
         # output jinja2
-        with open(fname, 'w') as f:    
+        with open(fname, 'w') as f:
             html = render_template('index.html.tmpl', context)
             f.write(html)
 
