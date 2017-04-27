@@ -299,6 +299,7 @@ def cmdLineParser():
 
             if options.api is not None:
                 restApiWordPress(options.path).disableRestApi()
+                context['api'] = True
 
         # output jinja2
         with open(fname, 'w') as f:    
