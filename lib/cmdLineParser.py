@@ -23,6 +23,7 @@ along with WPHardening.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import os
+from jinja2 import Environment, FileSystemLoader
 import sys
 import urllib2
 
@@ -50,6 +51,15 @@ from lib.sixgWordPress import sixgWordPress
 from lib.restApiWordPress import restApiWordPress
 
 
+PATH = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_ENVIRONMENT = Environment(
+        autoescape=False,
+        loader=FileSystemLoader(os.path.join(PATH, '../templates')),
+        trim_blocks=False)
+
+def render_template(template_filename, context):
+    return TEMPLATE_ENVIRONMENT.get_template(template_filename).render(context)
+
 def cmdBanner():
     """Banner printing."""
     print "\n"
@@ -70,9 +80,10 @@ def cmdBanner():
 def cmdLineParser():
     """Implementation to WPHardening."""
 
+    version_wph = "1.6RC2"
     usage = "usage: python %prog [options]"
-    version = colored('WPHardening', 'green') + ' version' + \
-        colored(' 1.6RC1', 'yellow') + '\n'
+    version = colored('WPHardening', 'green') + ' version ' + \
+        colored(version_wph, 'yellow') + '\n'
 
     parser = OptionParser(usage, version=version)
 
@@ -190,6 +201,12 @@ def cmdLineParser():
     options.path = os.path.abspath(options.path)
 
     if os.path.exists(options.path):
+        
+        fname = "output.html"
+        context = {
+            'directory': options.path,
+            'version': version_wph
+        }
 
         if checkWordpress(options.path, options.verbose).isWordPress():
 
@@ -275,6 +292,12 @@ def cmdLineParser():
 
             if options.api is not None:
                 restApiWordPress(options.path).disableRestApi()
+
+        # output jinja2
+        with open(fname, 'w') as f:    
+            html = render_template('index.html.tmpl', context)
+            f.write(html)
+
     else:
         log.add("Could not find the specified directory.")
         print colored('\nCould not find the specified directory.\n', 'red')
